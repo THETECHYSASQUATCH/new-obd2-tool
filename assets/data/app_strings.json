@@ -1,0 +1,128 @@
+{
+  "app_name": "OBD-II Diagnostics Tool",
+  "welcome_message": "Welcome to OBD-II Diagnostics",
+  "subtitle": "Cross-platform diagnostic tool for all your vehicle needs",
+  
+  "navigation": {
+    "dashboard": "Dashboard",
+    "connection": "Connection",
+    "diagnostics": "Diagnostics",
+    "history": "History",
+    "settings": "Settings"
+  },
+  
+  "connection": {
+    "status": "Connection Status",
+    "connected": "Connected",
+    "connecting": "Connecting",
+    "disconnected": "Disconnected",
+    "error": "Error",
+    "scan_devices": "Scan Devices",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "connection_types": {
+      "bluetooth": "Bluetooth",
+      "wifi": "WiFi", 
+      "usb": "USB",
+      "serial": "Serial"
+    },
+    "messages": {
+      "connected_desc": "OBD-II device is connected and ready",
+      "connecting_desc": "Attempting to connect to OBD-II device",
+      "disconnected_desc": "No OBD-II device connected",
+      "error_desc": "Failed to connect to OBD-II device"
+    }
+  },
+  
+  "diagnostics": {
+    "dtc_title": "Diagnostic Trouble Codes (DTCs)",
+    "scan_dtcs": "Scan for DTCs",
+    "clear_dtcs": "Clear DTCs",
+    "no_dtcs": "No diagnostic trouble codes found",
+    "quick_commands": "Quick Commands",
+    "custom_command": "Custom OBD-II Command",
+    "send": "Send",
+    "response_history": "Response History",
+    "clear_history": "Clear"
+  },
+  
+  "live_data": {
+    "title": "Live Vehicle Data",
+    "reading": "Reading...",
+    "refresh": "Refresh",
+    "parameters": {
+      "engine_rpm": "Engine RPM",
+      "vehicle_speed": "Vehicle Speed", 
+      "coolant_temp": "Coolant Temperature",
+      "engine_load": "Engine Load",
+      "throttle_position": "Throttle Position",
+      "fuel_pressure": "Fuel Pressure",
+      "manifold_pressure": "Intake Manifold Pressure",
+      "maf_flow": "MAF Air Flow Rate"
+    }
+  },
+  
+  "units": {
+    "rpm": "RPM",
+    "kmh": "km/h",
+    "mph": "mph",
+    "celsius": "°C",
+    "fahrenheit": "°F",
+    "percent": "%",
+    "kpa": "kPa",
+    "psi": "psi",
+    "grams_per_second": "g/s"
+  },
+  
+  "settings": {
+    "appearance": "Appearance",
+    "connection": "Connection", 
+    "data_storage": "Data & Storage",
+    "about": "About",
+    "theme": "Theme",
+    "theme_system": "Follow system setting",
+    "theme_light": "Light theme",
+    "theme_dark": "Dark theme",
+    "font_size": "Font Size",
+    "language": "Language",
+    "connection_timeout": "Connection Timeout",
+    "auto_reconnect": "Auto Reconnect",
+    "auto_scan": "Auto-scan for Devices",
+    "units": "Units",
+    "history_retention": "History Retention",
+    "auto_save": "Auto-save Sessions",
+    "clear_all_data": "Clear All Data",
+    "app_version": "App Version",
+    "licenses": "Licenses",
+    "privacy_policy": "Privacy Policy",
+    "help_support": "Help & Support",
+    "report_issue": "Report Issue"
+  },
+  
+  "errors": {
+    "connection_failed": "Failed to connect to device",
+    "command_failed": "Error sending command",
+    "scan_failed": "Error scanning DTCs",
+    "clear_failed": "Error clearing DTCs",
+    "no_device_selected": "Please select a device",
+    "invalid_command": "Invalid OBD-II command",
+    "timeout": "Command timeout",
+    "permission_denied": "Permission denied",
+    "device_not_found": "Device not found"
+  },
+  
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "loading": "Loading...",
+    "retry": "Retry",
+    "copy": "Copy",
+    "details": "Details"
+  }
+}
