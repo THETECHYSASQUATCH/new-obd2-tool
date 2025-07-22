@@ -1,0 +1,35 @@
+{
+  "connection": {
+    "default_port": "",
+    "default_baudrate": 38400,
+    "timeout": 3.0,
+    "auto_connect": false
+  },
+  "monitoring": {
+    "default_refresh_rate": 1.0,
+    "default_pids": [
+      "0C",
+      "0D",
+      "05",
+      "11"
+    ],
+    "max_data_points": 1000
+  },
+  "programming": {
+    "backup_directory": "./backups",
+    "verify_after_flash": true,
+    "security_warnings": true
+  },
+  "interface": {
+    "window_geometry": "1200x800",
+    "theme": "default",
+    "font_size": 10,
+    "auto_save_reports": true
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "obd_tool.log",
+    "max_log_size": 10485760,
+    "backup_count": 5
+  }
+}
