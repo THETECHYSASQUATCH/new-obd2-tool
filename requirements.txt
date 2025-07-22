@@ -1,0 +1,13 @@
+# Core dependencies
+pyserial>=3.5
+python-can>=4.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Optional dependencies for advanced features
+# Uncomment as needed:
+# pybluez>=0.23  # For Bluetooth support on Linux/Windows
+# pywin32>=306   # For Windows-specific features
+# RPi.GPIO>=0.7.1  # For Raspberry Pi GPIO support

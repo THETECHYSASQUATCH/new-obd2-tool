@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obd2-diagnostics-tool"
+version = "0.1.0"
+description = "Comprehensive OBD-II Diagnostics and Programming Tool"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "THETECHYSASQUATCH", email = ""},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: System :: Hardware",
+    "Topic :: Software Development :: Embedded Systems",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pyserial>=3.5",
+    "python-can>=4.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+bluetooth = [
+    "pybluez>=0.23",
+]
+windows = [
+    "pywin32>=306",
+]
+
+[project.scripts]
+obd2-tool = "src.main:main"
+
+[project.urls]
+Homepage = "https://github.com/THETECHYSASQUATCH/new-obd2-tool"
+Repository = "https://github.com/THETECHYSASQUATCH/new-obd2-tool"
+Issues = "https://github.com/THETECHYSASQUATCH/new-obd2-tool/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=src",
+    "--cov-report=term-missing",
+]
