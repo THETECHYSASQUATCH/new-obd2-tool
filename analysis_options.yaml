@@ -1,0 +1,45 @@
+include: package:flutter_lints/flutter.yaml
+
+# Cross-platform OBD-II Diagnostics Tool
+# Lint configuration for maintaining code quality across all platforms
+
+linter:
+  rules:
+    # Style rules
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - prefer_const_declarations
+    - prefer_final_fields
+    - prefer_final_locals
+    - prefer_relative_imports
+    - sort_constructors_first
+    - sort_unnamed_constructors_first
+    - unnecessary_const
+    - unnecessary_new
+    
+    # Design rules
+    - avoid_print
+    - avoid_unnecessary_containers
+    - sized_box_for_whitespace
+    - use_key_in_widget_constructors
+    
+    # Error prevention
+    - avoid_empty_else
+    - avoid_returning_null_for_future
+    - cancel_subscriptions
+    - close_sinks
+    - avoid_slow_async_io
+    
+    # Documentation
+    - public_member_api_docs
+    
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - build/**
+    - lib/generated_plugin_registrant.dart
+  
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
