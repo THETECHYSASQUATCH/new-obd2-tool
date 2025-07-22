@@ -50,35 +50,76 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 
 ### Prerequisites
 
-- Flutter SDK 3.0.0 or higher
+- **Flutter SDK 3.0.0 or higher** - [Installation Guide](https://docs.flutter.dev/get-started/install)
+- **Dart SDK** (included with Flutter)
 - Platform-specific development tools:
-  - **Android**: Android Studio with Android SDK
+  - **Android**: Android Studio with Android SDK (API level 21+)
   - **iOS**: Xcode 14+ (macOS only)
   - **Desktop**: Platform-specific build tools
+    - **Windows**: Visual Studio 2022 with C++ desktop development
+    - **macOS**: Xcode with command line tools
+    - **Linux**: Required development packages (see [Flutter Linux setup](https://docs.flutter.dev/get-started/install/linux))
 
-### Installation
+### Installation and Dependency Setup
 
-1. **Clone the repository**:
+1. **Verify Flutter installation**:
+   ```bash
+   flutter doctor
+   ```
+   Ensure all required dependencies are installed and configured.
+
+2. **Clone the repository**:
    ```bash
    git clone https://github.com/THETECHYSASQUATCH/new-obd2-tool.git
    cd new-obd2-tool
    ```
 
-2. **Install dependencies**:
+3. **Install project dependencies**:
    ```bash
    flutter pub get
    ```
+   This will:
+   - Download all required packages
+   - Generate `pubspec.lock` for reproducible builds
+   - Set up platform-specific configurations
 
-3. **Run the app**:
+4. **Verify setup**:
+   ```bash
+   flutter analyze          # Check for code issues
+   flutter test             # Run unit and widget tests
+   ```
+
+5. **Run the app**:
    ```bash
    # For mobile development
    flutter run
    
    # For specific platforms
+   flutter run -d android
+   flutter run -d ios
    flutter run -d windows
    flutter run -d macos
    flutter run -d linux
    ```
+
+### Dependency Management
+
+For detailed information about managing dependencies, see [DEPENDENCIES.md](DEPENDENCIES.md).
+
+**Quick commands:**
+```bash
+# Check for outdated dependencies
+flutter pub outdated
+
+# Update dependencies safely
+./scripts/update_deps.sh interactive
+
+# Add a new dependency
+flutter pub add package_name
+
+# Remove a dependency
+flutter pub remove package_name
+```
 
 ### Building for Production
 

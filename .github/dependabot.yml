@@ -1,0 +1,60 @@
+version: 2
+updates:
+  # Enable version updates for Flutter/Dart dependencies
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    # Allow up to 5 open pull requests for pub updates
+    open-pull-requests-limit: 5
+    # Automatically merge minor and patch updates if CI passes
+    allow:
+      - dependency-type: "all"
+    # Group updates by dependency type for cleaner PRs
+    groups:
+      flutter-core:
+        patterns:
+          - "flutter*"
+          - "dart*"
+      bluetooth-serial:
+        patterns:
+          - "*bluetooth*"
+          - "*serial*"
+      ui-components:
+        patterns:
+          - "*chart*"
+          - "*icon*"
+          - "*responsive*"
+          - "*material*"
+          - "*cupertino*"
+      state-management:
+        patterns:
+          - "*provider*"
+          - "*riverpod*"
+      storage-data:
+        patterns:
+          - "*sqlite*"
+          - "*shared_preferences*"
+          - "*path*"
+      testing-dev:
+        patterns:
+          - "*test*"
+          - "*mock*"
+          - "*lint*"
+          - "*build_runner*"
+    # Assign reviewers for dependency updates
+    reviewers:
+      - "THETECHYSASQUATCH"
+    # Commit message preferences
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+    # Ignore specific dependencies that need manual review
+    ignore:
+      # Ignore major version updates for critical dependencies
+      - dependency-name: "flutter_bluetooth_serial"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "sqflite"
+        update-types: ["version-update:semver-major"]
