@@ -1,0 +1,40 @@
+{
+  "generic_codes": {
+    "P0000": {"description": "No fault", "system": "Powertrain"},
+    "P0100": {"description": "Mass or Volume Air Flow Circuit Malfunction", "system": "Powertrain"},
+    "P0101": {"description": "Mass or Volume Air Flow Circuit Range/Performance Problem", "system": "Powertrain"},
+    "P0102": {"description": "Mass or Volume Air Flow Circuit Low Input", "system": "Powertrain"},
+    "P0103": {"description": "Mass or Volume Air Flow Circuit High Input", "system": "Powertrain"},
+    "P0171": {"description": "System Too Lean (Bank 1)", "system": "Powertrain"},
+    "P0172": {"description": "System Too Rich (Bank 1)", "system": "Powertrain"},
+    "P0300": {"description": "Random/Multiple Cylinder Misfire Detected", "system": "Powertrain"},
+    "P0301": {"description": "Cylinder 1 Misfire Detected", "system": "Powertrain"},
+    "P0302": {"description": "Cylinder 2 Misfire Detected", "system": "Powertrain"},
+    "P0420": {"description": "Catalyst System Efficiency Below Threshold (Bank 1)", "system": "Powertrain"},
+    "P0430": {"description": "Catalyst System Efficiency Below Threshold (Bank 2)", "system": "Powertrain"},
+    "B0001": {"description": "Driver Side Air Bag Circuit", "system": "Body"},
+    "B0002": {"description": "Passenger Side Air Bag Circuit", "system": "Body"},
+    "C0000": {"description": "No fault", "system": "Chassis"},
+    "C0035": {"description": "Left Front Wheel Speed Circuit Malfunction", "system": "Chassis"},
+    "C0040": {"description": "Right Front Wheel Speed Circuit Malfunction", "system": "Chassis"},
+    "U0001": {"description": "High Speed CAN Communication Bus", "system": "Network"}
+  },
+  "manufacturer_specific": {
+    "Honda": {
+      "P1457": {"description": "EVAP Control System Leak Detected (Fuel Tank Area)", "system": "Powertrain"},
+      "P1491": {"description": "EGR Valve Lift Insufficient Detected", "system": "Powertrain"}
+    },
+    "Toyota": {
+      "P1120": {"description": "Accelerator Pedal Position Sensor Circuit Malfunction", "system": "Powertrain"},
+      "P1121": {"description": "Accelerator Pedal Position Sensor Range/Performance Problem", "system": "Powertrain"}
+    },
+    "Ford": {
+      "P1000": {"description": "OBD System Readiness Test Not Complete", "system": "Powertrain"},
+      "P1260": {"description": "Theft Detected - Engine Disabled", "system": "Powertrain"}
+    },
+    "BMW": {
+      "P1188": {"description": "Engine Coolant Temperature Below Thermostat Regulating Temperature", "system": "Powertrain"},
+      "P1189": {"description": "Engine Coolant Temperature Intermittent", "system": "Powertrain"}
+    }
+  }
+}

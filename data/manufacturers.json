@@ -1,0 +1,76 @@
+{
+  "manufacturers": {
+    "Honda": {
+      "supported_protocols": ["ISO14230", "ISO9141", "CAN"],
+      "modules": ["ECM", "TCM", "ABS", "SRS", "BCM"],
+      "specific_commands": {
+        "reset_ecu": "04",
+        "read_dtc": "03",
+        "clear_dtc": "04"
+      }
+    },
+    "Toyota": {
+      "supported_protocols": ["ISO14230", "CAN"],
+      "modules": ["ECM", "TCM", "ABS", "SRS", "BCM", "HVAC"],
+      "specific_commands": {
+        "reset_ecu": "04",
+        "read_dtc": "03",
+        "clear_dtc": "04"
+      }
+    },
+    "Ford": {
+      "supported_protocols": ["CAN", "J1850"],
+      "modules": ["PCM", "TCM", "ABS", "RCM", "BCM", "HVAC"],
+      "specific_commands": {
+        "reset_pcm": "04",
+        "read_dtc": "03",
+        "clear_dtc": "04"
+      }
+    },
+    "General Motors": {
+      "supported_protocols": ["CAN", "J1850"],
+      "modules": ["ECM", "TCM", "EBCM", "SDM", "BCM"],
+      "specific_commands": {
+        "reset_ecm": "04",
+        "read_dtc": "03",
+        "clear_dtc": "04"
+      }
+    },
+    "BMW": {
+      "supported_protocols": ["CAN", "ISO14230"],
+      "modules": ["DME", "DKG", "DSC", "SRS", "FRM", "IHKA"],
+      "specific_commands": {
+        "reset_adaptations": "2F",
+        "read_dtc": "19",
+        "clear_dtc": "14"
+      }
+    },
+    "Mercedes-Benz": {
+      "supported_protocols": ["CAN", "ISO14230"],
+      "modules": ["ME", "TCU", "ESP", "SRS", "SAM", "HVAC"],
+      "specific_commands": {
+        "reset_adaptations": "31",
+        "read_dtc": "19",
+        "clear_dtc": "14"
+      }
+    },
+    "Audi": {
+      "supported_protocols": ["CAN", "ISO14230"],
+      "modules": ["ECU", "TCU", "ABS", "SRS", "BCM", "HVAC"],
+      "specific_commands": {
+        "reset_adaptations": "2F",
+        "read_dtc": "19",
+        "clear_dtc": "14"
+      }
+    },
+    "Volkswagen": {
+      "supported_protocols": ["CAN", "ISO14230"],
+      "modules": ["ECU", "TCU", "ABS", "SRS", "BCM", "HVAC"],
+      "specific_commands": {
+        "reset_adaptations": "2F",
+        "read_dtc": "19",
+        "clear_dtc": "14"
+      }
+    }
+  }
+}

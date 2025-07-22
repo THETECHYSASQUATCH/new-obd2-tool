@@ -1,0 +1,4 @@
+python-obd==0.7.1
+tkinter-tooltip==2.0.0
+requests>=2.25.1
+python-can>=4.0.0

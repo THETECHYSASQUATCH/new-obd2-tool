@@ -1,0 +1,31 @@
+{
+  "wmi_codes": {
+    "1HG": {"manufacturer": "Honda", "region": "North America"},
+    "1HD": {"manufacturer": "Harley-Davidson", "region": "North America"},
+    "1FA": {"manufacturer": "Ford", "region": "North America"},
+    "1FT": {"manufacturer": "Ford", "region": "North America"},
+    "1GM": {"manufacturer": "General Motors", "region": "North America"},
+    "1GC": {"manufacturer": "Chevrolet", "region": "North America"},
+    "2HM": {"manufacturer": "Hyundai", "region": "North America"},
+    "3VW": {"manufacturer": "Volkswagen", "region": "North America"},
+    "4F2": {"manufacturer": "Mazda", "region": "North America"},
+    "5NP": {"manufacturer": "Hyundai", "region": "North America"},
+    "JHM": {"manufacturer": "Honda", "region": "Japan"},
+    "JTD": {"manufacturer": "Toyota", "region": "Japan"},
+    "KMH": {"manufacturer": "Hyundai", "region": "South Korea"},
+    "KNA": {"manufacturer": "Kia", "region": "South Korea"},
+    "WAU": {"manufacturer": "Audi", "region": "Germany"},
+    "WBA": {"manufacturer": "BMW", "region": "Germany"},
+    "WDB": {"manufacturer": "Mercedes-Benz", "region": "Germany"},
+    "WVW": {"manufacturer": "Volkswagen", "region": "Germany"},
+    "ZFA": {"manufacturer": "Fiat", "region": "Italy"},
+    "ZFF": {"manufacturer": "Ferrari", "region": "Italy"}
+  },
+  "year_codes": {
+    "A": 1980, "B": 1981, "C": 1982, "D": 1983, "E": 1984, "F": 1985, "G": 1986, "H": 1987, "J": 1988, "K": 1989,
+    "L": 1990, "M": 1991, "N": 1992, "P": 1993, "R": 1994, "S": 1995, "T": 1996, "V": 1997, "W": 1998, "X": 1999,
+    "Y": 2000, "1": 2001, "2": 2002, "3": 2003, "4": 2004, "5": 2005, "6": 2006, "7": 2007, "8": 2008, "9": 2009,
+    "A": 2010, "B": 2011, "C": 2012, "D": 2013, "E": 2014, "F": 2015, "G": 2016, "H": 2017, "J": 2018, "K": 2019,
+    "L": 2020, "M": 2021, "N": 2022, "P": 2023, "R": 2024, "S": 2025
+  }
+}

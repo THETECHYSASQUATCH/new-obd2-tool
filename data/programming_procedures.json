@@ -1,0 +1,124 @@
+{
+  "Honda": {
+    "idle_relearn": {
+      "name": "Idle Air Control Relearn",
+      "steps": [
+        "Start engine and warm up to operating temperature",
+        "Turn A/C and all accessories OFF",
+        "Let engine idle for 10 minutes in P or N",
+        "Turn ignition OFF for 10 seconds",
+        "Restart engine and verify idle"
+      ],
+      "requirements": [
+        "Engine at operating temperature",
+        "A/C OFF",
+        "Transmission in P/N"
+      ]
+    },
+    "tpms_relearn": {
+      "name": "TPMS Sensor Relearn",
+      "steps": [
+        "Inflate all tires to proper pressure",
+        "Turn ignition to ON position",
+        "Press and hold TPMS button until light blinks twice",
+        "Drive vehicle at 50+ mph for 10 minutes",
+        "Verify TPMS light is OFF"
+      ],
+      "requirements": [
+        "Proper tire pressure",
+        "TPMS sensors installed"
+      ]
+    }
+  },
+  "Toyota": {
+    "idle_relearn": {
+      "name": "Throttle Body Relearn",
+      "steps": [
+        "Connect scan tool and clear DTCs",
+        "Start engine and warm up completely",
+        "Turn ignition OFF for 10 seconds",
+        "Turn ignition ON without starting",
+        "Wait 3 seconds, then start engine",
+        "Let idle for 3 minutes minimum"
+      ],
+      "requirements": [
+        "No DTCs present",
+        "Engine at operating temperature"
+      ]
+    },
+    "brake_bleeding": {
+      "name": "ABS Brake Bleeding",
+      "steps": [
+        "Connect scan tool to vehicle",
+        "Navigate to ABS bleeding function",
+        "Follow scan tool prompts for brake bleeding",
+        "Bleed brakes in proper sequence",
+        "Test brake pedal feel and ABS operation"
+      ],
+      "requirements": [
+        "Scan tool with ABS functions",
+        "Proper brake fluid"
+      ]
+    }
+  },
+  "Ford": {
+    "pcm_reset": {
+      "name": "PCM Keep Alive Memory Reset",
+      "steps": [
+        "Turn ignition OFF",
+        "Disconnect battery negative terminal",
+        "Wait 15 minutes minimum",
+        "Reconnect battery",
+        "Start engine and let idle for 10 minutes",
+        "Drive vehicle through various conditions"
+      ],
+      "requirements": [
+        "Battery tools",
+        "15+ minutes available"
+      ]
+    },
+    "key_programming": {
+      "name": "Transponder Key Programming",
+      "steps": [
+        "Insert existing programmed key and turn to ON",
+        "Turn to OFF and remove key within 3 seconds",
+        "Insert new key and turn to ON within 10 seconds",
+        "Wait for security light to turn OFF (up to 15 minutes)",
+        "Turn key to OFF and test new key"
+      ],
+      "requirements": [
+        "One working programmed key",
+        "New blank key"
+      ]
+    }
+  },
+  "BMW": {
+    "adaptation_reset": {
+      "name": "ECU Adaptations Reset",
+      "steps": [
+        "Connect BMW diagnostic tool",
+        "Navigate to Engine control module",
+        "Select 'Reset adaptations' function",
+        "Confirm reset operation",
+        "Perform test drive to relearn adaptations"
+      ],
+      "requirements": [
+        "BMW-compatible scan tool",
+        "Vehicle identification"
+      ]
+    },
+    "service_reset": {
+      "name": "Service Interval Reset",
+      "steps": [
+        "Turn ignition to position 1 (ON)",
+        "Press and hold trip odometer reset button",
+        "Turn ignition to position 2 (START) while holding button",
+        "Continue holding until service display shows",
+        "Release button and turn ignition OFF"
+      ],
+      "requirements": [
+        "Access to instrument cluster controls"
+      ]
+    }
+  }
+}
