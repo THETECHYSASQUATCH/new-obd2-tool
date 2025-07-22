@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ELM327 OBD-II adapter USB vendor and product IDs -->
+    <usb-device vendor-id="1027" product-id="24577" />
+    <!-- FTDI chip USB vendor and product IDs -->
+    <usb-device vendor-id="1027" product-id="24593" />
+    <!-- CP2102 USB-to-UART Bridge Controller -->
+    <usb-device vendor-id="4292" product-id="60000" />
+    <!-- CH340 USB-to-serial adapter -->
+    <usb-device vendor-id="6790" product-id="29987" />
+</resources>

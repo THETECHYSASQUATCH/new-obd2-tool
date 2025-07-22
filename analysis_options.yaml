@@ -1,0 +1,45 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional lint rules and customizations
+linter:
+  rules:
+    # Style rules
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    
+    # Error prevention
+    avoid_print: true
+    avoid_unnecessary_containers: true
+    avoid_web_libraries_in_flutter: true
+    no_logic_in_create_state: true
+    prefer_relative_imports: true
+    sized_box_for_whitespace: true
+    use_build_context_synchronously: true
+    use_key_in_widget_constructors: true
+    
+    # Performance
+    avoid_function_literals_in_foreach_calls: true
+    prefer_spread_collections: true
+    prefer_for_elements_to_map_fromiterable: true
+    
+    # Documentation
+    public_member_api_docs: false # Set to true for libraries
+    
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.chopper.dart"
+  
+  errors:
+    invalid_annotation_target: ignore
+    
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
