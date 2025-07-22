@@ -1,0 +1,3 @@
+"""
+Plugin system for extensibility
+"""
