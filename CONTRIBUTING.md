@@ -25,12 +25,87 @@ Thank you for your interest in contributing to the OBD-II Diagnostics Tool! This
    ```bash
    flutter pub get
    ```
-4. **Run the app**:
+4. **Verify setup**:
+   ```bash
+   flutter doctor     # Check Flutter installation
+   flutter analyze    # Check code quality
+   flutter test       # Run tests
+   ```
+5. **Run the app**:
    ```bash
    flutter run
    ```
 
 ## Development Guidelines
+
+### Dependency Management
+
+When contributing to the project, follow these dependency management practices:
+
+#### Adding Dependencies
+- **Research thoroughly** before adding new dependencies
+- **Prefer official packages** or well-maintained community packages
+- **Check license compatibility** with the project's MIT license
+- **Consider bundle size impact** especially for mobile platforms
+
+```bash
+# Add a runtime dependency
+flutter pub add package_name
+
+# Add a development dependency
+flutter pub add --dev package_name
+
+# Use the dependency management script
+./scripts/update_deps.sh add package_name
+```
+
+#### Updating Dependencies
+- **Test thoroughly** after dependency updates
+- **Review changelogs** for breaking changes
+- **Update incrementally** rather than all at once
+- **Use semantic versioning** constraints appropriately
+
+```bash
+# Check for outdated dependencies
+flutter pub outdated
+
+# Interactive update process
+./scripts/update_deps.sh interactive
+
+# Update specific dependency
+flutter pub upgrade package_name
+```
+
+#### Dependency Guidelines
+- **Use caret constraints** (`^1.0.0`) for most dependencies
+- **Pin exact versions** only when necessary for stability
+- **Avoid unnecessary dependencies** - check for built-in alternatives
+- **Document platform-specific dependencies** in code comments
+- **Remove unused dependencies** regularly
+
+```yaml
+# Good: Allows compatible updates
+dependencies:
+  http: ^1.1.2
+  
+# Avoid: Too restrictive unless necessary
+dependencies:
+  http: 1.1.2
+```
+
+#### Testing Dependency Changes
+Always test dependency changes across platforms:
+
+```bash
+# Run comprehensive tests
+flutter test
+flutter analyze
+
+# Test on multiple platforms
+flutter run -d android
+flutter run -d ios
+flutter run -d windows
+```
 
 ### Code Style
 

@@ -35,6 +35,9 @@ MANIFEST
 .pub/
 /build/
 
+# Note: pubspec.lock should be tracked for applications (not packages)
+# to ensure reproducible builds across different environments
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
