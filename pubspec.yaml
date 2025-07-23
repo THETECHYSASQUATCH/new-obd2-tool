@@ -17,7 +17,7 @@ dependencies:
   
   # Bluetooth and Serial Communication
   flutter_bluetooth_serial: ^0.4.0
-  serial_port_win32: ^0.2.2
+  serial_port_win32: ^0.4.0
   
   # State Management
   provider: ^6.1.2
