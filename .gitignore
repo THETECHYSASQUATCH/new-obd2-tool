@@ -151,6 +151,20 @@ Thumbs.db
 *.freezed.dart
 *.chopper.dart
 
+# .NET related
+**/bin/
+**/obj/
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+**/packages/
+packages/
+**/.vs/
+**/TestResults/
+**/*.binlog
+**/*.tmp_proj
+**/launchSettings.json
+
 # Firebase
 **/ios/firebase_app_id_file.json
 **/ios/GoogleService-Info.plist

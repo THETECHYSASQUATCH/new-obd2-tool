@@ -121,6 +121,25 @@ flutter pub add package_name
 flutter pub remove package_name
 ```
 
+### NuGet Configuration
+
+The repository includes a `NuGet.config` file that configures:
+- **Package Sources**: Official NuGet.org and Microsoft package feeds
+- **Security Settings**: HTTPS requirements and package source mapping
+- **Global Settings**: Package restore and push configurations
+
+This ensures consistent package management across different development environments when working with the .NET component.
+
+**Additional .NET commands:**
+```bash
+# .NET dependencies (if using the .NET component)
+cd dotnet
+dotnet restore                 # Restore NuGet packages using NuGet.config
+dotnet add package PackageName # Add a new NuGet package
+dotnet remove package PackageName     # Remove a NuGet package
+dotnet list package --outdated        # Check for outdated NuGet packages
+```
+
 ### Building for Production
 
 #### Android
@@ -193,6 +212,10 @@ lib/
     ├── models/        # Data models
     ├── providers/     # State management (Riverpod)
     └── widgets/       # Reusable UI components
+
+dotnet/                # .NET Core library component
+├── OBD2.Core.csproj  # .NET project file with NuGet dependencies
+└── README.md          # .NET component documentation
 ```
 
 ### Key Technologies
@@ -203,6 +226,34 @@ lib/
 - **SharedPreferences**: Local data persistence
 - **flutter_bluetooth_serial**: Bluetooth communication
 - **Platform channels**: Native platform integration
+- **.NET Core**: Optional backend library for advanced OBD-II processing
+
+### .NET Integration
+
+The project includes a .NET Core library component (`dotnet/OBD2.Core.csproj`) that provides:
+
+- **Advanced OBD-II Protocol Support**: Low-level protocol implementation
+- **Serial Communication**: Direct hardware interface capabilities
+- **Data Processing**: High-performance diagnostic data processing
+- **Platform Channels Integration**: Seamless integration with Flutter app
+
+To work with the .NET component:
+
+```bash
+# Navigate to the .NET directory
+cd dotnet
+
+# Restore NuGet packages (uses NuGet.config in repository root)
+dotnet restore
+
+# Build the .NET library
+dotnet build
+
+# Create NuGet package
+dotnet pack
+```
+
+The .NET component can be integrated with the Flutter app through platform channels, enabling you to leverage .NET's performance for intensive OBD-II operations while maintaining Flutter's excellent UI capabilities.
 
 ## Testing
 
