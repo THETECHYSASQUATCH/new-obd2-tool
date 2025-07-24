@@ -70,6 +70,18 @@ flutter build windows --debug
 flutter devices
 ```
 
+### Running Tests
+```bash
+# Run all tests
+flutter test
+
+# Run specific test file
+flutter test test/widget/live_data_widget_test.dart
+
+# Run tests with coverage
+flutter test --coverage
+```
+
 ## Troubleshooting
 
 ### If Build Still Fails
