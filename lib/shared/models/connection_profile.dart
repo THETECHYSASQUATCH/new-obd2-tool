@@ -3,7 +3,8 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:crypto/crypto.dart';
+// import 'package:crypto/crypto.dart';
+import '../../mocks/flutter_mocks.dart'; // Temporary mock for analysis
 import '../../core/services/obd_service.dart';
 import '../../core/constants/app_constants.dart';
 

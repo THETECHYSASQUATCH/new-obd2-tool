@@ -151,6 +151,9 @@ Thumbs.db
 *.freezed.dart
 *.chopper.dart
 
+# Dart SDK (temporary)
+dart-sdk/
+
 # Firebase
 **/ios/firebase_app_id_file.json
 **/ios/GoogleService-Info.plist
