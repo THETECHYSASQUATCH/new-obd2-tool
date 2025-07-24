@@ -303,7 +303,7 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete Profile'),
-        content: Text('Are you sure you want to delete "${profile.name}"?'),
+        content: Text('Are you sure you want to delete \'${profile.name}\'?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -382,7 +382,7 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
       setState(() => _profiles = updatedProfiles);
       
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Profile "${profile.name}" created')),
+        SnackBar(content: Text('Profile \'${profile.name}\' created')),
       );
     } catch (e) {
       _showError('Failed to save profile: $e');
@@ -410,7 +410,7 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
       setState(() => _profiles = updatedProfiles);
       
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Profile "${profile.name}" deleted')),
+        SnackBar(content: Text('Profile \'${profile.name}\' deleted')),
       );
     } catch (e) {
       _showError('Failed to delete profile: $e');

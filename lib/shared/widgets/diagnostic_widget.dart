@@ -396,7 +396,7 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('DTC: ${dtc['code'] as String}'),
+        title: Text('DTC: ${dtc['code']}'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
