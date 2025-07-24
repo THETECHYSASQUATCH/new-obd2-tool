@@ -68,6 +68,25 @@ class OBDResponse {
           return _parseManifoldPressure(cleanData);
         case '0110': // MAF Air Flow Rate
           return _parseMAF(cleanData);
+        // TODO: Enhanced PID support - add more standard PIDs for comprehensive vehicle diagnostics
+        case '0106': // Short term fuel trim—Bank 1
+          return _parseFuelTrim(cleanData, 'Short term fuel trim—Bank 1');
+        case '0107': // Long term fuel trim—Bank 1
+          return _parseFuelTrim(cleanData, 'Long term fuel trim—Bank 1');
+        case '0108': // Short term fuel trim—Bank 2
+          return _parseFuelTrim(cleanData, 'Short term fuel trim—Bank 2');
+        case '0109': // Long term fuel trim—Bank 2
+          return _parseFuelTrim(cleanData, 'Long term fuel trim—Bank 2');
+        case '010E': // Timing advance
+          return _parseTimingAdvance(cleanData);
+        case '011F': // Run time since engine start
+          return _parseRunTime(cleanData);
+        case '0103': // Fuel system status
+          return _parseFuelSystemStatus(cleanData);
+        case '0112': // Secondary air status
+          return _parseSecondaryAirStatus(cleanData);
+        case '011E': // Auxiliary input status
+          return _parseAuxiliaryStatus(cleanData);
         default:
           return {'raw_hex': cleanData};
       }
@@ -186,6 +205,121 @@ class OBDResponse {
       };
     }
     return {'error': 'Invalid MAF response'};
+  }
+  
+  // TODO: Enhanced PID parsing functions for comprehensive vehicle diagnostics
+  static Map<String, dynamic> _parseFuelTrim(String data, String description) {
+    if (data.length >= 6 && data.startsWith('41')) {
+      final value = int.parse(data.substring(4, 6), radix: 16);
+      final trim = (value - 128) * 100 / 128;
+      return {
+        'value': trim.round(),
+        'unit': '%',
+        'description': description,
+      };
+    }
+    return {'error': 'Invalid fuel trim response'};
+  }
+  
+  static Map<String, dynamic> _parseTimingAdvance(String data) {
+    if (data.length >= 6 && data.startsWith('410E')) {
+      final value = int.parse(data.substring(4, 6), radix: 16);
+      final advance = (value - 128) / 2;
+      return {
+        'value': advance,
+        'unit': '°',
+        'description': 'Timing advance',
+      };
+    }
+    return {'error': 'Invalid timing advance response'};
+  }
+  
+  static Map<String, dynamic> _parseRunTime(String data) {
+    if (data.length >= 8 && data.startsWith('411F')) {
+      final a = int.parse(data.substring(4, 6), radix: 16);
+      final b = int.parse(data.substring(6, 8), radix: 16);
+      final runtime = (a * 256) + b;
+      return {
+        'value': runtime,
+        'unit': 's',
+        'description': 'Run time since engine start',
+      };
+    }
+    return {'error': 'Invalid runtime response'};
+  }
+  
+  static Map<String, dynamic> _parseFuelSystemStatus(String data) {
+    if (data.length >= 6 && data.startsWith('4103')) {
+      final status = int.parse(data.substring(4, 6), radix: 16);
+      String statusText;
+      switch (status & 0x0F) {
+        case 1:
+          statusText = 'Open loop due to insufficient engine temperature';
+          break;
+        case 2:
+          statusText = 'Closed loop, using oxygen sensor feedback';
+          break;
+        case 4:
+          statusText = 'Open loop due to engine load OR fuel cut due to deceleration';
+          break;
+        case 8:
+          statusText = 'Open loop due to system failure';
+          break;
+        default:
+          statusText = 'Unknown status';
+      }
+      return {
+        'value': status,
+        'status_text': statusText,
+        'unit': '',
+        'description': 'Fuel system status',
+      };
+    }
+    return {'error': 'Invalid fuel system status response'};
+  }
+  
+  static Map<String, dynamic> _parseSecondaryAirStatus(String data) {
+    if (data.length >= 6 && data.startsWith('4112')) {
+      final status = int.parse(data.substring(4, 6), radix: 16);
+      String statusText;
+      switch (status) {
+        case 1:
+          statusText = 'Upstream';
+          break;
+        case 2:
+          statusText = 'Downstream of catalytic converter';
+          break;
+        case 4:
+          statusText = 'From the outside atmosphere or off';
+          break;
+        case 8:
+          statusText = 'Pump commanded on for diagnostics';
+          break;
+        default:
+          statusText = 'Not supported';
+      }
+      return {
+        'value': status,
+        'status_text': statusText,
+        'unit': '',
+        'description': 'Secondary air status',
+      };
+    }
+    return {'error': 'Invalid secondary air status response'};
+  }
+  
+  static Map<String, dynamic> _parseAuxiliaryStatus(String data) {
+    if (data.length >= 6 && data.startsWith('411E')) {
+      final status = int.parse(data.substring(4, 6), radix: 16);
+      final isPtoActive = (status & 0x01) != 0;
+      return {
+        'value': status,
+        'pto_active': isPtoActive,
+        'unit': '',
+        'description': 'Auxiliary input status',
+      };
+    }
+    return {'error': 'Invalid auxiliary status response'};
   }
   
   Map<String, dynamic> toJson() {
