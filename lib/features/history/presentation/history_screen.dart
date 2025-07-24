@@ -148,7 +148,7 @@ class HistoryScreen extends ConsumerWidget {
               if (response.parsedData != null) ...[
                 const SizedBox(height: 4),
                 Text(
-                  'Value: ${response.parsedData!['value']} ${response.parsedData!['unit'] as String? ?? ''}',
+                  'Value: ${response.parsedData!['value']} ${response.parsedData!['unit'] ?? ''}',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,

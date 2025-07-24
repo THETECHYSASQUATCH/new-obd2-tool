@@ -229,7 +229,8 @@ class LiveDataWidget extends ConsumerWidget {
   }
 
   Color _getValueColor(BuildContext context, double value) {
-    if (accentColor != null) return accentColor!;
+    final accent = accentColor;
+    if (accent != null) return accent;
     
     // TODO: Enhanced color coding based on PID type and value ranges
     final category = pidConfig?.category ?? '';
