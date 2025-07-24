@@ -291,19 +291,19 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
                 labelText: 'Select Device',
                 border: OutlineInputBorder(),
               ),
-              items: devices.map((device) {
-                return DropdownMenuItem(
+              items: devices.map((String device) {
+                return DropdownMenuItem<String>(
                   value: device,
                   child: Text(device),
                 );
               }).toList(),
-              onChanged: (value) {
+              onChanged: (String? value) {
                 setState(() {
                   _deviceAddress = value ?? '';
                   _deviceName = value ?? '';
                 });
               },
-              validator: (value) {
+              validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return 'Please select a device';
                 }
@@ -312,7 +312,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
             );
           },
           loading: () => const LinearProgressIndicator(),
-          error: (error, _) => Container(
+          error: (Object error, StackTrace _) => Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.red),
@@ -354,7 +354,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
               child: Text('$rate bps'),
             );
           }).toList(),
-          onChanged: (value) {
+          onChanged: (int? value) {
             setState(() => _baudRate = value ?? 38400);
           },
         ),

@@ -1,4 +1,4 @@
-import '../services/obd_service.dart';
+import '../../core/services/obd_service.dart';
 
 class ConnectionConfig {
   final ConnectionType type;

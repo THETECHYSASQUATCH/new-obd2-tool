@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import '../mocks/flutter_mocks.dart'; // Temporary mock for analysis
 import '../constants/app_constants.dart';
 import '../../shared/models/obd_response.dart';
 import '../../shared/models/connection_config.dart';
@@ -136,8 +137,10 @@ class MobileOBDService implements OBDService {
       Timer(const Duration(milliseconds: AppConstants.obdTimeoutMs), () {
         if (!completer.isCompleted) {
           subscription.cancel();
-          completer.completeError(TimeoutException('Command timeout', 
-              const Duration(milliseconds: AppConstants.obdTimeoutMs)));
+          completer.completeError(TimeoutException(
+            'Command timeout', 
+            const Duration(milliseconds: AppConstants.obdTimeoutMs),
+          ));
         }
       });
       

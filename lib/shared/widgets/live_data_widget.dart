@@ -89,7 +89,7 @@ class LiveDataWidget extends ConsumerWidget {
                   value != null)
                 ...[
                   const SizedBox(height: 12),
-                  _buildProgressBar(context, value!, effectiveMinValue!, effectiveMaxValue!),
+                  _buildProgressBar(context, value, effectiveMinValue, effectiveMaxValue),
                 ],
               if (pidConfig != null)
                 ...[
@@ -347,7 +347,7 @@ class ConfigurableLiveDataGrid extends ConsumerWidget {
         childAspectRatio: childAspectRatio,
       ),
       itemCount: enabledConfigs.length,
-      itemBuilder: (context, index) {
+      itemBuilder: (BuildContext context, int index) {
         final config = enabledConfigs[index];
         // TODO: Create provider for each PID dynamically
         return LiveDataWidget(
