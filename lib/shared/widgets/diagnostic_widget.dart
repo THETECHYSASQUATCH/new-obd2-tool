@@ -124,10 +124,10 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
           child: ListTile(
             leading: const Icon(Icons.warning, color: Colors.red),
             title: Text(
-              dtc['code']! as String,
+              dtc['code']!,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(dtc['description']! as String),
+            subtitle: Text(dtc['description']!),
             trailing: IconButton(
               icon: const Icon(Icons.info_outline),
               onPressed: () => _showDTCDetails(dtc),
@@ -406,7 +406,7 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
-            Text(dtc['description']! as String),
+            Text(dtc['description']!),
             const SizedBox(height: 16),
             Text(
               'Possible Causes:',

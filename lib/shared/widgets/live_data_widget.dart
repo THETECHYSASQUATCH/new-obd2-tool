@@ -89,7 +89,7 @@ class LiveDataWidget extends ConsumerWidget {
                   value != null)
                 ...[
                   const SizedBox(height: 12),
-                  _buildProgressBar(context, value!, effectiveMinValue!, effectiveMaxValue!),
+                  _buildProgressBar(context, value, effectiveMinValue, effectiveMaxValue),
                 ],
               if (pidConfig != null)
                 ...[
@@ -149,7 +149,11 @@ class LiveDataWidget extends ConsumerWidget {
     );
   }
 
-  Widget _buildProgressBar(BuildContext context, double value, double min, double max) {
+  Widget _buildProgressBar(BuildContext context, double? value, double? min, double? max) {
+    if (value == null || min == null || max == null) {
+      return const SizedBox.shrink();
+    }
+    
     final normalizedValue = ((value - min) / (max - min)).clamp(0.0, 1.0);
     
     return Column(

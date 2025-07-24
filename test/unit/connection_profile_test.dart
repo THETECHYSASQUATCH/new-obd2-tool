@@ -319,7 +319,7 @@ void main() {
     });
 
     test('should sanitize input strings', () {
-      final dangerous = '<script>alert("test")</script>';
+      const dangerous = '<script>alert("test")</script>';
       final sanitized = SecureStorageService.sanitizeInput(dangerous);
       
       expect(sanitized, isNot(contains('<')));

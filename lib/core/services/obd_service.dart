@@ -77,7 +77,7 @@ class MobileOBDService implements OBDService {
       await _initializeOBD();
       
       // Start listening for data
-      _bluetoothConnection!.input!.listen((data) {
+      _bluetoothConnection!.input!.listen((Uint8List data) {
         final response = String.fromCharCodes(data);
         _dataController.add(OBDResponse.fromRaw(response));
       });
@@ -136,8 +136,10 @@ class MobileOBDService implements OBDService {
       Timer(const Duration(milliseconds: AppConstants.obdTimeoutMs), () {
         if (!completer.isCompleted) {
           subscription.cancel();
-          completer.completeError(TimeoutException('Command timeout', 
-              const Duration(milliseconds: AppConstants.obdTimeoutMs)));
+          completer.completeError(TimeoutException(
+            'Command timeout', 
+            const Duration(milliseconds: AppConstants.obdTimeoutMs),
+          ));
         }
       });
       

@@ -104,8 +104,8 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
       child: ListView.separated(
         padding: EdgeInsets.all(isMobile ? 16.0 : 24.0),
         itemCount: _profiles.length,
-        separatorBuilder: (context, index) => const SizedBox(height: 8),
-        itemBuilder: (context, index) => _buildProfileCard(_profiles[index]),
+        separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 8),
+        itemBuilder: (BuildContext context, int index) => _buildProfileCard(_profiles[index]),
       ),
     );
   }
@@ -141,8 +141,8 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
           ],
         ),
         trailing: PopupMenuButton<String>(
-          onSelected: (action) => _handleProfileAction(action, profile),
-          itemBuilder: (context) => [
+          onSelected: (String action) => _handleProfileAction(action, profile),
+          itemBuilder: (BuildContext context) => [
             const PopupMenuItem(value: 'connect', child: Text('Connect')),
             const PopupMenuItem(value: 'edit', child: Text('Edit')),
             const PopupMenuItem(value: 'duplicate', child: Text('Duplicate')),

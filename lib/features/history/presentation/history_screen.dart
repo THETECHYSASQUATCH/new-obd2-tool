@@ -254,8 +254,9 @@ class HistoryScreen extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 8),
-                ...response.parsedData!.entries.map((entry) =>
-                    _buildDetailRow(entry.key, entry.value.toString())),
+                ...response.parsedData!.entries.map(
+                  (entry) => _buildDetailRow(entry.key, entry.value.toString()),
+                ),
               ],
             ],
           ),
