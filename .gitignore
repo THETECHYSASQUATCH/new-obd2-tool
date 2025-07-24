@@ -156,3 +156,6 @@ Thumbs.db
 **/ios/GoogleService-Info.plist
 **/android/app/google-services.json
 **/lib/firebase_options.dart
+
+# FVM Version Cache
+.fvm/
