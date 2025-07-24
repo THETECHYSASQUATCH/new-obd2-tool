@@ -17,23 +17,26 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 - **ARM support**: Apple Silicon Macs, Raspberry Pi, and other ARM devices
 - **Responsive design**: Adaptive UI for different screen sizes and form factors
 
-### 🔌 Multiple Connection Types
-- **Bluetooth**: ELM327 and compatible adapters
-- **WiFi**: Network-enabled OBD-II devices
-- **USB/Serial**: Direct wired connections on desktop platforms
-- **Auto-discovery**: Automatic scanning and device detection
-
 ### 🎨 Modern User Interface
 - **Material Design 3**: Native look and feel on all platforms
 - **Dark/Light themes**: System-aware theme switching
 - **Responsive layouts**: Optimized for mobile, tablet, and desktop
 - **Platform-specific adaptations**: Navigation patterns that feel native
+- **Custom dashboards**: Personalized widget arrangements and layouts
 
-### 📊 Data Management
-- **History tracking**: Store and review diagnostic sessions
-- **Data export**: Export diagnostic data for analysis
-- **Settings persistence**: Remember connection preferences
-- **Real-time charts**: Visualize live vehicle data
+### 🔌 Multiple Connection Types
+- **Bluetooth**: ELM327 and compatible adapters
+- **WiFi**: Network-enabled OBD-II devices
+- **USB/Serial**: Direct wired connections on desktop platforms
+- **Web compatibility**: Network-based connections for web platform
+- **Auto-discovery**: Automatic scanning and device detection
+
+### 📊 Enhanced Data Management and Visualization
+- **Advanced charting**: Real-time line, bar, area, and gauge charts
+- **Data logging**: Comprehensive session-based data recording
+- **Export functionality**: CSV, JSON, and compressed archive exports
+- **Custom dashboards**: User-configurable widget layouts and configurations
+- **Historical analysis**: Data trends and statistical insights
 
 ## Supported Platforms
 
@@ -44,7 +47,7 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 | macOS | ✅ Supported | Intel x64, Apple Silicon (ARM64) |
 | Windows | ✅ Supported | x64, ARM64 |
 | Linux | ✅ Supported | x64, ARM64, ARM32 |
-| Web | 🚧 Planned | N/A |
+| Web | ✅ Supported | N/A |
 
 ## Getting Started
 
@@ -122,6 +125,18 @@ flutter pub remove package_name
 ```
 
 ### Building for Production
+
+#### Web Platform
+```bash
+# Run in development mode
+flutter run -d chrome
+
+# Build for production
+flutter build web --release
+
+# Deploy to web server
+# Copy build/web/ contents to your web server
+```
 
 #### Android
 ```bash
@@ -308,11 +323,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Roadmap
 
-### Version 1.1 (Planned)
-- [ ] Advanced graphing and data visualization
-- [ ] Custom dashboard widgets
-- [ ] Data logging and export improvements
-- [ ] Web platform support
+### Version 1.1 (Current)
+- [x] Advanced graphing and data visualization
+- [x] Custom dashboard widgets
+- [x] Data logging and export improvements
+- [x] Web platform support
 
 ### Version 1.2 (Future)
 - [ ] Vehicle-specific diagnostic protocols

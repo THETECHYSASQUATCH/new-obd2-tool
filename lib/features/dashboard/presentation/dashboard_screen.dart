@@ -12,6 +12,9 @@ import '../../history/presentation/history_screen.dart';
 // TODO: Import new feature modules for enhanced functionality
 import '../../pid_config/presentation/pid_configuration_screen.dart';
 import '../../connection_profiles/presentation/connection_profiles_screen.dart';
+// Version 1.1 new features
+import '../../data_export/presentation/data_export_screen.dart';
+import '../../custom_dashboard/presentation/custom_dashboard_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -48,6 +51,23 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
           PopupMenuButton<String>(
             onSelected: (value) => _handleMenuAction(value),
             itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 'custom_dashboard',
+                child: ListTile(
+                  leading: Icon(Icons.dashboard_customize),
+                  title: Text('Custom Dashboard'),
+                  dense: true,
+                ),
+              ),
+              const PopupMenuItem(
+                value: 'data_export',
+                child: ListTile(
+                  leading: Icon(Icons.download),
+                  title: Text('Data Export'),
+                  dense: true,
+                ),
+              ),
+              const PopupMenuDivider(),
               const PopupMenuItem(
                 value: 'pid_config',
                 child: ListTile(
@@ -190,6 +210,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 // TODO: Add navigation tiles for new features
                 _buildNavigationTile(5, Icons.tune, 'PID Config'),
                 _buildNavigationTile(6, Icons.wifi, 'Profiles'),
+                _buildNavigationTile(7, Icons.dashboard_customize, 'Custom Dashboard'),
+                _buildNavigationTile(8, Icons.download, 'Data Export'),
               ],
             ),
           ),
@@ -258,6 +280,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const PidConfigurationScreen();
       case 6:
         return const ConnectionProfilesScreen();
+      case 7:
+        return const CustomDashboardScreen();
+      case 8:
+        return const DataExportScreen();
       default:
         return const DashboardPage();
     }
@@ -265,6 +291,18 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
 
   void _handleMenuAction(String action) {
     switch (action) {
+      case 'custom_dashboard':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CustomDashboardScreen()),
+        );
+        break;
+      case 'data_export':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DataExportScreen()),
+        );
+        break;
       case 'pid_config':
         Navigator.push(
           context,
@@ -379,6 +417,13 @@ class DashboardPage extends ConsumerWidget {
         Text(
           'Live Vehicle Data',
           style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Enhanced visualization with charts and real-time monitoring',
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).hintColor,
+          ),
         ),
         const SizedBox(height: 16),
         isMobile

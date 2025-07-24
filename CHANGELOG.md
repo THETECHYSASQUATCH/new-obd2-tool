@@ -8,12 +8,74 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- Advanced data visualization with charts and graphs
 - Vehicle-specific diagnostic protocols
 - Cloud sync and data backup
 - ECU programming capabilities
 - Multi-language internationalization
-- Web platform support
+
+## [1.1.0] - 2025-01-24
+
+### Added
+- **Advanced Data Visualization**: Comprehensive charting and graphing capabilities
+  - Multiple chart types: line, bar, area, and gauge charts
+  - Real-time data visualization with historical data tracking
+  - Customizable chart colors and legends
+  - Interactive tooltips and data point inspection
+- **Custom Dashboard Widgets**: User-configurable dashboard system
+  - Drag-and-drop widget management
+  - Multiple layout options: grid, list, and staggered
+  - Widget type selection: live data, charts, gauges, summaries, and quick actions
+  - Persistent dashboard configurations
+- **Enhanced Data Logging and Export**: Comprehensive data management
+  - Real-time data logging with session management
+  - Multiple export formats: JSON, CSV, and compressed ZIP archives
+  - Date range filtering and session statistics
+  - Configurable logging parameters and PID selection
+- **Web Platform Support**: Full web application compatibility
+  - Responsive web interface with mobile-first design
+  - Web-specific connection handling and data persistence
+  - Progressive Web App (PWA) capabilities with offline support
+  - Web manifest and service worker integration
+- **Enhanced User Interface**: Improved user experience
+  - Advanced visualization widgets with multiple chart types
+  - Customizable dashboard layouts and widget configurations
+  - Improved data export and session management
+  - Better responsive design across all platforms
+
+### Technical Enhancements
+- Added dependencies: `csv`, `archive`, `universal_html`, `json_annotation`, `intl`
+- Enhanced state management with new providers for data logging and visualization
+- Improved architectural separation with feature-based organization
+- Added comprehensive JSON serialization for configuration persistence
+- Web-compatible file handling and export functionality
+
+### Dependencies
+- `fl_chart`: ^1.0.0 (Enhanced charting capabilities)
+- `syncfusion_flutter_charts`: ^30.1.41 (Professional chart components)
+- `csv`: ^6.0.0 (CSV export functionality)
+- `archive`: ^3.6.1 (Compressed export archives)
+- `universal_html`: ^2.2.4 (Web compatibility)
+- `json_annotation`: ^4.9.0 (JSON serialization)
+- `intl`: ^0.19.0 (Date formatting and internationalization)
+
+### Platform Support Updates
+| Platform | Status | New Features |
+|----------|--------|-------------|
+| Android | ✅ Enhanced | Advanced visualization, custom dashboards |
+| iOS | ✅ Enhanced | Advanced visualization, custom dashboards |
+| macOS | ✅ Enhanced | Advanced visualization, custom dashboards |
+| Windows | ✅ Enhanced | Advanced visualization, custom dashboards |
+| Linux | ✅ Enhanced | Advanced visualization, custom dashboards |
+| Web | 🆕 **NEW** | Full web support with PWA capabilities |
+
+### Breaking Changes
+- None - All changes are backward compatible
+
+### Documentation
+- Updated README with Version 1.1 features
+- Added comprehensive feature documentation
+- Updated platform support matrix
+- Enhanced API documentation for new services
 
 ## [1.0.0] - 2025-01-22
 
