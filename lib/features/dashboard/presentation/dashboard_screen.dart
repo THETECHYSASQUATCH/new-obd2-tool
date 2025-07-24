@@ -9,6 +9,9 @@ import '../../../shared/widgets/live_data_widget.dart';
 import '../../../shared/widgets/diagnostic_widget.dart';
 import '../../settings/presentation/settings_screen.dart';
 import '../../history/presentation/history_screen.dart';
+// TODO: Import new feature modules for enhanced functionality
+import '../../pid_config/presentation/pid_configuration_screen.dart';
+import '../../connection_profiles/presentation/connection_profiles_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -41,6 +44,37 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         title: const Text('OBD-II Diagnostics'),
         actions: [
           _buildConnectionStatusIcon(connectionStatus),
+          // TODO: Add quick access to new features
+          PopupMenuButton<String>(
+            onSelected: (value) => _handleMenuAction(value),
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 'pid_config',
+                child: ListTile(
+                  leading: Icon(Icons.tune),
+                  title: Text('Configure PIDs'),
+                  dense: true,
+                ),
+              ),
+              const PopupMenuItem(
+                value: 'connection_profiles',
+                child: ListTile(
+                  leading: Icon(Icons.wifi),
+                  title: Text('Connection Profiles'),
+                  dense: true,
+                ),
+              ),
+              const PopupMenuDivider(),
+              const PopupMenuItem(
+                value: 'settings',
+                child: ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Settings'),
+                  dense: true,
+                ),
+              ),
+            ],
+          ),
           const SizedBox(width: 8),
         ],
       ),
@@ -111,6 +145,11 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 icon: Icon(Icons.settings),
                 label: Text('Settings'),
               ),
+              // TODO: Add navigation to new feature modules
+              NavigationRailDestination(
+                icon: Icon(Icons.tune),
+                label: Text('PID Config'),
+              ),
             ],
           ),
           const VerticalDivider(thickness: 1, width: 1),
@@ -148,6 +187,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 _buildNavigationTile(2, Icons.analytics, 'Diagnostics'),
                 _buildNavigationTile(3, Icons.history, 'History'),
                 _buildNavigationTile(4, Icons.settings, 'Settings'),
+                // TODO: Add navigation tiles for new features
+                _buildNavigationTile(5, Icons.tune, 'PID Config'),
+                _buildNavigationTile(6, Icons.wifi, 'Profiles'),
               ],
             ),
           ),
@@ -211,8 +253,36 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const HistoryScreen();
       case 4:
         return const SettingsScreen();
+      // TODO: Add cases for new feature modules
+      case 5:
+        return const PidConfigurationScreen();
+      case 6:
+        return const ConnectionProfilesScreen();
       default:
         return const DashboardPage();
+    }
+  }
+
+  void _handleMenuAction(String action) {
+    switch (action) {
+      case 'pid_config':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PidConfigurationScreen()),
+        );
+        break;
+      case 'connection_profiles':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ConnectionProfilesScreen()),
+        );
+        break;
+      case 'settings':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SettingsScreen()),
+        );
+        break;
     }
   }
 }

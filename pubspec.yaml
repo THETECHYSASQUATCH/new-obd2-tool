@@ -32,6 +32,9 @@ dependencies:
   syncfusion_flutter_charts: ^25.1.41
   responsive_framework: ^1.1.1
   flutter_screenutil: ^5.9.0
+  # TODO: Security enhancements for connection profile encryption
+  crypto: ^3.0.3                             # For secure hashing and encryption
+  flutter_secure_storage: ^9.0.0            # Secure storage for sensitive data
 
 dev_dependencies:
   flutter_test:

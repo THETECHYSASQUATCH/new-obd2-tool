@@ -4,6 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/constants/app_constants.dart';
+import 'core/services/secure_storage_service.dart';
 import 'features/dashboard/presentation/dashboard_screen.dart';
 import 'shared/providers/app_providers.dart';
 
@@ -21,8 +22,13 @@ void main() async {
 }
 
 Future<void> _initializeServices() async {
-  // Initialize platform-specific services here
-  // This will be expanded with actual service initialization
+  try {
+    // TODO: Initialize secure storage and other security services
+    await SecureStorageService.initialize();
+  } catch (e) {
+    // Handle initialization errors gracefully
+    debugPrint('Service initialization warning: $e');
+  }
 }
 
 class OBD2DiagnosticsApp extends ConsumerWidget {
