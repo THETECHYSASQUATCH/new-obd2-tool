@@ -63,13 +63,13 @@ class ConnectionConfig {
   factory ConnectionConfig.fromJson(Map<String, dynamic> json) {
     return ConnectionConfig(
       type: ConnectionType.values.firstWhere(
-        (e) => e.name == json['type'],
+        (e) => e.name == json['type'] as String,
         orElse: () => ConnectionType.bluetooth,
       ),
-      name: json['name'],
-      address: json['address'],
-      baudRate: json['baudRate'],
-      port: json['port'],
+      name: json['name'] as String,
+      address: json['address'] as String,
+      baudRate: json['baudRate'] as int?,
+      port: json['port'] as String?,
     );
   }
   

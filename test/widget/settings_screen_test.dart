@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:obd2_diagnostics_tool/features/settings/presentation/settings_screen.dart';
+import 'package:new_obd2_tool/features/settings/presentation/settings_screen.dart';
 
 void main() {
   group('Settings Screen Dependencies', () {

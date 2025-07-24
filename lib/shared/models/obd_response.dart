@@ -201,12 +201,12 @@ class OBDResponse {
   
   factory OBDResponse.fromJson(Map<String, dynamic> json) {
     return OBDResponse(
-      rawData: json['rawData'],
-      command: json['command'],
-      timestamp: DateTime.parse(json['timestamp']),
-      isError: json['isError'] ?? false,
-      errorMessage: json['errorMessage'],
-      parsedData: json['parsedData'],
+      rawData: json['rawData'] as String,
+      command: json['command'] as String,
+      timestamp: DateTime.parse(json['timestamp'] as String),
+      isError: json['isError'] as bool? ?? false,
+      errorMessage: json['errorMessage'] as String?,
+      parsedData: json['parsedData'] as Map<String, dynamic>?,
     );
   }
   

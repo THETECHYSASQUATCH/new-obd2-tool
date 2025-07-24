@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:obd2_diagnostics_tool/shared/widgets/live_data_widget.dart';
-import 'package:obd2_diagnostics_tool/shared/providers/app_providers.dart';
+import 'package:new_obd2_tool/shared/widgets/live_data_widget.dart';
+import 'package:new_obd2_tool/shared/providers/app_providers.dart';
 
 void main() {
   group('LiveDataWidget', () {
@@ -145,8 +145,7 @@ void main() {
 class MockLiveDataNotifier extends StateNotifier<double?> {
   MockLiveDataNotifier(double? initialState) : super(initialState);
 
-  @override
-  void requestUpdate() {
+  Future<void> requestUpdate() async {
     // Mock implementation
   }
 }

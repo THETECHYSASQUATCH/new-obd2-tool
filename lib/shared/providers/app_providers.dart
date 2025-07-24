@@ -75,8 +75,10 @@ class ConnectionNotifier extends StateNotifier<ConnectionConfig?> {
   Future<void> setConnection(ConnectionConfig config) async {
     state = config;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(AppConstants.keyLastConnection, 
-        config.toJson().toString());
+    await prefs.setString(
+        AppConstants.keyLastConnection, 
+        config.toJson().toString(),
+    );
   }
 
   void clearConnection() {
@@ -181,7 +183,10 @@ class DiagnosticHistoryNotifier extends StateNotifier<List<OBDResponse>> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final historyJson = state.take(100).map((e) => e.toJson().toString()).toList();
-      await prefs.setStringList(AppConstants.keyDiagnosticHistory, historyJson);
+      await prefs.setStringList(
+          AppConstants.keyDiagnosticHistory, 
+          historyJson,
+      );
     } catch (e) {
       // Handle error
     }
