@@ -1,0 +1,50 @@
+name: new_obd2_tool
+description: Cross-platform OBD-II diagnostics and programming tool
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.4.9
+
+  # UI and responsiveness
+  responsive_framework: ^1.4.0
+  flutter_screenutil: ^5.9.0
+
+  # Bluetooth connectivity for OBD-II
+  flutter_bluetooth_serial: ^0.4.0
+
+  # Device info and storage
+  package_info_plus: ^4.2.0
+  shared_preferences: ^2.2.2
+
+  # Icons (commonly used in Flutter apps)
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Add assets if needed
+  # assets:
+  #   - images/
+
+  # Add fonts if needed  
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
