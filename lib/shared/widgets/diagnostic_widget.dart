@@ -154,7 +154,7 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
               spacing: 8,
               runSpacing: 8,
               children: _quickCommands.map((command) {
-                final description = AppConstants.standardPids[command] ?? 'Unknown';
+                final description = AppConstants.pidNames[command] ?? 'Unknown';
                 return ActionChip(
                   label: Text('$command\n${description.split(' ').take(3).join(' ')}'),
                   onPressed: () => _sendCommand(command),
