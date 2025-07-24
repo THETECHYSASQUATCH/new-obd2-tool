@@ -136,8 +136,10 @@ class MobileOBDService implements OBDService {
       Timer(const Duration(milliseconds: AppConstants.obdTimeoutMs), () {
         if (!completer.isCompleted) {
           subscription.cancel();
-          completer.completeError(TimeoutException('Command timeout', 
-              const Duration(milliseconds: AppConstants.obdTimeoutMs)));
+          completer.completeError(TimeoutException(
+            'Command timeout', 
+            const Duration(milliseconds: AppConstants.obdTimeoutMs),
+          ));
         }
       });
       

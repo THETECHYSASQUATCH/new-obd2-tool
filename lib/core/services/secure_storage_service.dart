@@ -5,9 +5,9 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:crypto/crypto.dart';
-import '../models/connection_profile.dart';
-import '../models/pid_config.dart';
-import '../../core/constants/app_constants.dart';
+import '../../shared/models/connection_profile.dart';
+import '../../shared/models/pid_config.dart';
+import '../constants/app_constants.dart';
 
 /// Service for secure storage and encryption of sensitive data
 class SecureStorageService {
@@ -152,7 +152,7 @@ class SecureStorageService {
   /// Sanitize input string
   static String sanitizeInput(String input) {
     return input
-        .replaceAll(RegExp(r'[<>"\']'), '') // Remove potentially dangerous characters
+        .replaceAll(RegExp(r'''[<>"']'''), '') // Remove potentially dangerous characters
         .trim()
         .substring(0, input.length > 1000 ? 1000 : input.length); // Limit length
   }
