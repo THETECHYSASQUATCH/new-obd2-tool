@@ -88,7 +88,7 @@ class HistoryScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHistoryList(BuildContext context, List history) {
+  Widget _buildHistoryList(BuildContext context, List<dynamic> history) {
     if (history.isEmpty) {
       return Center(
         child: Column(
@@ -148,7 +148,7 @@ class HistoryScreen extends ConsumerWidget {
               if (response.parsedData != null) ...[
                 const SizedBox(height: 4),
                 Text(
-                  'Value: ${response.parsedData!['value']} ${response.parsedData!['unit'] ?? ''}',
+                  'Value: ${response.parsedData!['value']} ${response.parsedData!['unit'] as String? ?? ''}',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,

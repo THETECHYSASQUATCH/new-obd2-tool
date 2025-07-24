@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:obd2_diagnostics_tool/shared/models/connection_config.dart';
-import 'package:obd2_diagnostics_tool/core/services/obd_service.dart';
+import 'package:new_obd2_tool/shared/models/connection_config.dart';
+import 'package:new_obd2_tool/core/services/obd_service.dart';
 
 void main() {
   group('ConnectionConfig', () {

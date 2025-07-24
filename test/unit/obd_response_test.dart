@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:obd2_diagnostics_tool/shared/models/obd_response.dart';
+import 'package:new_obd2_tool/shared/models/obd_response.dart';
 
 void main() {
   group('OBDResponse', () {
