@@ -55,7 +55,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
             const SizedBox(height: 16),
             connectionStatus.when(
               data: (status) => _buildStatusRow(status),
-              loading: () => const Row(
+              loading: () => Row(
                 children: [
                   CircularProgressIndicator(),
                   SizedBox(width: 16),
@@ -151,7 +151,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
             ),
           );
         } else if (status == ConnectionStatus.connecting) {
-          return const ElevatedButton(
+          return ElevatedButton(
             onPressed: null,
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -174,7 +174,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
           );
         }
       },
-      loading: () => const ElevatedButton(
+      loading: () => ElevatedButton(
         onPressed: null,
         child: Text('Loading...'),
       ),
@@ -276,7 +276,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
                   border: Border.all(color: Theme.of(context).dividerColor),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
                     Icon(Icons.info_outline),
                     SizedBox(width: 8),

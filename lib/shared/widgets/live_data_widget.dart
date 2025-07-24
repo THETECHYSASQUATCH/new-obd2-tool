@@ -155,10 +155,5 @@ class LiveDataWidget extends ConsumerWidget {
       return Colors.green;
     }
     
-    return context?.let((ctx) => Theme.of(ctx).primaryColor) ?? Colors.blue;
+    return context != null ? Theme.of(context).primaryColor : Colors.blue;
   }
-}
-
-extension on BuildContext {
-  T let<T>(T Function(BuildContext) op) => op(this);
-}
