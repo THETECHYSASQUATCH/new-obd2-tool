@@ -1,0 +1,91 @@
+name: obd2_diagnostics_tool
+description: A comprehensive OBD-II diagnostics tool for Flutter supporting multiple platforms.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI Framework & State Management
+  flutter_riverpod: ^2.4.9
+  
+  # Responsive Design
+  responsive_framework: ^1.1.1
+  flutter_screenutil: ^5.9.0
+  
+  # Icons
+  cupertino_icons: ^1.0.6
+  material_design_icons_flutter: ^7.0.7296
+  
+  # Communication
+  flutter_bluetooth_serial: ^0.4.0
+  http: ^1.1.2
+  dio: ^5.3.4
+  
+  # Platform Integration
+  device_info_plus: ^9.1.1
+  package_info_plus: ^4.2.0
+  permission_handler: ^11.1.0
+  
+  # Data Persistence
+  shared_preferences: ^2.2.2
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  path_provider: ^2.1.1
+  
+  # File Operations
+  file_picker: ^6.1.1
+  
+  # Charts & Data Visualization
+  fl_chart: ^0.65.0
+  syncfusion_flutter_charts: ^23.2.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^3.0.1
+  
+  # Testing
+  integration_test:
+    sdk: flutter
+  mockito: ^5.4.4
+  build_runner: ^2.4.7
+
+flutter:
+  uses-material-design: true
+
+  # Assets
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/data/
+    - assets/fonts/
+
+  # Fonts
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/icons/splash_icon.png
+  android_12:
+    image: assets/icons/splash_icon.png
+    color: "#ffffff"
