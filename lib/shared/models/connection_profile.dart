@@ -4,6 +4,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
+import '../models/connection_config.dart';
 import '../../core/services/obd_service.dart';
 import '../../core/constants/app_constants.dart';
 
