@@ -128,9 +128,10 @@ class _ConnectionProfilesScreenState extends ConsumerState<ConnectionProfilesScr
               ),
             Row(
               children: [
-                if (profile.isSecure)
+                if (profile.isSecure) ...[
                   Icon(Icons.security, size: 16, color: Colors.green[600]),
-                const SizedBox(width: 4),
+                  const SizedBox(width: 4),
+                ],
                 Text(
                   'Last used: ${_formatDate(profile.lastUsed)}',
                   style: Theme.of(context).textTheme.bodySmall,

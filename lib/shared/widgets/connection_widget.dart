@@ -55,7 +55,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
             const SizedBox(height: 16),
             connectionStatus.when(
               data: (status) => _buildStatusRow(status),
-              loading: () => Row(
+              loading: () => const Row(
                 children: [
                   CircularProgressIndicator(),
                   SizedBox(width: 16),
@@ -153,7 +153,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
         } else if (status == ConnectionStatus.connecting) {
           return ElevatedButton(
             onPressed: null,
-            child: Row(
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
@@ -174,7 +174,7 @@ class _ConnectionWidgetState extends ConsumerState<ConnectionWidget> {
           );
         }
       },
-      loading: () => ElevatedButton(
+      loading: () => const ElevatedButton(
         onPressed: null,
         child: Text('Loading...'),
       ),
