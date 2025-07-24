@@ -107,7 +107,7 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
           border: Border.all(color: Colors.green),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Row(
+        child: Row(
           children: [
             Icon(Icons.check_circle, color: Colors.green),
             SizedBox(width: 8),

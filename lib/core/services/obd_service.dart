@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import '../constants/app_constants.dart';
@@ -116,8 +117,8 @@ class MobileOBDService implements OBDService {
     }
     
     try {
-      _bluetoothConnection!.output.add(command.codeUnits);
-      _bluetoothConnection!.output.add('\r\n'.codeUnits);
+      _bluetoothConnection!.output.add(Uint8List.fromList(command.codeUnits));
+      _bluetoothConnection!.output.add(Uint8List.fromList('\r\n'.codeUnits));
       await _bluetoothConnection!.output.allSent;
       
       // Wait for response with timeout

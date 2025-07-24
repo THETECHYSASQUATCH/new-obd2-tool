@@ -312,7 +312,7 @@ class DashboardPage extends ConsumerWidget {
         ),
         const SizedBox(height: 16),
         isMobile
-            ? const Column(
+            ? Column(
                 children: [
                   LiveDataWidget(title: 'Engine RPM', provider: engineRpmProvider, unit: 'RPM'),
                   SizedBox(height: 12),
@@ -323,7 +323,7 @@ class DashboardPage extends ConsumerWidget {
                   LiveDataWidget(title: 'Engine Load', provider: engineLoadProvider, unit: '%'),
                 ],
               )
-            : const Wrap(
+            : Wrap(
                 spacing: 16,
                 runSpacing: 16,
                 children: [
@@ -359,7 +359,7 @@ class DashboardPage extends ConsumerWidget {
         ),
         const SizedBox(height: 16),
         isMobile
-            ? const Column(
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _QuickActionButton(
@@ -381,7 +381,7 @@ class DashboardPage extends ConsumerWidget {
                   ),
                 ],
               )
-            : const Wrap(
+            : Wrap(
                 spacing: 16,
                 runSpacing: 16,
                 children: [
