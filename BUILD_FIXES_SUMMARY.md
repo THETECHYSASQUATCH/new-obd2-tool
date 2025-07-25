@@ -45,7 +45,7 @@ After merging this PR, run the following commands to complete the setup:
 flutter pub get
 
 # Generate required .g.dart files  
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 ## 📋 Implementation Notes

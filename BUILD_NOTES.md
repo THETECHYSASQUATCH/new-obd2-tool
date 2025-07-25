@@ -11,7 +11,7 @@ This document outlines the build instructions and changes made to ensure compati
 flutter pub get
 
 # 2. Generate required .g.dart files for JSON serialization
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 
 # 3. Clean and rebuild
 flutter clean

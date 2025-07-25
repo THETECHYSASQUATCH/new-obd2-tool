@@ -6,6 +6,7 @@ import '../models/pid_config.dart';
 import 'advanced_data_visualization_widget.dart';
 import 'live_data_widget.dart';
 import '../providers/app_providers.dart';
+import '../../core/converters/icon_data_converter.dart';
 
 part 'custom_dashboard_widget.g.dart';
 
@@ -479,6 +480,7 @@ class DashboardWidgetConfig {
 class QuickAction {
   final String id;
   final String label;
+  @IconDataConverter()
   final IconData icon;
   final QuickActionType action;
   final Map<String, dynamic> parameters;

@@ -156,11 +156,18 @@ build_all() {
 generate_icons() {
     log_info "Generating app icons..."
     if flutter pub deps | grep -q "flutter_launcher_icons"; then
-        flutter pub run flutter_launcher_icons:main
+        dart run flutter_launcher_icons:main
         log_success "Icons generated"
     else
         log_warning "flutter_launcher_icons not found in dependencies"
     fi
+}
+
+# Generate code files (JSON serialization, etc.)
+generate_code() {
+    log_info "Generating code files..."
+    dart run build_runner build --delete-conflicting-outputs
+    log_success "Code generation completed"
 }
 
 # Create release package
@@ -204,12 +211,14 @@ show_usage() {
     echo "  linux          Build for Linux"
     echo "  all            Build for all platforms"
     echo "  icons          Generate app icons"
+    echo "  generate       Generate code files (JSON serialization, etc.)"
     echo "  package        Package release builds"
     echo "  full           Run complete build process (setup, test, analyze, build all)"
     echo "  help           Show this help message"
     echo ""
     echo "Examples:"
     echo "  $0 android      # Build Android APK and AAB"
+    echo "  $0 generate     # Generate code files"
     echo "  $0 full         # Complete build process"
     echo "  $0 test         # Run tests only"
 }
@@ -218,6 +227,7 @@ show_usage() {
 full_build() {
     log_info "Starting full build process..."
     setup_project
+    generate_code
     format_code
     run_analysis
     run_tests
@@ -263,6 +273,9 @@ main() {
             ;;
         "icons")
             generate_icons
+            ;;
+        "generate")
+            generate_code
             ;;
         "package")
             package_release
