@@ -287,7 +287,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               interval: historicalData.length / 4,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  side: meta.side,
+                  axisSide: meta.axisSide,
                   child: Text(
                     '${value.toInt()}s',
                     style: Theme.of(context).textTheme.bodySmall,
@@ -303,7 +303,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               reservedSize: 42,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  side: meta.side,
+                  axisSide: meta.axisSide,
                   child: Text(
                     _formatValue(value),
                     style: Theme.of(context).textTheme.bodySmall,
@@ -411,7 +411,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               showTitles: true,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  side: meta.side,
+                  axisSide: meta.axisSide,
                   child: Text(
                     '${value.toInt()}',
                     style: Theme.of(context).textTheme.bodySmall,
@@ -426,7 +426,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               reservedSize: 42,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  side: meta.side,
+                  axisSide: meta.axisSide,
                   child: Text(
                     _formatValue(value),
                     style: Theme.of(context).textTheme.bodySmall,
@@ -489,7 +489,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
         minimum: minValue,
         maximum: maxValue,
       ),
-      series: <ChartSeries<MapEntry<int, double>, int>>[
+      series: <CartesianSeries<MapEntry<int, double>, int>>[
         AreaSeries<MapEntry<int, double>, int>(
           dataSource: historicalData.asMap().entries.toList(),
           xValueMapper: (MapEntry<int, double> data, _) => data.key,
