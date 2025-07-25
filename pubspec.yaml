@@ -38,10 +38,10 @@ dependencies:
   flutter_secure_storage: ^9.0.0            # Secure storage for sensitive data
   # Version 1.1 enhancements
   csv: ^6.0.0                                # Data export functionality
-  archive: ^3.6.1                          # For compressed exports
+  archive: ^4.0.7                          # For compressed exports
   universal_html: ^2.2.4                    # Web-compatible HTML manipulation
   json_annotation: ^4.9.0                   # JSON serialization
-  intl: ^0.19.0                              # Internationalization and date formatting
+  intl: ^0.20.2                              # Internationalization and date formatting
 
 dev_dependencies:
   flutter_test:
