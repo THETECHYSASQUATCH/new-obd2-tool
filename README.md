@@ -1,5 +1,7 @@
 # OBD-II Diagnostics and Programming Tool
 
+Do not download Code zip just use the releases download. Code is not tested yet.
+
 A comprehensive cross-platform OBD-II diagnostics and programming tool built with Flutter, supporting iOS, macOS, Android, Linux, Windows, and ARM-based devices.
 
 ## Features
