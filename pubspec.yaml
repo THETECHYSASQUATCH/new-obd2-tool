@@ -2,7 +2,7 @@ name: new_obd2_tool
 description: A Flutter-based OBD-II Diagnostics and Programming Tool.
 publish_to: 'none'
 
-version: 1.2.0
+version: 1.3.0
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

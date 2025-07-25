@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../core/services/obd_service.dart';
 import '../../../shared/providers/app_providers.dart';
@@ -15,6 +16,11 @@ import '../../connection_profiles/presentation/connection_profiles_screen.dart';
 // Version 1.1 new features
 import '../../data_export/presentation/data_export_screen.dart';
 import '../../custom_dashboard/presentation/custom_dashboard_screen.dart';
+// Version 1.3 new features
+import '../../ai_diagnostics/presentation/ai_diagnostics_screen.dart';
+import '../../predictive_maintenance/presentation/predictive_maintenance_screen.dart';
+import '../../telematics/presentation/telematics_screen.dart';
+import '../../shop_management/presentation/shop_management_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -207,7 +213,14 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 _buildNavigationTile(2, Icons.analytics, 'Diagnostics'),
                 _buildNavigationTile(3, Icons.history, 'History'),
                 _buildNavigationTile(4, Icons.settings, 'Settings'),
-                // TODO: Add navigation tiles for new features
+                // Version 1.3 new features
+                const Divider(),
+                _buildNavigationTile(9, MdiIcons.brain, 'AI Diagnostics'),
+                _buildNavigationTile(10, Icons.build, 'Predictive Maintenance'),
+                _buildNavigationTile(11, MdiIcons.satellite, 'Telematics'),
+                _buildNavigationTile(12, Icons.store, 'Shop Management'),
+                const Divider(),
+                // Existing features
                 _buildNavigationTile(5, Icons.tune, 'PID Config'),
                 _buildNavigationTile(6, Icons.wifi, 'Profiles'),
                 _buildNavigationTile(7, Icons.dashboard_customize, 'Custom Dashboard'),
@@ -275,7 +288,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const HistoryScreen();
       case 4:
         return const SettingsScreen();
-      // TODO: Add cases for new feature modules
       case 5:
         return const PidConfigurationScreen();
       case 6:
@@ -284,6 +296,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const CustomDashboardScreen();
       case 8:
         return const DataExportScreen();
+      // Version 1.3 new features
+      case 9:
+        return const AIDiagnosticsScreen();
+      case 10:
+        return const PredictiveMaintenanceScreen();
+      case 11:
+        return const TelematicsScreen();
+      case 12:
+        return const ShopManagementScreen();
       default:
         return const DashboardPage();
     }
