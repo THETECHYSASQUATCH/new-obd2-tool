@@ -222,7 +222,7 @@ class _TelematicsScreenState extends ConsumerState<TelematicsScreen> {
           'Vehicle Speed',
           '65',
           'mph',
-          Icons.speedometer,
+          Icons.speed,
           Colors.green,
           isHealthy: true,
         ),

@@ -398,6 +398,10 @@ class CustomDashboardWidget extends ConsumerWidget {
         _showSnackBar(context, 'Exporting data...');
         // TODO: Implement data export
         break;
+      case QuickActionType.customCommand:
+        _showSnackBar(context, 'Executing custom command...');
+        // TODO: Implement custom command execution
+        break;
     }
   }
 
