@@ -427,7 +427,6 @@ class DashboardPage extends ConsumerWidget {
     return Chip(
       label: Text(text),
       backgroundColor: color.withOpacity(0.2),
-      side: BorderSide(color: color),
     );
   }
 
