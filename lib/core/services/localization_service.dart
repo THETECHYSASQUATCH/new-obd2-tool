@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../models/language_config.dart';
+import '../../shared/models/language_config.dart';
 
 class LocalizationService {
   static const String _basePath = 'assets/data/strings';

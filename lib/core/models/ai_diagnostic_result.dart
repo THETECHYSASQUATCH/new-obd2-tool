@@ -1,1 +1,2 @@
-export '/home/runner/work/new-obd2-tool/new-obd2-tool/lib/features/ai_diagnostics/models/ai_diagnostic_result.dart';
+// TODO: Consider adding more AI diagnostic result types and analysis methods as AI capabilities expand
+export '../../features/ai_diagnostics/models/ai_diagnostic_result.dart';

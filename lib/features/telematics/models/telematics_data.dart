@@ -416,7 +416,7 @@ class TelematicsProvider {
   final String description;
   final ProviderType type;
   final Map<String, dynamic> configuration;
-  final ConnectionStatus connectionStatus;
+  final TelematicsConnectionStatus connectionStatus;
   final DateTime? lastSync;
   final List<String> supportedFeatures;
   final Map<String, dynamic> apiCredentials;
@@ -427,7 +427,7 @@ class TelematicsProvider {
     required this.description,
     required this.type,
     this.configuration = const {},
-    this.connectionStatus = ConnectionStatus.disconnected,
+    this.connectionStatus = TelematicsConnectionStatus.disconnected,
     this.lastSync,
     this.supportedFeatures = const [],
     this.apiCredentials = const {},
@@ -440,7 +440,7 @@ class TelematicsProvider {
       description: json['description'] as String,
       type: ProviderType.values.byName(json['type']),
       configuration: json['configuration'] as Map<String, dynamic>? ?? {},
-      connectionStatus: ConnectionStatus.values.byName(json['connectionStatus'] ?? 'disconnected'),
+      connectionStatus: TelematicsConnectionStatus.values.byName(json['connectionStatus'] ?? 'disconnected'),
       lastSync: json['lastSync'] != null
           ? DateTime.parse(json['lastSync'] as String)
           : null,
@@ -469,7 +469,7 @@ class TelematicsProvider {
     String? description,
     ProviderType? type,
     Map<String, dynamic>? configuration,
-    ConnectionStatus? connectionStatus,
+    TelematicsConnectionStatus? connectionStatus,
     DateTime? lastSync,
     List<String>? supportedFeatures,
     Map<String, dynamic>? apiCredentials,
@@ -488,7 +488,7 @@ class TelematicsProvider {
   }
 
   /// Check if provider is currently connected
-  bool get isConnected => connectionStatus == ConnectionStatus.connected;
+  bool get isConnected => connectionStatus == TelematicsConnectionStatus.connected;
 
   /// Get time since last sync
   Duration? get timeSinceLastSync {
@@ -527,7 +527,7 @@ enum ProviderType {
   hybrid,
 }
 
-enum ConnectionStatus {
+enum TelematicsConnectionStatus {
   connected,
   connecting,
   disconnected,
