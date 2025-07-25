@@ -2,6 +2,8 @@
 
 Do not download Code zip just use the releases download. Code is not tested yet.
 
+Windows Build commands work. Android, Linux, and macOS need some work so far.
+
 A comprehensive cross-platform OBD-II diagnostics and programming tool built with Flutter, supporting iOS, macOS, Android, Linux, Windows, and ARM-based devices.
 
 ## Features
