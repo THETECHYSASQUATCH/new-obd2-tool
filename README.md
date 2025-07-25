@@ -347,23 +347,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Roadmap
 
-### Version 1.1 (Current)
-- [x] Advanced graphing and data visualization
-- [x] Custom dashboard widgets
-- [x] Data logging and export improvements
-- [x] Web platform support
+### Version 1.3 (Current)
+- [x] Advanced AI-powered diagnostics
+- [x] Predictive maintenance alerts
+- [x] Integration with vehicle telematics
+- [x] Professional shop management features
 
-### Version 1.2 (Current)
+### Version 1.2 (Previous)
 - [x] Vehicle-specific diagnostic protocols
 - [x] ECU programming capabilities
 - [x] Cloud sync and backup
 - [x] Multi-language support
 
-### Version 1.3 (Future)
-- [ ] Advanced AI-powered diagnostics
-- [ ] Predictive maintenance alerts
-- [ ] Integration with vehicle telematics
-- [ ] Professional shop management features
+### Version 1.1 (Previous)
+- [x] Advanced graphing and data visualization
+- [x] Custom dashboard widgets
+- [x] Data logging and export improvements
+- [x] Web platform support
 
 ---
 
