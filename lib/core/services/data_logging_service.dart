@@ -119,11 +119,11 @@ class DataLoggingService {
     final dataPoint = LoggedDataPoint(
       timestamp: DateTime.now(),
       pid: response.command,
-      rawResponse: response.rawResponse,
+      rawResponse: response.rawData,
       parsedValue: response.parsedData?['value'],
       unit: response.parsedData?['unit'] ?? '',
       isError: response.isError,
-      errorMessage: response.isError ? response.rawResponse : null,
+      errorMessage: response.isError ? response.rawData : null,
     );
 
     _sessionData.add(dataPoint);
