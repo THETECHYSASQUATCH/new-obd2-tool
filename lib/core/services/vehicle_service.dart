@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+// NOTE: Updated to use shared models for consistency and JSON serialization support
 import '../../shared/models/vehicle_info.dart';
 
 class VehicleService {
