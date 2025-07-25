@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:archive/archive.dart';
-import '../models/cloud_sync.dart';
-import '../models/obd_response.dart';
+import '../../shared/models/cloud_sync.dart';
+import '../../shared/models/obd_response.dart';
 import 'secure_storage_service.dart';
 
 class CloudSyncService {

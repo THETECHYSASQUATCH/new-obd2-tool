@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import '../models/vehicle_info.dart';
+import '../../shared/models/vehicle_info.dart';
 
 class VehicleService {
   static VehicleDatabase? _database;
