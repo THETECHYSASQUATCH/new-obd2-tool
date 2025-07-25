@@ -10,6 +10,28 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 - **Live data streaming**: Continuous monitoring of vehicle parameters
 - **Custom commands**: Send custom OBD-II commands for advanced diagnostics
 - **Protocol support**: Automatic protocol detection for various OBD-II adapters
+- **Vehicle-specific diagnostics**: Tailored diagnostics for specific makes and models with manufacturer PIDs
+
+### 🔧 Advanced ECU Programming
+- **ECU discovery**: Automatic detection of programmable control modules
+- **Multiple programming modes**: Flash programming, calibration updates, coding, and adaptation
+- **Safety features**: Automatic backup creation, progress monitoring, and error recovery
+- **Multi-ECU support**: Engine, transmission, body, hybrid, and other control modules
+- **Professional-grade tools**: Security access, verification, and comprehensive logging
+
+### ☁️ Cloud Sync and Backup
+- **Multi-provider support**: Firebase, AWS, Azure, Google Cloud, and custom endpoints
+- **Automatic synchronization**: Scheduled sync with configurable intervals
+- **Data encryption**: AES-256 encryption for all cloud data
+- **Backup management**: Create, restore, and manage diagnostic data backups
+- **Selective sync**: Choose which data types to synchronize
+
+### 🌍 Multi-Language Support
+- **Internationalization**: Complete UI translation support
+- **Multiple languages**: English, Spanish, French, with framework for additional languages
+- **Native font support**: Proper rendering for all supported languages
+- **Dynamic switching**: Change language without app restart
+- **Extensible framework**: Easy addition of new languages
 
 ### 📱 Cross-Platform Compatibility
 - **Mobile**: iOS (iPhone/iPad) and Android
@@ -329,11 +351,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] Data logging and export improvements
 - [x] Web platform support
 
-### Version 1.2 (Future)
-- [ ] Vehicle-specific diagnostic protocols
-- [ ] ECU programming capabilities
-- [ ] Cloud sync and backup
-- [ ] Multi-language support
+### Version 1.2 (Current)
+- [x] Vehicle-specific diagnostic protocols
+- [x] ECU programming capabilities
+- [x] Cloud sync and backup
+- [x] Multi-language support
+
+### Version 1.3 (Future)
+- [ ] Advanced AI-powered diagnostics
+- [ ] Predictive maintenance alerts
+- [ ] Integration with vehicle telematics
+- [ ] Professional shop management features
 
 ---
 

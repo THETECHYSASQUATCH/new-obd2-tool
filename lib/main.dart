@@ -5,7 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/services/secure_storage_service.dart';
+import 'core/services/localization_service.dart';
+import 'core/services/vehicle_service.dart';
+import 'core/services/ecu_programming_service.dart';
+import 'core/services/cloud_sync_service.dart';
 import 'features/dashboard/presentation/dashboard_screen.dart';
+import 'features/settings/presentation/advanced_settings_screen.dart';
+import 'features/ecu_programming/presentation/ecu_programming_screen.dart';
 import 'shared/providers/app_providers.dart';
 
 void main() async {
@@ -23,8 +29,20 @@ void main() async {
 
 Future<void> _initializeServices() async {
   try {
-    // TODO: Initialize secure storage and other security services
+    // Initialize secure storage first
     await SecureStorageService.initialize();
+    
+    // Initialize localization with default language
+    await LocalizationService.initialize('en');
+    
+    // Initialize other services
+    await Future.wait([
+      VehicleService.initialize(),
+      EcuProgrammingService.initialize(),
+      CloudSyncService.initialize(),
+    ]);
+    
+    debugPrint('All services initialized successfully');
   } catch (e) {
     // Handle initialization errors gracefully
     debugPrint('Service initialization warning: $e');
@@ -56,6 +74,11 @@ class OBD2DiagnosticsApp extends ConsumerWidget {
               const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
             ],
           ),
+          routes: {
+            '/': (context) => const DashboardScreen(),
+            '/settings': (context) => const AdvancedSettingsScreen(),
+            '/ecu-programming': (context) => const EcuProgrammingScreen(),
+          },
           home: const DashboardScreen(),
         );
       },

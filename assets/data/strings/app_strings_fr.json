@@ -1,0 +1,128 @@
+{
+  "app_name": "Outil de Diagnostic OBD-II",
+  "welcome_message": "Bienvenue dans le Diagnostic OBD-II",
+  "subtitle": "Outil de diagnostic multiplateforme pour tous les besoins de votre véhicule",
+  
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "connection": "Connexion",
+    "diagnostics": "Diagnostics",
+    "history": "Historique",
+    "settings": "Paramètres"
+  },
+  
+  "connection": {
+    "status": "État de la Connexion",
+    "connected": "Connecté",
+    "connecting": "Connexion en cours",
+    "disconnected": "Déconnecté",
+    "error": "Erreur",
+    "scan_devices": "Rechercher les Appareils",
+    "connect": "Connecter",
+    "disconnect": "Déconnecter",
+    "connection_types": {
+      "bluetooth": "Bluetooth",
+      "wifi": "WiFi", 
+      "usb": "USB",
+      "serial": "Série"
+    },
+    "messages": {
+      "connected_desc": "Appareil OBD-II connecté et prêt",
+      "connecting_desc": "Tentative de connexion à l'appareil OBD-II",
+      "disconnected_desc": "Aucun appareil OBD-II connecté",
+      "error_desc": "Échec de la connexion à l'appareil OBD-II"
+    }
+  },
+  
+  "diagnostics": {
+    "dtc_title": "Codes de Diagnostic de Panne (DTCs)",
+    "scan_dtcs": "Scanner les DTCs",
+    "clear_dtcs": "Effacer les DTCs",
+    "no_dtcs": "Aucun code de diagnostic de panne trouvé",
+    "quick_commands": "Commandes Rapides",
+    "custom_command": "Commande OBD-II Personnalisée",
+    "send": "Envoyer",
+    "response_history": "Historique des Réponses",
+    "clear_history": "Effacer"
+  },
+  
+  "live_data": {
+    "title": "Données du Véhicule en Temps Réel",
+    "reading": "Lecture...",
+    "refresh": "Actualiser",
+    "parameters": {
+      "engine_rpm": "Tours/min Moteur",
+      "vehicle_speed": "Vitesse du Véhicule", 
+      "coolant_temp": "Température du Liquide de Refroidissement",
+      "engine_load": "Charge Moteur",
+      "throttle_position": "Position de l'Accélérateur",
+      "fuel_pressure": "Pression du Carburant",
+      "manifold_pressure": "Pression du Collecteur d'Admission",
+      "maf_flow": "Débit d'Air MAF"
+    }
+  },
+  
+  "units": {
+    "rpm": "RPM",
+    "kmh": "km/h",
+    "mph": "mph",
+    "celsius": "°C",
+    "fahrenheit": "°F",
+    "percent": "%",
+    "kpa": "kPa",
+    "psi": "psi",
+    "grams_per_second": "g/s"
+  },
+  
+  "settings": {
+    "appearance": "Apparence",
+    "connection": "Connexion", 
+    "data_storage": "Données et Stockage",
+    "about": "À propos",
+    "theme": "Thème",
+    "theme_system": "Suivre les paramètres du système",
+    "theme_light": "Thème clair",
+    "theme_dark": "Thème sombre",
+    "font_size": "Taille de la Police",
+    "language": "Langue",
+    "connection_timeout": "Délai de Connexion",
+    "auto_reconnect": "Reconnexion Automatique",
+    "auto_scan": "Recherche Automatique des Appareils",
+    "units": "Unités",
+    "history_retention": "Rétention de l'Historique",
+    "auto_save": "Sauvegarde Automatique des Sessions",
+    "clear_all_data": "Effacer Toutes les Données",
+    "app_version": "Version de l'Application",
+    "licenses": "Licences",
+    "privacy_policy": "Politique de Confidentialité",
+    "help_support": "Aide et Support",
+    "report_issue": "Signaler un Problème"
+  },
+  
+  "errors": {
+    "connection_failed": "Échec de la connexion à l'appareil",
+    "command_failed": "Erreur lors de l'envoi de la commande",
+    "scan_failed": "Erreur lors du scan des DTCs",
+    "clear_failed": "Erreur lors de l'effacement des DTCs",
+    "no_device_selected": "Veuillez sélectionner un appareil",
+    "invalid_command": "Commande OBD-II invalide",
+    "timeout": "Délai d'attente dépassé",
+    "permission_denied": "Permission refusée",
+    "device_not_found": "Appareil non trouvé"
+  },
+  
+  "common": {
+    "ok": "OK",
+    "cancel": "Annuler",
+    "yes": "Oui",
+    "no": "Non",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "loading": "Chargement...",
+    "retry": "Réessayer",
+    "copy": "Copier",
+    "details": "Détails"
+  }
+}
