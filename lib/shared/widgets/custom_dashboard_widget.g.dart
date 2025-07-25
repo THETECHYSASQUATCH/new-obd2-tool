@@ -1,4 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+//
+// NOTE: This file has been manually updated to show the expected output
+// after running: dart run build_runner build --delete-conflicting-outputs
+// with the new IconDataConverter implementation.
 
 part of 'custom_dashboard_widget.dart';
 
@@ -65,7 +69,8 @@ const _$DataVisualizationTypeEnumMap = {
 QuickAction _$QuickActionFromJson(Map<String, dynamic> json) => QuickAction(
       id: json['id'] as String,
       label: json['label'] as String,
-      icon: IconData(json['icon'] as int, fontFamily: 'MaterialIcons'),
+      icon: const IconDataConverter()
+          .fromJson(json['icon'] as Map<String, dynamic>),
       action: $enumDecode(_$QuickActionTypeEnumMap, json['action']),
       parameters: json['parameters'] as Map<String, dynamic>? ??
           const <String, dynamic>{},
@@ -75,7 +80,7 @@ Map<String, dynamic> _$QuickActionToJson(QuickAction instance) =>
     <String, dynamic>{
       'id': instance.id,
       'label': instance.label,
-      'icon': instance.icon.codePoint,
+      'icon': const IconDataConverter().toJson(instance.icon),
       'action': _$QuickActionTypeEnumMap[instance.action]!,
       'parameters': instance.parameters,
     };
