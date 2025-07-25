@@ -489,11 +489,11 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
         minimum: minValue,
         maximum: maxValue,
       ),
-      series: <ChartSeries<double, int>>[
-        AreaSeries<double, int>(
+      series: <ChartSeries<MapEntry<int, double>, int>>[
+        AreaSeries<MapEntry<int, double>, int>(
           dataSource: historicalData.asMap().entries.toList(),
-          xValueMapper: (data, _) => data.key,
-          yValueMapper: (data, _) => data.value,
+          xValueMapper: (MapEntry<int, double> data, _) => data.key,
+          yValueMapper: (MapEntry<int, double> data, _) => data.value,
           name: title,
           color: (accentColor ?? Theme.of(context).primaryColor).withOpacity(0.3),
           borderColor: accentColor ?? Theme.of(context).primaryColor,

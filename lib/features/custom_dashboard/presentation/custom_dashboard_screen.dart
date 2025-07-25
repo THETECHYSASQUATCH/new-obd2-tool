@@ -37,10 +37,6 @@ class _CustomDashboardScreenState extends ConsumerState<CustomDashboardScreen> {
           PidDisplayConfig(
             pid: '010C',
             displayName: 'Engine RPM',
-            unit: 'RPM',
-            minValue: 0,
-            maxValue: 8000,
-            category: 'Engine',
             isEnabled: true,
             displayOrder: 1,
           ),
@@ -57,10 +53,6 @@ class _CustomDashboardScreenState extends ConsumerState<CustomDashboardScreen> {
           PidDisplayConfig(
             pid: '010D',
             displayName: 'Vehicle Speed',
-            unit: 'km/h',
-            minValue: 0,
-            maxValue: 200,
-            category: 'Vehicle',
             isEnabled: true,
             displayOrder: 2,
           ),
@@ -78,20 +70,12 @@ class _CustomDashboardScreenState extends ConsumerState<CustomDashboardScreen> {
           PidDisplayConfig(
             pid: '0105',
             displayName: 'Coolant Temp',
-            unit: '°C',
-            minValue: -40,
-            maxValue: 215,
-            category: 'Engine',
             isEnabled: true,
             displayOrder: 3,
           ),
           PidDisplayConfig(
             pid: '0104',
             displayName: 'Engine Load',
-            unit: '%',
-            minValue: 0,
-            maxValue: 100,
-            category: 'Engine',
             isEnabled: true,
             displayOrder: 4,
           ),
@@ -580,10 +564,6 @@ class _AddWidgetDialogState extends State<AddWidgetDialog> {
     return PidDisplayConfig(
       pid: pid,
       displayName: pidInfo?['name'] ?? 'Unknown PID',
-      unit: pidInfo?['unit'] ?? '',
-      category: pidInfo?['category'] ?? 'Unknown',
-      minValue: pidInfo?['minValue']?.toDouble(),
-      maxValue: pidInfo?['maxValue']?.toDouble(),
       isEnabled: true,
       displayOrder: 0,
     );
