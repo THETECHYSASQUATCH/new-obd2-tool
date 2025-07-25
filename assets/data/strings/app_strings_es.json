@@ -1,0 +1,128 @@
+{
+  "app_name": "Herramienta de Diagnóstico OBD-II",
+  "welcome_message": "Bienvenido al Diagnóstico OBD-II",
+  "subtitle": "Herramienta de diagnóstico multiplataforma para todas las necesidades de su vehículo",
+  
+  "navigation": {
+    "dashboard": "Panel",
+    "connection": "Conexión",
+    "diagnostics": "Diagnósticos",
+    "history": "Historial",
+    "settings": "Configuración"
+  },
+  
+  "connection": {
+    "status": "Estado de Conexión",
+    "connected": "Conectado",
+    "connecting": "Conectando",
+    "disconnected": "Desconectado",
+    "error": "Error",
+    "scan_devices": "Buscar Dispositivos",
+    "connect": "Conectar",
+    "disconnect": "Desconectar",
+    "connection_types": {
+      "bluetooth": "Bluetooth",
+      "wifi": "WiFi", 
+      "usb": "USB",
+      "serial": "Serial"
+    },
+    "messages": {
+      "connected_desc": "Dispositivo OBD-II conectado y listo",
+      "connecting_desc": "Intentando conectar al dispositivo OBD-II",
+      "disconnected_desc": "Ningún dispositivo OBD-II conectado",
+      "error_desc": "Error al conectar al dispositivo OBD-II"
+    }
+  },
+  
+  "diagnostics": {
+    "dtc_title": "Códigos de Problema de Diagnóstico (DTCs)",
+    "scan_dtcs": "Escanear DTCs",
+    "clear_dtcs": "Borrar DTCs",
+    "no_dtcs": "No se encontraron códigos de problema de diagnóstico",
+    "quick_commands": "Comandos Rápidos",
+    "custom_command": "Comando OBD-II Personalizado",
+    "send": "Enviar",
+    "response_history": "Historial de Respuestas",
+    "clear_history": "Limpiar"
+  },
+  
+  "live_data": {
+    "title": "Datos del Vehículo en Vivo",
+    "reading": "Leyendo...",
+    "refresh": "Actualizar",
+    "parameters": {
+      "engine_rpm": "RPM del Motor",
+      "vehicle_speed": "Velocidad del Vehículo", 
+      "coolant_temp": "Temperatura del Refrigerante",
+      "engine_load": "Carga del Motor",
+      "throttle_position": "Posición del Acelerador",
+      "fuel_pressure": "Presión del Combustible",
+      "manifold_pressure": "Presión del Colector de Admisión",
+      "maf_flow": "Flujo de Aire MAF"
+    }
+  },
+  
+  "units": {
+    "rpm": "RPM",
+    "kmh": "km/h",
+    "mph": "mph",
+    "celsius": "°C",
+    "fahrenheit": "°F",
+    "percent": "%",
+    "kpa": "kPa",
+    "psi": "psi",
+    "grams_per_second": "g/s"
+  },
+  
+  "settings": {
+    "appearance": "Apariencia",
+    "connection": "Conexión", 
+    "data_storage": "Datos y Almacenamiento",
+    "about": "Acerca de",
+    "theme": "Tema",
+    "theme_system": "Seguir configuración del sistema",
+    "theme_light": "Tema claro",
+    "theme_dark": "Tema oscuro",
+    "font_size": "Tamaño de Fuente",
+    "language": "Idioma",
+    "connection_timeout": "Tiempo de Conexión",
+    "auto_reconnect": "Reconexión Automática",
+    "auto_scan": "Búsqueda Automática de Dispositivos",
+    "units": "Unidades",
+    "history_retention": "Retención del Historial",
+    "auto_save": "Guardado Automático de Sesiones",
+    "clear_all_data": "Borrar Todos los Datos",
+    "app_version": "Versión de la Aplicación",
+    "licenses": "Licencias",
+    "privacy_policy": "Política de Privacidad",
+    "help_support": "Ayuda y Soporte",
+    "report_issue": "Reportar Problema"
+  },
+  
+  "errors": {
+    "connection_failed": "Error al conectar al dispositivo",
+    "command_failed": "Error al enviar comando",
+    "scan_failed": "Error al escanear DTCs",
+    "clear_failed": "Error al borrar DTCs",
+    "no_device_selected": "Por favor seleccione un dispositivo",
+    "invalid_command": "Comando OBD-II inválido",
+    "timeout": "Tiempo de espera agotado",
+    "permission_denied": "Permiso denegado",
+    "device_not_found": "Dispositivo no encontrado"
+  },
+  
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "yes": "Sí",
+    "no": "No",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "loading": "Cargando...",
+    "retry": "Reintentar",
+    "copy": "Copiar",
+    "details": "Detalles"
+  }
+}

@@ -3,9 +3,58 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/services/obd_service.dart';
+import '../../core/services/localization_service.dart';
+import '../../core/services/vehicle_service.dart';
+import '../../core/services/ecu_programming_service.dart';
+import '../../core/services/cloud_sync_service.dart';
 import '../../core/constants/app_constants.dart';
 import '../models/connection_config.dart';
 import '../models/obd_response.dart';
+import '../models/language_config.dart';
+import '../models/vehicle_info.dart';
+import '../models/ecu_programming.dart';
+import '../models/cloud_sync.dart';
+
+// Language provider
+final languageProvider = StateNotifierProvider<LanguageNotifier, LanguageConfig>((ref) {
+  return LanguageNotifier();
+});
+
+class LanguageNotifier extends StateNotifier<LanguageConfig> {
+  static const String _keyLanguage = 'selected_language';
+  
+  LanguageNotifier() : super(LanguageConfig.supportedLanguages.first) {
+    _loadLanguage();
+  }
+
+  Future<void> _loadLanguage() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final languageCode = prefs.getString(_keyLanguage) ?? 'en';
+      final language = LanguageConfig.fromCode(languageCode) ?? 
+                      LanguageConfig.supportedLanguages.first;
+      
+      state = language;
+      await LocalizationService.initialize(language.code);
+    } catch (e) {
+      debugPrint('Error loading language: $e');
+    }
+  }
+
+  Future<void> setLanguage(LanguageConfig language) async {
+    try {
+      state = language;
+      await LocalizationService.switchLanguage(language.code);
+      
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_keyLanguage, language.code);
+    } catch (e) {
+      debugPrint('Error setting language: $e');
+    }
+  }
+
+  List<LanguageConfig> get supportedLanguages => LanguageConfig.supportedLanguages;
+}
 
 // Theme provider
 final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeMode>((ref) {
@@ -233,3 +282,129 @@ class ConnectionActions {
     return response;
   }
 }
+
+// Vehicle selection providers
+final selectedVehicleProvider = StateNotifierProvider<SelectedVehicleNotifier, VehicleInfo?>((ref) {
+  return SelectedVehicleNotifier();
+});
+
+class SelectedVehicleNotifier extends StateNotifier<VehicleInfo?> {
+  static const String _keySelectedVehicle = 'selected_vehicle';
+
+  SelectedVehicleNotifier() : super(null) {
+    _loadSelectedVehicle();
+  }
+
+  Future<void> _loadSelectedVehicle() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final vehicleJson = prefs.getString(_keySelectedVehicle);
+      if (vehicleJson != null) {
+        // In a real implementation, parse the vehicle from JSON
+        // For now, we'll set it to null
+      }
+    } catch (e) {
+      debugPrint('Error loading selected vehicle: $e');
+    }
+  }
+
+  Future<void> setVehicle(VehicleInfo? vehicle) async {
+    state = vehicle;
+    VehicleService.setSelectedVehicle(vehicle);
+    
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      if (vehicle != null) {
+        await prefs.setString(_keySelectedVehicle, vehicle.toJson().toString());
+      } else {
+        await prefs.remove(_keySelectedVehicle);
+      }
+    } catch (e) {
+      debugPrint('Error saving selected vehicle: $e');
+    }
+  }
+}
+
+// Vehicle service providers
+final vehicleDatabaseProvider = FutureProvider<VehicleDatabase?>((ref) async {
+  await VehicleService.initialize();
+  return VehicleService.database;
+});
+
+final availableMakesProvider = Provider<List<String>>((ref) {
+  return VehicleService.getAvailableMakes();
+});
+
+// ECU Programming providers
+final discoveredEcusProvider = StateNotifierProvider<DiscoveredEcusNotifier, List<EcuInfo>>((ref) {
+  return DiscoveredEcusNotifier();
+});
+
+class DiscoveredEcusNotifier extends StateNotifier<List<EcuInfo>> {
+  DiscoveredEcusNotifier() : super([]);
+
+  Future<void> discoverEcus() async {
+    try {
+      final ecus = await EcuProgrammingService.discoverEcus();
+      state = ecus;
+    } catch (e) {
+      debugPrint('Error discovering ECUs: $e');
+      state = [];
+    }
+  }
+
+  void clearEcus() {
+    state = [];
+  }
+}
+
+final programmingSessionsProvider = StreamProvider<ProgrammingSession>((ref) {
+  return EcuProgrammingService.sessionStream;
+});
+
+final activeSessionsProvider = Provider<List<ProgrammingSession>>((ref) {
+  return EcuProgrammingService.getActiveSessions();
+});
+
+// Cloud sync providers
+final cloudSyncSettingsProvider = StateNotifierProvider<CloudSyncSettingsNotifier, CloudSyncSettings?>((ref) {
+  return CloudSyncSettingsNotifier();
+});
+
+class CloudSyncSettingsNotifier extends StateNotifier<CloudSyncSettings?> {
+  CloudSyncSettingsNotifier() : super(null) {
+    _loadSettings();
+  }
+
+  void _loadSettings() {
+    state = CloudSyncService.settings;
+  }
+
+  Future<void> updateSettings(CloudSyncSettings settings) async {
+    await CloudSyncService.configure(settings);
+    state = settings;
+  }
+}
+
+final syncSessionProvider = StreamProvider<SyncSession>((ref) {
+  return CloudSyncService.syncStream;
+});
+
+final cloudConfiguredProvider = Provider<bool>((ref) {
+  return CloudSyncService.isConfigured;
+});
+
+// Service initialization provider
+final servicesInitializedProvider = FutureProvider<bool>((ref) async {
+  try {
+    await Future.wait([
+      VehicleService.initialize(),
+      EcuProgrammingService.initialize(),
+      CloudSyncService.initialize(),
+    ]);
+    return true;
+  } catch (e) {
+    debugPrint('Error initializing services: $e');
+    return false;
+  }
+});

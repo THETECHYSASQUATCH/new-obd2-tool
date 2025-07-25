@@ -1,0 +1,214 @@
+{
+  "vehiclesByMake": {
+    "Toyota": [
+      {
+        "make": "Toyota",
+        "model": "Camry",
+        "year": 2023,
+        "trim": "LE",
+        "engine": "2.5L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN", "ISO9141-2"],
+        "manufacturerSpecificPids": {
+          "2101": "Engine Oil Temperature",
+          "2102": "Transmission Fluid Temperature",
+          "2103": "Hybrid Battery State"
+        }
+      },
+      {
+        "make": "Toyota",
+        "model": "Prius",
+        "year": 2023,
+        "trim": "L",
+        "engine": "1.8L Hybrid",
+        "transmission": "eCVT",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "2101": "Hybrid Battery State",
+          "2102": "Electric Motor RPM",
+          "2103": "Regenerative Brake Status"
+        }
+      }
+    ],
+    "Ford": [
+      {
+        "make": "Ford",
+        "model": "F-150",
+        "year": 2023,
+        "trim": "XLT",
+        "engine": "3.5L V6",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "F001": "Turbo Boost Pressure",
+          "F002": "EGR Valve Position",
+          "F003": "DEF Level"
+        }
+      }
+    ],
+    "Honda": [
+      {
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2023,
+        "trim": "Sport",
+        "engine": "2.0L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN", "ISO9141-2"],
+        "manufacturerSpecificPids": {
+          "H001": "VTEC Engagement",
+          "H002": "CVT Ratio",
+          "H003": "Honda Sensing Status"
+        }
+      }
+    ],
+    "BMW": [
+      {
+        "make": "BMW",
+        "model": "3 Series",
+        "year": 2023,
+        "trim": "330i",
+        "engine": "2.0L Turbo I4",
+        "transmission": "8-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "B001": "N20 Turbo Wastegate",
+          "B002": "Active Suspension Status",
+          "B003": "iDrive System Status"
+        }
+      }
+    ],
+    "Mercedes-Benz": [
+      {
+        "make": "Mercedes-Benz",
+        "model": "C-Class",
+        "year": 2023,
+        "trim": "C300",
+        "engine": "2.0L Turbo I4",
+        "transmission": "9-Speed Auto",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "MB01": "Air Suspension Height",
+          "MB02": "COMAND System Status",
+          "MB03": "AMG Performance Data"
+        }
+      }
+    ],
+    "Generic": [
+      {
+        "make": "Generic",
+        "model": "OBD-II Vehicle",
+        "year": 2023,
+        "supportedProtocols": ["ISO9141-2", "KWP2000", "CAN"]
+      }
+    ]
+  },
+  "manufacturerConfigs": {
+    "Toyota": {
+      "name": "Toyota Motor Corporation",
+      "preferredProtocols": ["CAN", "ISO9141-2"],
+      "customPids": {
+        "2101": "Engine Oil Temperature",
+        "2102": "Transmission Fluid Temperature",
+        "2103": "Hybrid Battery State",
+        "2104": "Electric Motor RPM",
+        "2105": "Regenerative Brake Status"
+      },
+      "dtcLookup": {
+        "P3000": "Hybrid Control System Malfunction",
+        "P3001": "Battery Control Module Communication Error",
+        "P3002": "Electric Motor Overheat"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "Transmission", "Hybrid"],
+        "programmingModes": ["Flash", "Calibration"]
+      }
+    },
+    "Ford": {
+      "name": "Ford Motor Company",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "F001": "Turbo Boost Pressure",
+        "F002": "EGR Valve Position",
+        "F003": "DEF Level",
+        "F004": "Transmission Temperature"
+      },
+      "dtcLookup": {
+        "P2000": "EcoBoost Turbo Malfunction",
+        "P2001": "Transmission Adaptive Learning Required",
+        "P2002": "DEF System Low"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["PCM", "TCM", "BCM"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "Honda": {
+      "name": "Honda Motor Co., Ltd.",
+      "preferredProtocols": ["CAN", "ISO9141-2"],
+      "customPids": {
+        "H001": "VTEC Engagement",
+        "H002": "CVT Ratio",
+        "H003": "Honda Sensing Status",
+        "H004": "i-MMD Hybrid Status"
+      },
+      "dtcLookup": {
+        "P1000": "VTEC System Malfunction",
+        "P1001": "CVT Control Module Error",
+        "P1002": "Honda Sensing Calibration Required"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "Transmission", "Body"],
+        "programmingModes": ["Flash", "Adaptation"]
+      }
+    },
+    "BMW": {
+      "name": "Bayerische Motoren Werke AG",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "B001": "N20 Turbo Wastegate",
+        "B002": "Active Suspension Status",
+        "B003": "iDrive System Status",
+        "B004": "Dynamic Stability Control"
+      },
+      "dtcLookup": {
+        "B1000": "N20 Engine Timing Chain Stretch",
+        "B1001": "Active Suspension Compressor Fault",
+        "B1002": "iDrive Communication Error"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["DME", "DKG", "CAS", "FEM"],
+        "programmingModes": ["Flash", "Coding", "Adaptation"]
+      }
+    },
+    "Mercedes-Benz": {
+      "name": "Mercedes-Benz Group AG",
+      "preferredProtocols": ["CAN"],
+      "customPids": {
+        "MB01": "Air Suspension Height",
+        "MB02": "COMAND System Status",
+        "MB03": "AMG Performance Data",
+        "MB04": "4MATIC Status"
+      },
+      "dtcLookup": {
+        "M1000": "Air Suspension Compressor Fault",
+        "M1001": "COMAND Navigation Error",
+        "M1002": "AMG Performance System Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ME", "EGS", "SAM", "COMAND"],
+        "programmingModes": ["Flash", "SCN", "Adaptation"]
+      }
+    }
+  }
+}

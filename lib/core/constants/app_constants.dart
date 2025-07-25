@@ -1,6 +1,6 @@
 class AppConstants {
   static const String appName = 'OBD-II Diagnostics Tool';
-  static const String appVersion = '1.0.0';
+  static const String appVersion = '1.2.0';
   static const String appDescription = 'Cross-platform OBD-II diagnostics and programming tool';
   
   // OBD-II Protocol Constants
