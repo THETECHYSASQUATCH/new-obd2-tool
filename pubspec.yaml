@@ -2,7 +2,7 @@ name: new_obd2_tool
 description: A Flutter-based OBD-II Diagnostics and Programming Tool.
 publish_to: 'none'
 
-version: 1.0.0
+version: 1.1.0
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -35,6 +35,12 @@ dependencies:
   # TODO: Security enhancements for connection profile encryption
   crypto: ^3.0.3                             # For secure hashing and encryption
   flutter_secure_storage: ^9.0.0            # Secure storage for sensitive data
+  # Version 1.1 enhancements
+  csv: ^6.0.0                                # Data export functionality
+  archive: ^3.6.1                          # For compressed exports
+  universal_html: ^2.2.4                    # Web-compatible HTML manipulation
+  json_annotation: ^4.9.0                   # JSON serialization
+  intl: ^0.19.0                              # Internationalization and date formatting
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +50,7 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.4.4
   build_runner: ^2.4.8
+  json_serializable: ^6.8.0               # JSON code generation
 
 flutter:
   uses-material-design: true
