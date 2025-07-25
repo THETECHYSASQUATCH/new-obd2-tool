@@ -151,6 +151,12 @@ Thumbs.db
 *.freezed.dart
 *.chopper.dart
 
+# Exception: Track critical .g.dart files needed for build
+!lib/shared/models/ecu_programming.g.dart
+!lib/shared/models/cloud_sync.g.dart
+!lib/shared/models/vehicle_info.g.dart
+!lib/shared/widgets/custom_dashboard_widget.g.dart
+
 # Dart SDK (temporary)
 dart-sdk/
 
