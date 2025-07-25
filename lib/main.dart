@@ -12,6 +12,10 @@ import 'core/services/cloud_sync_service.dart';
 import 'features/dashboard/presentation/dashboard_screen.dart';
 import 'features/settings/presentation/advanced_settings_screen.dart';
 import 'features/ecu_programming/presentation/ecu_programming_screen.dart';
+import 'features/ai_diagnostics/presentation/ai_diagnostics_screen.dart';
+import 'features/predictive_maintenance/presentation/predictive_maintenance_screen.dart';
+import 'features/telematics/presentation/telematics_screen.dart';
+import 'features/shop_management/presentation/shop_management_screen.dart';
 import 'shared/providers/app_providers.dart';
 
 void main() async {
@@ -78,6 +82,10 @@ class OBD2DiagnosticsApp extends ConsumerWidget {
             '/': (context) => const DashboardScreen(),
             '/settings': (context) => const AdvancedSettingsScreen(),
             '/ecu-programming': (context) => const EcuProgrammingScreen(),
+            '/ai-diagnostics': (context) => const AIDiagnosticsScreen(),
+            '/predictive-maintenance': (context) => const PredictiveMaintenanceScreen(),
+            '/telematics': (context) => const TelematicsScreen(),
+            '/shop-management': (context) => const ShopManagementScreen(),
           },
           home: const DashboardScreen(),
         );
