@@ -106,6 +106,7 @@ class ProgrammingSession {
     double? progress,
     String? errorMessage,
     DateTime? endTime,
+    String? backupPath,
     List<String>? log,
   }) {
     return ProgrammingSession(
@@ -117,7 +118,7 @@ class ProgrammingSession {
       status: status ?? this.status,
       progress: progress ?? this.progress,
       filePath: filePath,
-      backupPath: backupPath,
+      backupPath: backupPath ?? this.backupPath,
       errorMessage: errorMessage ?? this.errorMessage,
       log: log ?? this.log,
     );

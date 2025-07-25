@@ -174,10 +174,10 @@ class GpsLocation {
     final double deltaLngRad = (other.longitude - longitude) * (3.14159265359 / 180.0);
 
     final double a = 
-        (deltaLatRad / 2).sin() * (deltaLatRad / 2).sin() +
-        lat1Rad.cos() * lat2Rad.cos() *
-        (deltaLngRad / 2).sin() * (deltaLngRad / 2).sin();
-    final double c = 2 * (a.sqrt()).asin();
+        sin(deltaLatRad / 2) * sin(deltaLatRad / 2) +
+        cos(lat1Rad) * cos(lat2Rad) *
+        sin(deltaLngRad / 2) * sin(deltaLngRad / 2);
+    final double c = 2 * asin(sqrt(a));
 
     return earthRadius * c;
   }

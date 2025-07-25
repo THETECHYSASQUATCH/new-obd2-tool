@@ -361,10 +361,12 @@ class CloudSyncService {
 
   static Future<void> _loadSettings() async {
     try {
-      final settingsJson = await SecureStorageService.read(_settingsKey);
-      if (settingsJson != null) {
-        final json = jsonDecode(settingsJson) as Map<String, dynamic>;
-        _settings = CloudSyncSettings.fromJson(json);
+      final preferences = await SecureStorageService.loadUserPreferences();
+      if (preferences.containsKey(_settingsKey)) {
+        final settingsData = preferences[_settingsKey];
+        if (settingsData is Map<String, dynamic>) {
+          _settings = CloudSyncSettings.fromJson(settingsData);
+        }
       }
     } catch (e) {
       debugPrint('Error loading cloud sync settings: $e');
@@ -374,8 +376,13 @@ class CloudSyncService {
 
   static Future<void> _saveSettings() async {
     if (_settings != null) {
-      final settingsJson = jsonEncode(_settings!.toJson());
-      await SecureStorageService.write(_settingsKey, settingsJson);
+      try {
+        final preferences = await SecureStorageService.loadUserPreferences();
+        preferences[_settingsKey] = _settings!.toJson();
+        await SecureStorageService.saveUserPreferences(preferences);
+      } catch (e) {
+        debugPrint('Error saving cloud sync settings: $e');
+      }
     }
   }
 

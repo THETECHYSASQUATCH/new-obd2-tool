@@ -287,7 +287,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               interval: historicalData.length / 4,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  axisSide: meta.axisSide,
+                  side: meta.side,
                   child: Text(
                     '${value.toInt()}s',
                     style: Theme.of(context).textTheme.bodySmall,
@@ -303,7 +303,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               reservedSize: 42,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  axisSide: meta.axisSide,
+                  side: meta.side,
                   child: Text(
                     _formatValue(value),
                     style: Theme.of(context).textTheme.bodySmall,
@@ -389,7 +389,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
         barTouchData: BarTouchData(
           enabled: true,
           touchTooltipData: BarTouchTooltipData(
-            tooltipBgColor: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.surface,
             getTooltipItem: (group, groupIndex, rod, rodIndex) {
               return BarTooltipItem(
                 '${_formatValue(rod.toY)} $unit',
@@ -411,7 +411,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               showTitles: true,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  axisSide: meta.axisSide,
+                  side: meta.side,
                   child: Text(
                     '${value.toInt()}',
                     style: Theme.of(context).textTheme.bodySmall,
@@ -426,7 +426,7 @@ class AdvancedDataVisualizationWidget extends ConsumerWidget {
               reservedSize: 42,
               getTitlesWidget: (value, meta) {
                 return SideTitleWidget(
-                  axisSide: meta.axisSide,
+                  side: meta.side,
                   child: Text(
                     _formatValue(value),
                     style: Theme.of(context).textTheme.bodySmall,
