@@ -1,8 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-//
-// NOTE: This file has been manually updated to show the expected output
-// after running: dart run build_runner build --delete-conflicting-outputs
-// with the new IconDataConverter implementation.
 
 part of 'custom_dashboard_widget.dart';
 
@@ -11,46 +7,47 @@ part of 'custom_dashboard_widget.dart';
 // **************************************************************************
 
 DashboardWidgetConfig _$DashboardWidgetConfigFromJson(
-        Map<String, dynamic> json) =>
-    DashboardWidgetConfig(
-      id: json['id'] as String,
-      title: json['title'] as String?,
-      widgetType:
-          $enumDecode(_$DashboardWidgetTypeEnumMap, json['widgetType']),
-      pidConfigs: (json['pidConfigs'] as List<dynamic>?)
-              ?.map((e) => PidDisplayConfig.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      gridWidth: json['gridWidth'] as int? ?? 1,
-      gridHeight: json['gridHeight'] as int? ?? 1,
-      accentColor: json['accentColor'] as int?,
-      showProgressBar: json['showProgressBar'] as bool? ?? true,
-      showLegend: json['showLegend'] as bool? ?? true,
-      chartType: $enumDecodeNullable(
-          _$DataVisualizationTypeEnumMap, json['chartType']),
-      quickActions: (json['quickActions'] as List<dynamic>?)
-          ?.map((e) => QuickAction.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      customSettings: json['customSettings'] as Map<String, dynamic>? ??
-          const <String, dynamic>{},
-    );
+  Map<String, dynamic> json,
+) => DashboardWidgetConfig(
+  id: json['id'] as String,
+  title: json['title'] as String?,
+  widgetType: $enumDecode(_$DashboardWidgetTypeEnumMap, json['widgetType']),
+  pidConfigs:
+      (json['pidConfigs'] as List<dynamic>?)
+          ?.map((e) => PidDisplayConfig.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+  gridWidth: (json['gridWidth'] as num?)?.toInt() ?? 1,
+  gridHeight: (json['gridHeight'] as num?)?.toInt() ?? 1,
+  accentColor: (json['accentColor'] as num?)?.toInt(),
+  showProgressBar: json['showProgressBar'] as bool? ?? true,
+  showLegend: json['showLegend'] as bool? ?? true,
+  chartType: $enumDecodeNullable(
+    _$DataVisualizationTypeEnumMap,
+    json['chartType'],
+  ),
+  quickActions: (json['quickActions'] as List<dynamic>?)
+      ?.map((e) => QuickAction.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  customSettings: json['customSettings'] as Map<String, dynamic>? ?? const {},
+);
 
 Map<String, dynamic> _$DashboardWidgetConfigToJson(
-        DashboardWidgetConfig instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'widgetType': _$DashboardWidgetTypeEnumMap[instance.widgetType]!,
-      'pidConfigs': instance.pidConfigs.map((e) => e.toJson()).toList(),
-      'gridWidth': instance.gridWidth,
-      'gridHeight': instance.gridHeight,
-      'accentColor': instance.accentColor,
-      'showProgressBar': instance.showProgressBar,
-      'showLegend': instance.showLegend,
-      'chartType': _$DataVisualizationTypeEnumMap[instance.chartType],
-      'quickActions': instance.quickActions?.map((e) => e.toJson()).toList(),
-      'customSettings': instance.customSettings,
-    };
+  DashboardWidgetConfig instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'title': instance.title,
+  'widgetType': _$DashboardWidgetTypeEnumMap[instance.widgetType]!,
+  'pidConfigs': instance.pidConfigs,
+  'gridWidth': instance.gridWidth,
+  'gridHeight': instance.gridHeight,
+  'accentColor': instance.accentColor,
+  'showProgressBar': instance.showProgressBar,
+  'showLegend': instance.showLegend,
+  'chartType': _$DataVisualizationTypeEnumMap[instance.chartType],
+  'quickActions': instance.quickActions,
+  'customSettings': instance.customSettings,
+};
 
 const _$DashboardWidgetTypeEnumMap = {
   DashboardWidgetType.liveData: 'liveData',
@@ -64,17 +61,18 @@ const _$DataVisualizationTypeEnumMap = {
   DataVisualizationType.gauge: 'gauge',
   DataVisualizationType.line: 'line',
   DataVisualizationType.bar: 'bar',
+  DataVisualizationType.area: 'area',
 };
 
 QuickAction _$QuickActionFromJson(Map<String, dynamic> json) => QuickAction(
-      id: json['id'] as String,
-      label: json['label'] as String,
-      icon: const IconDataConverter()
-          .fromJson(json['icon'] as Map<String, dynamic>),
-      action: $enumDecode(_$QuickActionTypeEnumMap, json['action']),
-      parameters: json['parameters'] as Map<String, dynamic>? ??
-          const <String, dynamic>{},
-    );
+  id: json['id'] as String,
+  label: json['label'] as String,
+  icon: const IconDataConverter().fromJson(
+    json['icon'] as Map<String, dynamic>,
+  ),
+  action: $enumDecode(_$QuickActionTypeEnumMap, json['action']),
+  parameters: json['parameters'] as Map<String, dynamic>? ?? const {},
+);
 
 Map<String, dynamic> _$QuickActionToJson(QuickAction instance) =>
     <String, dynamic>{
@@ -92,40 +90,3 @@ const _$QuickActionTypeEnumMap = {
   QuickActionType.exportData: 'exportData',
   QuickActionType.customCommand: 'customCommand',
 };
-
-T $enumDecode<T>(
-  Map<T, Object> enumValues,
-  Object? source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-T? $enumDecodeNullable<T>(
-  Map<T, Object> enumValues,
-  dynamic source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return $enumDecode<T>(enumValues, source, unknownValue: unknownValue);
-}

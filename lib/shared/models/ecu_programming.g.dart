@@ -7,33 +7,34 @@ part of 'ecu_programming.dart';
 // **************************************************************************
 
 EcuInfo _$EcuInfoFromJson(Map<String, dynamic> json) => EcuInfo(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      type: $enumDecode(_$EcuTypeEnumMap, json['type']),
-      address: json['address'] as String,
-      partNumber: json['partNumber'] as String?,
-      softwareVersion: json['softwareVersion'] as String?,
-      hardwareVersion: json['hardwareVersion'] as String?,
-      programmingSupported: json['programmingSupported'] as bool? ?? false,
-      supportedModes: (json['supportedModes'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$ProgrammingModeEnumMap, e))
-              .toList() ??
-          const [],
-    );
+  id: json['id'] as String,
+  name: json['name'] as String,
+  type: $enumDecode(_$EcuTypeEnumMap, json['type']),
+  address: json['address'] as String,
+  partNumber: json['partNumber'] as String?,
+  softwareVersion: json['softwareVersion'] as String?,
+  hardwareVersion: json['hardwareVersion'] as String?,
+  programmingSupported: json['programmingSupported'] as bool? ?? false,
+  supportedModes:
+      (json['supportedModes'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$ProgrammingModeEnumMap, e))
+          .toList() ??
+      const [],
+);
 
 Map<String, dynamic> _$EcuInfoToJson(EcuInfo instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'type': _$EcuTypeEnumMap[instance.type]!,
-      'address': instance.address,
-      'partNumber': instance.partNumber,
-      'softwareVersion': instance.softwareVersion,
-      'hardwareVersion': instance.hardwareVersion,
-      'programmingSupported': instance.programmingSupported,
-      'supportedModes': instance.supportedModes
-          .map((e) => _$ProgrammingModeEnumMap[e]!)
-          .toList(),
-    };
+  'id': instance.id,
+  'name': instance.name,
+  'type': _$EcuTypeEnumMap[instance.type]!,
+  'address': instance.address,
+  'partNumber': instance.partNumber,
+  'softwareVersion': instance.softwareVersion,
+  'hardwareVersion': instance.hardwareVersion,
+  'programmingSupported': instance.programmingSupported,
+  'supportedModes': instance.supportedModes
+      .map((e) => _$ProgrammingModeEnumMap[e]!)
+      .toList(),
+};
 
 const _$EcuTypeEnumMap = {
   EcuType.engine: 'engine',
@@ -69,7 +70,8 @@ ProgrammingSession _$ProgrammingSessionFromJson(Map<String, dynamic> json) =>
       filePath: json['filePath'] as String?,
       backupPath: json['backupPath'] as String?,
       errorMessage: json['errorMessage'] as String?,
-      log: (json['log'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      log:
+          (json['log'] as List<dynamic>?)?.map((e) => e as String).toList() ??
           const [],
     );
 
@@ -109,7 +111,8 @@ ProgrammingFile _$ProgrammingFileFromJson(Map<String, dynamic> json) =>
       size: (json['size'] as num).toInt(),
       description: json['description'] as String?,
       version: json['version'] as String?,
-      compatibleEcus: (json['compatibleEcus'] as List<dynamic>?)
+      compatibleEcus:
+          (json['compatibleEcus'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],

@@ -7,15 +7,15 @@ part of 'cloud_sync.dart';
 // **************************************************************************
 
 CloudConfig _$CloudConfigFromJson(Map<String, dynamic> json) => CloudConfig(
-      provider: $enumDecode(_$CloudProviderEnumMap, json['provider']),
-      endpoint: json['endpoint'] as String,
-      apiKey: json['apiKey'] as String,
-      region: json['region'] as String?,
-      autoSync: json['autoSync'] as bool? ?? true,
-      syncIntervalMinutes: (json['syncIntervalMinutes'] as num?)?.toInt() ?? 30,
-      syncOnlyOnWifi: json['syncOnlyOnWifi'] as bool? ?? true,
-      compressData: json['compressData'] as bool? ?? true,
-    );
+  provider: $enumDecode(_$CloudProviderEnumMap, json['provider']),
+  endpoint: json['endpoint'] as String,
+  apiKey: json['apiKey'] as String,
+  region: json['region'] as String?,
+  autoSync: json['autoSync'] as bool? ?? true,
+  syncIntervalMinutes: (json['syncIntervalMinutes'] as num?)?.toInt() ?? 30,
+  syncOnlyOnWifi: json['syncOnlyOnWifi'] as bool? ?? true,
+  compressData: json['compressData'] as bool? ?? true,
+);
 
 Map<String, dynamic> _$CloudConfigToJson(CloudConfig instance) =>
     <String, dynamic>{
@@ -38,45 +38,47 @@ const _$CloudProviderEnumMap = {
 };
 
 SyncData _$SyncDataFromJson(Map<String, dynamic> json) => SyncData(
-      id: json['id'] as String,
-      type: json['type'] as String,
-      data: json['data'] as Map<String, dynamic>,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      modifiedAt: DateTime.parse(json['modifiedAt'] as String),
-      deviceId: json['deviceId'] as String?,
-      checksum: json['checksum'] as String,
-    );
+  id: json['id'] as String,
+  type: json['type'] as String,
+  data: json['data'] as Map<String, dynamic>,
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  modifiedAt: DateTime.parse(json['modifiedAt'] as String),
+  deviceId: json['deviceId'] as String?,
+  checksum: json['checksum'] as String,
+);
 
 Map<String, dynamic> _$SyncDataToJson(SyncData instance) => <String, dynamic>{
-      'id': instance.id,
-      'type': instance.type,
-      'data': instance.data,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'modifiedAt': instance.modifiedAt.toIso8601String(),
-      'deviceId': instance.deviceId,
-      'checksum': instance.checksum,
-    };
+  'id': instance.id,
+  'type': instance.type,
+  'data': instance.data,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'modifiedAt': instance.modifiedAt.toIso8601String(),
+  'deviceId': instance.deviceId,
+  'checksum': instance.checksum,
+};
 
 SyncSession _$SyncSessionFromJson(Map<String, dynamic> json) => SyncSession(
-      id: json['id'] as String,
-      startTime: DateTime.parse(json['startTime'] as String),
-      endTime: json['endTime'] == null
-          ? null
-          : DateTime.parse(json['endTime'] as String),
-      status: $enumDecode(_$SyncStatusEnumMap, json['status']),
-      totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
-      syncedItems: (json['syncedItems'] as num?)?.toInt() ?? 0,
-      failedItems: (json['failedItems'] as num?)?.toInt() ?? 0,
-      errorMessage: json['errorMessage'] as String?,
-      syncedDataIds: (json['syncedDataIds'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      failedDataIds: (json['failedDataIds'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-    );
+  id: json['id'] as String,
+  startTime: DateTime.parse(json['startTime'] as String),
+  endTime: json['endTime'] == null
+      ? null
+      : DateTime.parse(json['endTime'] as String),
+  status: $enumDecode(_$SyncStatusEnumMap, json['status']),
+  totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
+  syncedItems: (json['syncedItems'] as num?)?.toInt() ?? 0,
+  failedItems: (json['failedItems'] as num?)?.toInt() ?? 0,
+  errorMessage: json['errorMessage'] as String?,
+  syncedDataIds:
+      (json['syncedDataIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
+  failedDataIds:
+      (json['failedDataIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList() ??
+      const [],
+);
 
 Map<String, dynamic> _$SyncSessionToJson(SyncSession instance) =>
     <String, dynamic>{
@@ -106,7 +108,8 @@ CloudSyncSettings _$CloudSyncSettingsFromJson(Map<String, dynamic> json) =>
       cloudConfig: json['cloudConfig'] == null
           ? null
           : CloudConfig.fromJson(json['cloudConfig'] as Map<String, dynamic>),
-      syncDataTypes: (json['syncDataTypes'] as List<dynamic>?)
+      syncDataTypes:
+          (json['syncDataTypes'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const ['diagnostic_session', 'vehicle_data'],
