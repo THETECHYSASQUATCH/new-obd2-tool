@@ -159,3 +159,57 @@ dart-sdk/
 **/ios/GoogleService-Info.plist
 **/android/app/google-services.json
 **/lib/firebase_options.dart
+
+# GPG Build Related
+# Source code downloads
+gnupg-*.tar.bz2
+gnupg-*.tar.gz
+gnupg-*.tar.xz
+gnupg-*/
+
+# Autotools generated files
+aclocal.m4
+autom4te.cache/
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+configure
+depcomp
+install-sh
+ltmain.sh
+missing
+stamp-h1
+libtool
+Makefile
+Makefile.in
+
+# Build artifacts
+*.o
+*.a
+*.la
+*.lo
+.deps/
+.libs/
+*.pc
+
+# GPG specific build outputs
+gpg-agent
+gpg-connect-agent
+gpg-wks-client
+gpg-wks-server
+gpgconf
+gpgparsemail
+gpgscm
+gpgsm
+gpgtar
+gpgv
+kbxutil
+watchgnupg
+yat2m
+
+# Test outputs
+tests/*.log
+tests/*.trs

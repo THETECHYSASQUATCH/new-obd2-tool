@@ -1,0 +1,239 @@
+# GPG Build Dependencies for Linux
+
+This file lists the required packages for building GNU Privacy Guard (GPG) from source on various Linux distributions.
+
+## Debian/Ubuntu Package Names
+
+### Essential Build Tools
+```
+build-essential
+gcc
+g++
+make
+autoconf
+automake
+libtool
+pkg-config
+gettext
+texinfo
+```
+
+### Core GPG Dependencies
+```
+libgpg-error-dev
+libgcrypt-dev
+libassuan-dev
+libksba-dev
+libnpth-dev
+```
+
+### Additional Libraries (Optional but Recommended)
+```
+libreadline-dev
+zlib1g-dev
+libbz2-dev
+libsqlite3-dev
+libldap2-dev
+libcurl4-openssl-dev
+libgnutls28-dev
+```
+
+### Download and Archive Tools
+```
+wget
+curl
+tar
+bzip2
+gzip
+xz-utils
+```
+
+### Complete Installation Command (Debian/Ubuntu)
+```bash
+sudo apt-get update
+sudo apt-get install build-essential gcc g++ make autoconf automake libtool \
+    pkg-config gettext texinfo libgpg-error-dev libgcrypt-dev libassuan-dev \
+    libksba-dev libnpth-dev libreadline-dev zlib1g-dev libbz2-dev \
+    libsqlite3-dev libldap2-dev libcurl4-openssl-dev libgnutls28-dev \
+    wget curl tar bzip2 gzip xz-utils
+```
+
+## CentOS/RHEL Package Names
+
+### Essential Build Tools
+```
+gcc
+gcc-c++
+make
+autoconf
+automake
+libtool
+pkgconfig
+gettext
+texinfo
+```
+
+### Core GPG Dependencies
+```
+libgpg-error-devel
+libgcrypt-devel
+libassuan-devel
+libksba-devel
+npth-devel
+```
+
+### Additional Libraries (Optional but Recommended)
+```
+readline-devel
+zlib-devel
+bzip2-devel
+sqlite-devel
+openldap-devel
+libcurl-devel
+gnutls-devel
+```
+
+### Download and Archive Tools
+```
+wget
+curl
+tar
+bzip2
+gzip
+xz
+```
+
+### Complete Installation Command (CentOS/RHEL 7/8)
+```bash
+sudo yum groupinstall "Development Tools"
+sudo yum install gcc gcc-c++ make autoconf automake libtool pkgconfig \
+    gettext texinfo libgpg-error-devel libgcrypt-devel libassuan-devel \
+    libksba-devel npth-devel readline-devel zlib-devel bzip2-devel \
+    sqlite-devel openldap-devel libcurl-devel gnutls-devel \
+    wget curl tar bzip2 gzip xz
+```
+
+## Fedora Package Names
+
+### Complete Installation Command (Fedora)
+```bash
+sudo dnf groupinstall "Development Tools"
+sudo dnf install gcc gcc-c++ make autoconf automake libtool pkgconfig \
+    gettext texinfo libgpg-error-devel libgcrypt-devel libassuan-devel \
+    libksba-devel npth-devel readline-devel zlib-devel bzip2-devel \
+    sqlite-devel openldap-devel libcurl-devel gnutls-devel \
+    wget curl tar bzip2 gzip xz
+```
+
+## Arch Linux Package Names
+
+### Essential Build Tools
+```
+base-devel
+gcc
+make
+autoconf
+automake
+libtool
+pkg-config
+gettext
+texinfo
+```
+
+### Core GPG Dependencies
+```
+libgpg-error
+libgcrypt
+libassuan
+libksba
+npth
+```
+
+### Additional Libraries (Optional but Recommended)
+```
+readline
+zlib
+bzip2
+sqlite
+libldap
+curl
+gnutls
+```
+
+### Complete Installation Command (Arch Linux)
+```bash
+sudo pacman -S base-devel gcc make autoconf automake libtool pkg-config \
+    gettext texinfo libgpg-error libgcrypt libassuan libksba npth \
+    readline zlib bzip2 sqlite libldap curl gnutls wget tar xz
+```
+
+## OpenSUSE Package Names
+
+### Complete Installation Command (OpenSUSE)
+```bash
+sudo zypper install -t pattern devel_basis
+sudo zypper install gcc gcc-c++ make autoconf automake libtool pkg-config \
+    gettext-tools texinfo libgpg-error-devel libgcrypt-devel libassuan-devel \
+    libksba-devel npth-devel readline-devel zlib-devel libbz2-devel \
+    sqlite3-devel openldap2-devel libcurl-devel gnutls-devel \
+    wget curl tar bzip2 gzip xz
+```
+
+## Alpine Linux Package Names
+
+### Complete Installation Command (Alpine Linux)
+```bash
+sudo apk add build-base gcc g++ make autoconf automake libtool pkgconfig \
+    gettext texinfo libgpg-error-dev libgcrypt-dev libassuan-dev \
+    libksba-dev npth-dev readline-dev zlib-dev bzip2-dev \
+    sqlite-dev openldap-dev curl-dev gnutls-dev \
+    wget curl tar bzip2 gzip xz
+```
+
+## Minimum Requirements
+
+### Absolutely Required (GPG will not build without these)
+- C compiler (gcc or clang)
+- make
+- autoconf, automake, libtool
+- pkg-config
+- libgpg-error-dev
+- libgcrypt-dev
+- libassuan-dev
+- libksba-dev
+- libnpth-dev
+
+### Recommended (for full functionality)
+- gettext (for internationalization)
+- texinfo (for documentation)
+- readline (for interactive features)
+- zlib (for compression support)
+- bzip2 (for archive support)
+
+### Optional (for extended features)
+- sqlite (for keybox support)
+- ldap libraries (for LDAP keyserver support)
+- curl (for HTTP keyserver support)
+- gnutls (for TLS support)
+
+## Version Requirements
+
+### Minimum Versions (as of GPG 2.4.x)
+- libgpg-error >= 1.46
+- libgcrypt >= 1.9.1
+- libassuan >= 2.5.3
+- libksba >= 1.6.0
+- npth >= 1.2
+
+### Autotools Versions
+- autoconf >= 2.69
+- automake >= 1.14
+- libtool >= 2.2.6
+
+## Notes
+
+1. Package names may vary between distributions and versions
+2. Some distributions include development headers in separate -dev or -devel packages
+3. The build script will check for these dependencies automatically
+4. If you encounter missing dependencies, consult your distribution's package documentation
+5. For cross-compilation, you'll need the corresponding cross-compilation toolchain and libraries
