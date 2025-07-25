@@ -106,7 +106,7 @@ ProgrammingFile _$ProgrammingFileFromJson(Map<String, dynamic> json) =>
       path: json['path'] as String,
       name: json['name'] as String,
       checksum: json['checksum'] as String,
-      size: json['size'] as int,
+      size: (json['size'] as num).toInt(),
       description: json['description'] as String?,
       version: json['version'] as String?,
       compatibleEcus: (json['compatibleEcus'] as List<dynamic>?)
@@ -143,29 +143,3 @@ Map<String, dynamic> _$SecurityAccessToJson(SecurityAccess instance) =>
       'timestamp': instance.timestamp.toIso8601String(),
       'isValid': instance.isValid,
     };
-
-T $enumDecode<T>(
-  Map<T, Object> enumValues,
-  Object? source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}

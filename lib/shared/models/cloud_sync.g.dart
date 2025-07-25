@@ -12,7 +12,7 @@ CloudConfig _$CloudConfigFromJson(Map<String, dynamic> json) => CloudConfig(
       apiKey: json['apiKey'] as String,
       region: json['region'] as String?,
       autoSync: json['autoSync'] as bool? ?? true,
-      syncIntervalMinutes: json['syncIntervalMinutes'] as int? ?? 30,
+      syncIntervalMinutes: (json['syncIntervalMinutes'] as num?)?.toInt() ?? 30,
       syncOnlyOnWifi: json['syncOnlyOnWifi'] as bool? ?? true,
       compressData: json['compressData'] as bool? ?? true,
     );
@@ -64,9 +64,9 @@ SyncSession _$SyncSessionFromJson(Map<String, dynamic> json) => SyncSession(
           ? null
           : DateTime.parse(json['endTime'] as String),
       status: $enumDecode(_$SyncStatusEnumMap, json['status']),
-      totalItems: json['totalItems'] as int? ?? 0,
-      syncedItems: json['syncedItems'] as int? ?? 0,
-      failedItems: json['failedItems'] as int? ?? 0,
+      totalItems: (json['totalItems'] as num?)?.toInt() ?? 0,
+      syncedItems: (json['syncedItems'] as num?)?.toInt() ?? 0,
+      failedItems: (json['failedItems'] as num?)?.toInt() ?? 0,
       errorMessage: json['errorMessage'] as String?,
       syncedDataIds: (json['syncedDataIds'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -111,7 +111,7 @@ CloudSyncSettings _$CloudSyncSettingsFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const ['diagnostic_session', 'vehicle_data'],
       autoBackup: json['autoBackup'] as bool? ?? true,
-      maxBackupAgeDays: json['maxBackupAgeDays'] as int? ?? 30,
+      maxBackupAgeDays: (json['maxBackupAgeDays'] as num?)?.toInt() ?? 30,
       notifyOnSync: json['notifyOnSync'] as bool? ?? true,
       notifyOnError: json['notifyOnError'] as bool? ?? true,
     );
@@ -119,7 +119,7 @@ CloudSyncSettings _$CloudSyncSettingsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CloudSyncSettingsToJson(CloudSyncSettings instance) =>
     <String, dynamic>{
       'enabled': instance.enabled,
-      'cloudConfig': instance.cloudConfig?.toJson(),
+      'cloudConfig': instance.cloudConfig,
       'syncDataTypes': instance.syncDataTypes,
       'autoBackup': instance.autoBackup,
       'maxBackupAgeDays': instance.maxBackupAgeDays,
@@ -132,7 +132,7 @@ BackupMetadata _$BackupMetadataFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
-      size: json['size'] as int,
+      size: (json['size'] as num).toInt(),
       checksum: json['checksum'] as String,
       includedDataTypes: (json['includedDataTypes'] as List<dynamic>)
           .map((e) => e as String)
@@ -152,29 +152,3 @@ Map<String, dynamic> _$BackupMetadataToJson(BackupMetadata instance) =>
       'description': instance.description,
       'metadata': instance.metadata,
     };
-
-T $enumDecode<T>(
-  Map<T, Object> enumValues,
-  Object? source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
