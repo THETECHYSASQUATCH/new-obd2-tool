@@ -1,6 +1,22 @@
-# Flutter 3.27+ Build Fixes
+# Flutter Build Instructions and Fixes
 
-This document outlines the changes made to ensure compatibility with Flutter 3.27+ and Windows builds.
+This document outlines the build instructions and changes made to ensure compatibility with Flutter 3.27+ and Windows builds.
+
+## Build Instructions
+
+**IMPORTANT**: After pulling this repository or any changes to dependencies, run these commands in order:
+
+```bash
+# 1. Install/update dependencies
+flutter pub get
+
+# 2. Generate required .g.dart files for JSON serialization
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# 3. Clean and rebuild
+flutter clean
+flutter build windows  # or your target platform
+```
 
 ## Changes Made
 
