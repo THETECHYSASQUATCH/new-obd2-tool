@@ -15,6 +15,8 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 - **Custom commands**: Send custom OBD-II commands for advanced diagnostics
 - **Protocol support**: Automatic protocol detection for various OBD-II adapters
 - **Vehicle-specific diagnostics**: Tailored diagnostics for specific makes and models with manufacturer PIDs
+- **Ford-specific tools**: EcoBoost diagnostics, SYNC system testing, DEF service, and transmission learning
+- **GM-specific tools**: AFM/DFM management, Super Cruise diagnostics, OnStar activation, and brand-specific features
 
 ### 🔧 Advanced ECU Programming
 - **ECU discovery**: Automatic detection of programmable control modules
@@ -214,6 +216,71 @@ flutter build linux --release
 2. **Scan DTCs**: Check for diagnostic trouble codes
 3. **Clear Codes**: Reset stored error codes (use with caution)
 4. **Custom Commands**: Send specific OBD-II PIDs for advanced diagnostics
+
+## Supported Vehicle Manufacturers
+
+### Ford Motor Company
+- **F-Series Trucks**: F-150, F-250, F-350 with EcoBoost and PowerStroke engines
+- **Mustang**: Including GT, EcoBoost, and Shelby variants
+- **Explorer, Expedition**: SUV models with advanced 4WD systems
+- **Edge, Escape**: Crossover vehicles with SYNC integration
+- **Transit**: Commercial vehicle support
+
+**Ford-Specific Features:**
+- EcoBoost turbocharger diagnostics and optimization
+- SYNC infotainment system testing and configuration
+- DEF (Diesel Exhaust Fluid) system service for PowerStroke engines
+- Intelligent 4WD system diagnostics
+- Trailer brake controller programming
+- Key programming and security access
+
+### General Motors (GM)
+#### Chevrolet
+- **Silverado, Colorado**: Pickup trucks with AFM/DFM technology
+- **Corvette**: Performance sports car with Z51 package support
+- **Tahoe, Suburban**: Full-size SUVs with Magnetic Ride Control
+- **Camaro**: Performance car with track mode capabilities
+
+#### Cadillac
+- **Escalade**: Luxury SUV with Super Cruise technology
+- **CT4, CT5**: Performance sedans with Magnetic Ride Control
+- **XT4, XT5, XT6**: Luxury crossovers with advanced features
+- **V-Series**: High-performance variants with launch control
+
+#### GMC
+- **Sierra**: Professional-grade trucks with MultiPro tailgate
+- **Yukon**: Full-size SUV with AT4 off-road package
+- **Canyon**: Mid-size truck with terrain management
+- **Acadia**: Crossover with advanced towing packages
+
+**GM-Specific Features:**
+- Active Fuel Management (AFM) and Dynamic Fuel Management (DFM)
+- Super Cruise hands-free driving technology (Cadillac)
+- Magnetic Ride Control suspension system
+- MultiPro tailgate diagnostics and calibration (GMC)
+- AT4 off-road mode optimization
+- OnStar connectivity and emergency services
+- Performance data recording and track mode features
+
+## Documentation
+
+### General Documentation
+- [Build Instructions](BUILD_INSTRUCTIONS.md)
+- [Dependencies Management](DEPENDENCIES.md)
+- [Deployment Guide](DEPLOYMENT.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+
+### Platform-Specific Documentation
+- [Platform Setup Guide](docs/platform-support/PLATFORM_SETUP.md)
+- [Language Support](docs/LANGUAGE_SUPPORT.md)
+- [Integration Guide](docs/INTEGRATION_GUIDE.md)
+
+### Vehicle-Specific Documentation
+- [Ford Tools Documentation](docs/FORD_TOOLS.md) - Comprehensive guide for Ford-specific features
+- [GM Tools Documentation](docs/GM_TOOLS.md) - Complete guide for GM brand-specific tools
+- [ECU Programming Safety](docs/ECU_PROGRAMMING_SAFETY.md)
+- [Vehicle Diagnostics Guide](docs/VEHICLE_DIAGNOSTICS.md)
+- [Cloud Sync Guide](docs/CLOUD_SYNC_GUIDE.md)
 
 ## Architecture
 
