@@ -21,9 +21,11 @@ import '../../ai_diagnostics/presentation/ai_diagnostics_screen.dart';
 import '../../predictive_maintenance/presentation/predictive_maintenance_screen.dart';
 import '../../telematics/presentation/telematics_screen.dart';
 import '../../shop_management/presentation/shop_management_screen.dart';
-// Ford and GM specific tools
+// Ford, GM, VW, and Nissan specific tools
 import '../../ford_tools/presentation/ford_tools_screen.dart';
 import '../../gm_tools/presentation/gm_tools_screen.dart';
+import '../../vw_tools/presentation/vw_tools_screen.dart';
+import '../../nissan_tools/presentation/nissan_tools_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -226,6 +228,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 // Manufacturer-specific tools
                 _buildNavigationTile(13, Icons.precision_manufacturing, 'Ford Tools'),
                 _buildNavigationTile(14, Icons.car_repair, 'GM Tools'),
+                _buildNavigationTile(15, Icons.engineering, 'VW Tools'),
+                _buildNavigationTile(16, Icons.directions_car, 'Nissan Tools'),
                 const Divider(),
                 // Existing features
                 _buildNavigationTile(5, Icons.tune, 'PID Config'),
@@ -317,6 +321,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const FordToolsScreen();
       case 14:
         return const GMToolsScreen();
+      case 15:
+        return const VWToolsScreen();
+      case 16:
+        return const NissanToolsScreen();
       default:
         return const DashboardPage();
     }

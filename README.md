@@ -17,6 +17,8 @@ A comprehensive cross-platform OBD-II diagnostics and programming tool built wit
 - **Vehicle-specific diagnostics**: Tailored diagnostics for specific makes and models with manufacturer PIDs
 - **Ford-specific tools**: EcoBoost diagnostics, SYNC system testing, DEF service, and transmission learning
 - **GM-specific tools**: AFM/DFM management, Super Cruise diagnostics, OnStar activation, and brand-specific features
+- **VW Group tools**: VCDS/VAG-COM compatibility, DSG service, AdBlue reset, Quattro AWD diagnostics, and air suspension calibration
+- **Nissan tools**: CVT transmission service, ProPILOT calibration, e-POWER diagnostics, and CONSULT-compatible scanning
 
 ### 🔧 Advanced ECU Programming
 - **ECU discovery**: Automatic detection of programmable control modules
@@ -262,6 +264,51 @@ flutter build linux --release
 - OnStar connectivity and emergency services
 - Performance data recording and track mode features
 
+### Volkswagen Group
+#### Volkswagen
+- **Golf**: Including GTI, R, and standard variants with DSG transmission
+- **Passat**: Mid-size sedan with TDI and TSI engine options
+- **Tiguan**: Compact SUV with 4Motion AWD system
+- **Atlas**: Full-size SUV with advanced driver assistance
+
+#### Audi
+- **A4, A6, A8**: Luxury sedans with Quattro AWD and air suspension
+- **Q5, Q7, Q8**: Premium SUVs with adaptive damping control
+- **TT, R8**: Sports cars with performance monitoring
+- **e-tron**: Electric vehicles with battery management diagnostics
+
+**VW Group-Specific Features:**
+- VCDS/VAG-COM compatible diagnostics and coding
+- DSG dual-clutch transmission service and adaptation
+- AdBlue (DEF) system reset and calibration
+- Quattro AWD system monitoring and diagnostics
+- Air suspension height calibration
+- DPF regeneration control and monitoring
+- Traffic sign recognition and lane assist diagnostics
+
+### Nissan Motor Company
+#### Nissan
+- **Altima**: Mid-size sedan with CVT transmission and ProPILOT
+- **Rogue**: Compact SUV with Intelligent AWD system
+- **Pathfinder**: Mid-size SUV with advanced safety features
+- **Sentra**: Compact car with CVT technology
+- **Leaf**: Electric vehicle with advanced battery management
+
+#### Infiniti
+- **Q50, Q60**: Luxury performance vehicles with VR30 twin-turbo
+- **QX50**: Luxury SUV with Variable Compression Ratio engine
+- **QX60**: Premium family SUV with CVT transmission
+- **QX80**: Full-size luxury SUV with advanced towing capabilities
+
+**Nissan-Specific Features:**
+- CVT transmission temperature and pressure monitoring
+- ProPILOT Assist calibration and diagnostics
+- e-POWER hybrid system analysis and optimization
+- Intelligent AWD torque distribution monitoring
+- Around View Monitor camera system diagnostics
+- CONSULT-compatible scanning and programming
+- Variable Compression Ratio engine monitoring
+
 ## Documentation
 
 ### General Documentation
@@ -278,6 +325,8 @@ flutter build linux --release
 ### Vehicle-Specific Documentation
 - [Ford Tools Documentation](docs/FORD_TOOLS.md) - Comprehensive guide for Ford-specific features
 - [GM Tools Documentation](docs/GM_TOOLS.md) - Complete guide for GM brand-specific tools
+- [VW Tools Documentation](docs/VW_TOOLS.md) - Complete guide for VW Group vehicle diagnostics
+- [Nissan Tools Documentation](docs/NISSAN_TOOLS.md) - Comprehensive guide for Nissan and Infiniti tools
 - [ECU Programming Safety](docs/ECU_PROGRAMMING_SAFETY.md)
 - [Vehicle Diagnostics Guide](docs/VEHICLE_DIAGNOSTICS.md)
 - [Cloud Sync Guide](docs/CLOUD_SYNC_GUIDE.md)

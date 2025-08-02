@@ -198,6 +198,98 @@
         }
       }
     ],
+    "Volkswagen": [
+      {
+        "make": "Volkswagen",
+        "model": "Golf",
+        "year": 2023,
+        "trim": "GTI",
+        "engine": "2.0L Turbo I4",
+        "transmission": "DSG",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW01": "DSG Transmission Temperature",
+          "VW02": "DSG Clutch Status",
+          "VW04": "AdBlue/DEF Level"
+        }
+      },
+      {
+        "make": "Volkswagen",
+        "model": "Passat",
+        "year": 2023,
+        "trim": "SEL",
+        "engine": "2.0L Turbo I4",
+        "transmission": "DSG",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW01": "DSG Transmission Temperature",
+          "VW05": "DPF Regeneration Status",
+          "VW13": "Start/Stop System Status"
+        }
+      }
+    ],
+    "Audi": [
+      {
+        "make": "Audi",
+        "model": "A4",
+        "year": 2023,
+        "trim": "Premium Plus",
+        "engine": "2.0L Turbo I4",
+        "transmission": "S tronic",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW03": "Quattro AWD Status",
+          "VW08": "Air Suspension Height",
+          "VW09": "Adaptive Damping Control"
+        }
+      }
+    ],
+    "Nissan": [
+      {
+        "make": "Nissan",
+        "model": "Altima",
+        "year": 2023,
+        "trim": "SV",
+        "engine": "2.5L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN", "ISO9141-2"],
+        "manufacturerSpecificPids": {
+          "NS01": "CVT Transmission Temperature",
+          "NS02": "CVT Fluid Pressure",
+          "NS03": "CVT Pulley Ratio"
+        }
+      },
+      {
+        "make": "Nissan",
+        "model": "Rogue",
+        "year": 2023,
+        "trim": "SL",
+        "engine": "2.5L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "NS04": "ProPILOT Assist Status",
+          "NS06": "Intelligent AWD Status",
+          "NS09": "Intelligent Cruise Control"
+        }
+      }
+    ],
+    "Infiniti": [
+      {
+        "make": "Infiniti",
+        "model": "Q50",
+        "year": 2023,
+        "trim": "Red Sport 400",
+        "engine": "3.0L Twin Turbo V6",
+        "transmission": "7-Speed Auto",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "NS07": "Variable Compression Ratio",
+          "NS09": "Intelligent Cruise Control",
+          "NS10": "Around View Monitor Status"
+        }
+      }
+    ],
     "Generic": [
       {
         "make": "Generic",
@@ -385,6 +477,121 @@
         "requiresSecurityAccess": true,
         "supportedEcus": ["ME", "EGS", "SAM", "COMAND"],
         "programmingModes": ["Flash", "SCN", "Adaptation"]
+      }
+    },
+    "Volkswagen": {
+      "name": "Volkswagen AG",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "VW01": "DSG Transmission Temperature",
+        "VW02": "DSG Clutch Status",
+        "VW03": "Quattro AWD Status",
+        "VW04": "AdBlue/DEF Level",
+        "VW05": "DPF Regeneration Status",
+        "VW06": "Turbo Wastegate Position",
+        "VW07": "EGR Valve Position",
+        "VW08": "Air Suspension Height",
+        "VW09": "Adaptive Damping Control",
+        "VW10": "Traffic Sign Recognition",
+        "VW11": "Lane Assist Status",
+        "VW12": "Parking Assist Status",
+        "VW13": "Start/Stop System Status",
+        "VW14": "Battery Management System",
+        "VW15": "Infotainment System Status"
+      },
+      "dtcLookup": {
+        "VW1000": "DSG Clutch Adaptation Required",
+        "VW1001": "AdBlue System Quality Poor",
+        "VW1002": "DPF Regeneration Required",
+        "VW1003": "Air Suspension Height Sensor Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "DSG", "Gateway", "Infotainment"],
+        "programmingModes": ["Flash", "Coding", "Adaptation", "BasicSetting"]
+      }
+    },
+    "Audi": {
+      "name": "Audi AG",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "VW03": "Quattro AWD Status",
+        "VW08": "Air Suspension Height",
+        "VW09": "Adaptive Damping Control",
+        "VW10": "Traffic Sign Recognition",
+        "VW11": "Lane Assist Status",
+        "VW12": "Parking Assist Status"
+      },
+      "dtcLookup": {
+        "AU1000": "Quattro System Malfunction",
+        "AU1001": "Virtual Cockpit Display Error",
+        "AU1002": "MMI Communication Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "S tronic", "Gateway", "MMI"],
+        "programmingModes": ["Flash", "Coding", "Adaptation", "LongCoding"]
+      }
+    },
+    "Nissan": {
+      "name": "Nissan Motor Co., Ltd.",
+      "preferredProtocols": ["CAN", "ISO9141-2"],
+      "customPids": {
+        "NS01": "CVT Transmission Temperature",
+        "NS02": "CVT Fluid Pressure",
+        "NS03": "CVT Pulley Ratio",
+        "NS04": "ProPILOT Assist Status",
+        "NS05": "e-POWER System Status",
+        "NS06": "Intelligent AWD Status",
+        "NS07": "Variable Compression Ratio",
+        "NS08": "Zone Body Construction Data",
+        "NS09": "Intelligent Cruise Control",
+        "NS10": "Around View Monitor Status",
+        "NS11": "Intelligent Emergency Braking",
+        "NS12": "Blind Spot Warning Status",
+        "NS13": "Lane Departure Warning",
+        "NS14": "Intelligent Forward Collision",
+        "NS15": "Rear Cross Traffic Alert"
+      },
+      "dtcLookup": {
+        "NS1000": "CVT Overheating Protection",
+        "NS1001": "ProPILOT Camera Obstruction",
+        "NS1002": "e-POWER System Fault",
+        "NS1003": "Intelligent Key Communication Error"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "CVT", "BCM", "Intelligent Key"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "Infiniti": {
+      "name": "Infiniti",
+      "preferredProtocols": ["CAN"],
+      "customPids": {
+        "NS04": "ProPILOT Assist Status",
+        "NS06": "Intelligent AWD Status",
+        "NS07": "Variable Compression Ratio",
+        "NS09": "Intelligent Cruise Control",
+        "NS10": "Around View Monitor Status",
+        "NS11": "Intelligent Emergency Braking",
+        "NS12": "Blind Spot Warning Status",
+        "NS14": "Intelligent Forward Collision",
+        "NS15": "Rear Cross Traffic Alert"
+      },
+      "dtcLookup": {
+        "INF1000": "Variable Compression Actuator Fault",
+        "INF1001": "Direct Adaptive Steering Malfunction",
+        "INF1002": "InTouch System Communication Error"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "InTouch"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
       }
     }
   }
