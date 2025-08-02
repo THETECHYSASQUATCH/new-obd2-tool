@@ -16,6 +16,8 @@ import 'features/ai_diagnostics/presentation/ai_diagnostics_screen.dart';
 import 'features/predictive_maintenance/presentation/predictive_maintenance_screen.dart';
 import 'features/telematics/presentation/telematics_screen.dart';
 import 'features/shop_management/presentation/shop_management_screen.dart';
+import 'features/ford_tools/presentation/ford_tools_screen.dart';
+import 'features/gm_tools/presentation/gm_tools_screen.dart';
 import 'shared/providers/app_providers.dart';
 
 void main() async {

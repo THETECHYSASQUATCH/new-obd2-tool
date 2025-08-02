@@ -94,6 +94,110 @@
         }
       }
     ],
+    "Chevrolet": [
+      {
+        "make": "Chevrolet",
+        "model": "Silverado 1500",
+        "year": 2023,
+        "trim": "LTZ",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM02": "Transmission Adaptive Pressure",
+          "GM03": "DFM Dynamic Fuel Management"
+        }
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Corvette",
+        "year": 2023,
+        "trim": "Stingray",
+        "engine": "6.2L V8",
+        "transmission": "8-Speed DCT",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM01": "Performance Traction Management",
+          "GM04": "Magnetic Ride Control Status",
+          "GM05": "Z51 Performance Package Data"
+        }
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Tahoe",
+        "year": 2023,
+        "trim": "RST",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM06": "4WD Transfer Case Status",
+          "GM07": "Trailer Brake Controller"
+        }
+      }
+    ],
+    "Cadillac": [
+      {
+        "make": "Cadillac",
+        "model": "Escalade",
+        "year": 2023,
+        "trim": "Premium Luxury",
+        "engine": "6.2L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM08": "Super Cruise Status",
+          "GM09": "Magnetic Ride Control",
+          "GM10": "Air Suspension Height"
+        }
+      },
+      {
+        "make": "Cadillac",
+        "model": "CT5-V",
+        "year": 2023,
+        "trim": "Blackwing",
+        "engine": "6.2L Supercharged V8",
+        "transmission": "6-Speed Manual",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM11": "Supercharger Boost Pressure",
+          "GM12": "Launch Control Status",
+          "GM13": "Track Mode Data"
+        }
+      }
+    ],
+    "GMC": [
+      {
+        "make": "GMC",
+        "model": "Sierra 1500",
+        "year": 2023,
+        "trim": "Denali",
+        "engine": "6.2L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM14": "Carbon Fiber Bed Data",
+          "GM15": "MultiPro Tailgate Status"
+        }
+      },
+      {
+        "make": "GMC",
+        "model": "Yukon",
+        "year": 2023,
+        "trim": "AT4",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM06": "4WD Transfer Case Status",
+          "GM16": "AT4 Off-Road Mode Data"
+        }
+      }
+    ],
     "Generic": [
       {
         "make": "Generic",
@@ -166,6 +270,79 @@
         "requiresSecurityAccess": true,
         "supportedEcus": ["Engine", "Transmission", "Body"],
         "programmingModes": ["Flash", "Adaptation"]
+      }
+    },
+    "Chevrolet": {
+      "name": "General Motors - Chevrolet",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "GM01": "AFM Cylinder Deactivation Status",
+        "GM02": "Transmission Adaptive Pressure",
+        "GM03": "DFM Dynamic Fuel Management",
+        "GM04": "Magnetic Ride Control Status",
+        "GM05": "Z51 Performance Package Data",
+        "GM06": "4WD Transfer Case Status",
+        "GM07": "Trailer Brake Controller"
+      },
+      "dtcLookup": {
+        "P3400": "AFM Cylinder Deactivation Fault",
+        "P3401": "DFM System Malfunction",
+        "P3402": "Transmission Adaptive Learning Required",
+        "P3403": "4WD Transfer Case Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "SDM"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "Cadillac": {
+      "name": "General Motors - Cadillac",
+      "preferredProtocols": ["CAN"],
+      "customPids": {
+        "GM08": "Super Cruise Status",
+        "GM09": "Magnetic Ride Control",
+        "GM10": "Air Suspension Height",
+        "GM11": "Supercharger Boost Pressure",
+        "GM12": "Launch Control Status",
+        "GM13": "Track Mode Data"
+      },
+      "dtcLookup": {
+        "P3500": "Super Cruise System Fault",
+        "P3501": "Magnetic Ride Control Malfunction",
+        "P3502": "Air Suspension Compressor Fault",
+        "P3503": "Supercharger System Error",
+        "P3504": "Launch Control Disabled"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "EBCM", "RCDLR"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "GMC": {
+      "name": "General Motors - GMC",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "GM01": "AFM Cylinder Deactivation Status",
+        "GM14": "Carbon Fiber Bed Data",
+        "GM15": "MultiPro Tailgate Status",
+        "GM16": "AT4 Off-Road Mode Data",
+        "GM06": "4WD Transfer Case Status"
+      },
+      "dtcLookup": {
+        "P3600": "MultiPro Tailgate System Fault",
+        "P3601": "AT4 Off-Road Mode Error",
+        "P3602": "Carbon Fiber Bed Sensor Fault",
+        "P3400": "AFM Cylinder Deactivation Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "EBCM"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
       }
     },
     "BMW": {

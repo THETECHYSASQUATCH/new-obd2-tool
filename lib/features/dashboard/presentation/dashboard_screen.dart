@@ -21,6 +21,9 @@ import '../../ai_diagnostics/presentation/ai_diagnostics_screen.dart';
 import '../../predictive_maintenance/presentation/predictive_maintenance_screen.dart';
 import '../../telematics/presentation/telematics_screen.dart';
 import '../../shop_management/presentation/shop_management_screen.dart';
+// Ford and GM specific tools
+import '../../ford_tools/presentation/ford_tools_screen.dart';
+import '../../gm_tools/presentation/gm_tools_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -220,6 +223,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 _buildNavigationTile(11, MdiIcons.satellite, 'Telematics'),
                 _buildNavigationTile(12, Icons.store, 'Shop Management'),
                 const Divider(),
+                // Manufacturer-specific tools
+                _buildNavigationTile(13, Icons.precision_manufacturing, 'Ford Tools'),
+                _buildNavigationTile(14, Icons.car_repair, 'GM Tools'),
+                const Divider(),
                 // Existing features
                 _buildNavigationTile(5, Icons.tune, 'PID Config'),
                 _buildNavigationTile(6, Icons.wifi, 'Profiles'),
@@ -305,6 +312,11 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         return const TelematicsScreen();
       case 12:
         return const ShopManagementScreen();
+      // Manufacturer-specific tools
+      case 13:
+        return const FordToolsScreen();
+      case 14:
+        return const GMToolsScreen();
       default:
         return const DashboardPage();
     }
