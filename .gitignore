@@ -115,6 +115,18 @@ app.*.map.json
 *.tmp
 *.temp
 
+# CMake build directories
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+cmake_uninstall.cmake
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+
 # IDE related
 .vscode/
 .idea/
