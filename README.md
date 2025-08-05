@@ -465,23 +465,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Roadmap
 
-### Version 1.3 (Current)
-- [x] Advanced AI-powered diagnostics
-- [x] Predictive maintenance alerts
-- [x] Integration with vehicle telematics
+### Current Status (Version 1.3.0)
+- [x] Advanced AI-powered diagnostics with machine learning analysis
+- [x] Predictive maintenance alerts and scheduling
+- [x] Integration with vehicle telematics (Geotab, Verizon Connect, Samsara)
 - [x] Professional shop management features
 
-### Version 1.2 (Previous)
-- [x] Vehicle-specific diagnostic protocols
-- [x] ECU programming capabilities
-- [x] Cloud sync and backup
-- [x] Multi-language support
+### Coming Soon (Version 1.4.0)
+- [ ] Enhanced UI/UX with redesigned dashboard
+- [ ] Expanded manufacturer support (Toyota, BMW, Mercedes-Benz)
+- [ ] Real-time collaboration features
+- [ ] Advanced cloud sync and export capabilities
 
-### Version 1.1 (Previous)
-- [x] Advanced graphing and data visualization
-- [x] Custom dashboard widgets
-- [x] Data logging and export improvements
-- [x] Web platform support
+For a comprehensive development roadmap including recent achievements, planned features, and long-term vision, see our detailed [**ROADMAP.md**](ROADMAP.md) document.
 
 ---
 
