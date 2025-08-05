@@ -1040,10 +1040,10 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_gauges
-      sha256: "447c1687ae90e6d59ed68bed97e8223d3ec5840fdaa0faf3a9bd38a45ac7b8a6"
+      sha256: "66b55cd64ec99f46022d17234e71bf2324991f4c4484e57c4425213faaf4a1d7"
       url: "https://pub.dev"
     source: hosted
-    version: "30.1.41"
+    version: "30.1.42"
   synchronized:
     dependency: transitive
     description:
