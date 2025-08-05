@@ -94,6 +94,202 @@
         }
       }
     ],
+    "Chevrolet": [
+      {
+        "make": "Chevrolet",
+        "model": "Silverado 1500",
+        "year": 2023,
+        "trim": "LTZ",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM02": "Transmission Adaptive Pressure",
+          "GM03": "DFM Dynamic Fuel Management"
+        }
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Corvette",
+        "year": 2023,
+        "trim": "Stingray",
+        "engine": "6.2L V8",
+        "transmission": "8-Speed DCT",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM01": "Performance Traction Management",
+          "GM04": "Magnetic Ride Control Status",
+          "GM05": "Z51 Performance Package Data"
+        }
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Tahoe",
+        "year": 2023,
+        "trim": "RST",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM06": "4WD Transfer Case Status",
+          "GM07": "Trailer Brake Controller"
+        }
+      }
+    ],
+    "Cadillac": [
+      {
+        "make": "Cadillac",
+        "model": "Escalade",
+        "year": 2023,
+        "trim": "Premium Luxury",
+        "engine": "6.2L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM08": "Super Cruise Status",
+          "GM09": "Magnetic Ride Control",
+          "GM10": "Air Suspension Height"
+        }
+      },
+      {
+        "make": "Cadillac",
+        "model": "CT5-V",
+        "year": 2023,
+        "trim": "Blackwing",
+        "engine": "6.2L Supercharged V8",
+        "transmission": "6-Speed Manual",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "GM11": "Supercharger Boost Pressure",
+          "GM12": "Launch Control Status",
+          "GM13": "Track Mode Data"
+        }
+      }
+    ],
+    "GMC": [
+      {
+        "make": "GMC",
+        "model": "Sierra 1500",
+        "year": 2023,
+        "trim": "Denali",
+        "engine": "6.2L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM14": "Carbon Fiber Bed Data",
+          "GM15": "MultiPro Tailgate Status"
+        }
+      },
+      {
+        "make": "GMC",
+        "model": "Yukon",
+        "year": 2023,
+        "trim": "AT4",
+        "engine": "5.3L V8",
+        "transmission": "10-Speed Auto",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "GM01": "AFM Cylinder Deactivation Status",
+          "GM06": "4WD Transfer Case Status",
+          "GM16": "AT4 Off-Road Mode Data"
+        }
+      }
+    ],
+    "Volkswagen": [
+      {
+        "make": "Volkswagen",
+        "model": "Golf",
+        "year": 2023,
+        "trim": "GTI",
+        "engine": "2.0L Turbo I4",
+        "transmission": "DSG",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW01": "DSG Transmission Temperature",
+          "VW02": "DSG Clutch Status",
+          "VW04": "AdBlue/DEF Level"
+        }
+      },
+      {
+        "make": "Volkswagen",
+        "model": "Passat",
+        "year": 2023,
+        "trim": "SEL",
+        "engine": "2.0L Turbo I4",
+        "transmission": "DSG",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW01": "DSG Transmission Temperature",
+          "VW05": "DPF Regeneration Status",
+          "VW13": "Start/Stop System Status"
+        }
+      }
+    ],
+    "Audi": [
+      {
+        "make": "Audi",
+        "model": "A4",
+        "year": 2023,
+        "trim": "Premium Plus",
+        "engine": "2.0L Turbo I4",
+        "transmission": "S tronic",
+        "supportedProtocols": ["CAN", "KWP2000"],
+        "manufacturerSpecificPids": {
+          "VW03": "Quattro AWD Status",
+          "VW08": "Air Suspension Height",
+          "VW09": "Adaptive Damping Control"
+        }
+      }
+    ],
+    "Nissan": [
+      {
+        "make": "Nissan",
+        "model": "Altima",
+        "year": 2023,
+        "trim": "SV",
+        "engine": "2.5L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN", "ISO9141-2"],
+        "manufacturerSpecificPids": {
+          "NS01": "CVT Transmission Temperature",
+          "NS02": "CVT Fluid Pressure",
+          "NS03": "CVT Pulley Ratio"
+        }
+      },
+      {
+        "make": "Nissan",
+        "model": "Rogue",
+        "year": 2023,
+        "trim": "SL",
+        "engine": "2.5L I4",
+        "transmission": "CVT",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "NS04": "ProPILOT Assist Status",
+          "NS06": "Intelligent AWD Status",
+          "NS09": "Intelligent Cruise Control"
+        }
+      }
+    ],
+    "Infiniti": [
+      {
+        "make": "Infiniti",
+        "model": "Q50",
+        "year": 2023,
+        "trim": "Red Sport 400",
+        "engine": "3.0L Twin Turbo V6",
+        "transmission": "7-Speed Auto",
+        "supportedProtocols": ["CAN"],
+        "manufacturerSpecificPids": {
+          "NS07": "Variable Compression Ratio",
+          "NS09": "Intelligent Cruise Control",
+          "NS10": "Around View Monitor Status"
+        }
+      }
+    ],
     "Generic": [
       {
         "make": "Generic",
@@ -168,6 +364,79 @@
         "programmingModes": ["Flash", "Adaptation"]
       }
     },
+    "Chevrolet": {
+      "name": "General Motors - Chevrolet",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "GM01": "AFM Cylinder Deactivation Status",
+        "GM02": "Transmission Adaptive Pressure",
+        "GM03": "DFM Dynamic Fuel Management",
+        "GM04": "Magnetic Ride Control Status",
+        "GM05": "Z51 Performance Package Data",
+        "GM06": "4WD Transfer Case Status",
+        "GM07": "Trailer Brake Controller"
+      },
+      "dtcLookup": {
+        "P3400": "AFM Cylinder Deactivation Fault",
+        "P3401": "DFM System Malfunction",
+        "P3402": "Transmission Adaptive Learning Required",
+        "P3403": "4WD Transfer Case Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "SDM"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "Cadillac": {
+      "name": "General Motors - Cadillac",
+      "preferredProtocols": ["CAN"],
+      "customPids": {
+        "GM08": "Super Cruise Status",
+        "GM09": "Magnetic Ride Control",
+        "GM10": "Air Suspension Height",
+        "GM11": "Supercharger Boost Pressure",
+        "GM12": "Launch Control Status",
+        "GM13": "Track Mode Data"
+      },
+      "dtcLookup": {
+        "P3500": "Super Cruise System Fault",
+        "P3501": "Magnetic Ride Control Malfunction",
+        "P3502": "Air Suspension Compressor Fault",
+        "P3503": "Supercharger System Error",
+        "P3504": "Launch Control Disabled"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "EBCM", "RCDLR"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "GMC": {
+      "name": "General Motors - GMC",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "GM01": "AFM Cylinder Deactivation Status",
+        "GM14": "Carbon Fiber Bed Data",
+        "GM15": "MultiPro Tailgate Status",
+        "GM16": "AT4 Off-Road Mode Data",
+        "GM06": "4WD Transfer Case Status"
+      },
+      "dtcLookup": {
+        "P3600": "MultiPro Tailgate System Fault",
+        "P3601": "AT4 Off-Road Mode Error",
+        "P3602": "Carbon Fiber Bed Sensor Fault",
+        "P3400": "AFM Cylinder Deactivation Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "EBCM"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
     "BMW": {
       "name": "Bayerische Motoren Werke AG",
       "preferredProtocols": ["CAN", "KWP2000"],
@@ -208,6 +477,121 @@
         "requiresSecurityAccess": true,
         "supportedEcus": ["ME", "EGS", "SAM", "COMAND"],
         "programmingModes": ["Flash", "SCN", "Adaptation"]
+      }
+    },
+    "Volkswagen": {
+      "name": "Volkswagen AG",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "VW01": "DSG Transmission Temperature",
+        "VW02": "DSG Clutch Status",
+        "VW03": "Quattro AWD Status",
+        "VW04": "AdBlue/DEF Level",
+        "VW05": "DPF Regeneration Status",
+        "VW06": "Turbo Wastegate Position",
+        "VW07": "EGR Valve Position",
+        "VW08": "Air Suspension Height",
+        "VW09": "Adaptive Damping Control",
+        "VW10": "Traffic Sign Recognition",
+        "VW11": "Lane Assist Status",
+        "VW12": "Parking Assist Status",
+        "VW13": "Start/Stop System Status",
+        "VW14": "Battery Management System",
+        "VW15": "Infotainment System Status"
+      },
+      "dtcLookup": {
+        "VW1000": "DSG Clutch Adaptation Required",
+        "VW1001": "AdBlue System Quality Poor",
+        "VW1002": "DPF Regeneration Required",
+        "VW1003": "Air Suspension Height Sensor Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "DSG", "Gateway", "Infotainment"],
+        "programmingModes": ["Flash", "Coding", "Adaptation", "BasicSetting"]
+      }
+    },
+    "Audi": {
+      "name": "Audi AG",
+      "preferredProtocols": ["CAN", "KWP2000"],
+      "customPids": {
+        "VW03": "Quattro AWD Status",
+        "VW08": "Air Suspension Height",
+        "VW09": "Adaptive Damping Control",
+        "VW10": "Traffic Sign Recognition",
+        "VW11": "Lane Assist Status",
+        "VW12": "Parking Assist Status"
+      },
+      "dtcLookup": {
+        "AU1000": "Quattro System Malfunction",
+        "AU1001": "Virtual Cockpit Display Error",
+        "AU1002": "MMI Communication Fault"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["Engine", "S tronic", "Gateway", "MMI"],
+        "programmingModes": ["Flash", "Coding", "Adaptation", "LongCoding"]
+      }
+    },
+    "Nissan": {
+      "name": "Nissan Motor Co., Ltd.",
+      "preferredProtocols": ["CAN", "ISO9141-2"],
+      "customPids": {
+        "NS01": "CVT Transmission Temperature",
+        "NS02": "CVT Fluid Pressure",
+        "NS03": "CVT Pulley Ratio",
+        "NS04": "ProPILOT Assist Status",
+        "NS05": "e-POWER System Status",
+        "NS06": "Intelligent AWD Status",
+        "NS07": "Variable Compression Ratio",
+        "NS08": "Zone Body Construction Data",
+        "NS09": "Intelligent Cruise Control",
+        "NS10": "Around View Monitor Status",
+        "NS11": "Intelligent Emergency Braking",
+        "NS12": "Blind Spot Warning Status",
+        "NS13": "Lane Departure Warning",
+        "NS14": "Intelligent Forward Collision",
+        "NS15": "Rear Cross Traffic Alert"
+      },
+      "dtcLookup": {
+        "NS1000": "CVT Overheating Protection",
+        "NS1001": "ProPILOT Camera Obstruction",
+        "NS1002": "e-POWER System Fault",
+        "NS1003": "Intelligent Key Communication Error"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "CVT", "BCM", "Intelligent Key"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
+      }
+    },
+    "Infiniti": {
+      "name": "Infiniti",
+      "preferredProtocols": ["CAN"],
+      "customPids": {
+        "NS04": "ProPILOT Assist Status",
+        "NS06": "Intelligent AWD Status",
+        "NS07": "Variable Compression Ratio",
+        "NS09": "Intelligent Cruise Control",
+        "NS10": "Around View Monitor Status",
+        "NS11": "Intelligent Emergency Braking",
+        "NS12": "Blind Spot Warning Status",
+        "NS14": "Intelligent Forward Collision",
+        "NS15": "Rear Cross Traffic Alert"
+      },
+      "dtcLookup": {
+        "INF1000": "Variable Compression Actuator Fault",
+        "INF1001": "Direct Adaptive Steering Malfunction",
+        "INF1002": "InTouch System Communication Error"
+      },
+      "ecuProgrammingSupport": {
+        "supported": true,
+        "requiresSecurityAccess": true,
+        "supportedEcus": ["ECM", "TCM", "BCM", "InTouch"],
+        "programmingModes": ["Flash", "Calibration", "Configuration"]
       }
     }
   }
