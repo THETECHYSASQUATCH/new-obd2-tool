@@ -51,7 +51,7 @@ class ActionButton extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   color: foregroundColor ?? Theme.of(context).colorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.medium,
+                  fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
