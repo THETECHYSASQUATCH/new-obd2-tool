@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.9.20'
+    ext.kotlin_version = '1.9.24'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.4'
+        classpath 'com.android.tools.build:gradle:8.3.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -24,6 +24,18 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(':app')
+}
+
+// Inject a namespace for the flutter_bluetooth_serial Android library module (AGP 8.x requirement)
+subprojects { p ->
+    if (p.name == "flutter_bluetooth_serial") {
+        p.plugins.withId("com.android.library") {
+            def androidExt = p.extensions.findByName("android")
+            if (androidExt != null && androidExt.hasProperty("namespace") && !androidExt.namespace) {
+                androidExt.namespace = "io.github.edufolly.bluetoothserial" // matches the plugin's AndroidManifest package
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {
