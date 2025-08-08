@@ -32,7 +32,7 @@ subprojects { p ->
         p.plugins.withId("com.android.library") {
             def androidExt = p.extensions.findByName("android")
             if (androidExt != null && androidExt.hasProperty("namespace") && !androidExt.namespace) {
-                androidExt.namespace = "io.github.edufolly.bluetoothserial" // matches the plugin's AndroidManifest package
+                androidExt.namespace = "io.github.edufolly.flutterbluetoothserial" // matches the plugin's AndroidManifest package
             }
         }
     }
