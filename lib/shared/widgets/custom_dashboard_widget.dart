@@ -7,6 +7,7 @@ import 'advanced_data_visualization_widget.dart';
 import 'live_data_widget.dart';
 import '../providers/app_providers.dart';
 import '../../core/converters/icon_data_converter.dart';
+import '../../core/services/obd_service.dart';
 
 part 'custom_dashboard_widget.g.dart';
 
