@@ -446,7 +446,7 @@ class GMService {
       if (!seedResponse.isValid) return false;
 
       // Calculate key (simplified - real implementation would use GM algorithm)
-      final key = _calculateSecurityKey(seedResponse.data);
+      final key = _calculateSecurityKey(seedResponse.rawResponse);
       
       // Send key
       final keyResponse = await _obdService.sendCommand('${_gmProgrammingCommands['KEY_RESPONSE']} $key');

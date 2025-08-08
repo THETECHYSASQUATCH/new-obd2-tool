@@ -14,6 +14,9 @@ class VehicleInfo {
   final Map<String, dynamic>? manufacturerSpecificPids;
   final Map<String, String>? ecuMappings;
 
+  // Getter for compatibility with core model
+  String? get engineType => engine;
+
   const VehicleInfo({
     required this.make,
     required this.model,

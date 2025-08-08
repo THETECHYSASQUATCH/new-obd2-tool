@@ -1,3 +1,7 @@
+# Verification and temporary files
+verification_check.dart
+tmp_*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
