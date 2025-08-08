@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import '../constants/app_constants.dart';
-import '../../shared/models/obd_response.dart';
+import '../models/obd_response.dart';
 import '../../shared/models/connection_config.dart';
 
 enum ConnectionType { bluetooth, wifi, usb, serial }
@@ -26,6 +26,7 @@ abstract class OBDService {
   Future<void> disconnect();
   Future<OBDResponse> sendCommand(String command);
   Future<List<String>> scanForDevices();
+  Future<Map<String, dynamic>> getLiveData();
   bool get isConnected;
 }
 
@@ -159,6 +160,42 @@ class MobileOBDService implements OBDService {
       return [];
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getLiveData() async {
+    if (!isConnected) {
+      throw Exception('Not connected to OBD device');
+    }
+
+    try {
+      final Map<String, dynamic> liveData = {};
+      
+      // Get common OBD-II parameters
+      final commands = [
+        {'cmd': '010C', 'key': 'engineRpm'},
+        {'cmd': '010D', 'key': 'vehicleSpeed'},
+        {'cmd': '0105', 'key': 'coolantTemp'},
+        {'cmd': '010F', 'key': 'intakeTemp'},
+        {'cmd': '0104', 'key': 'engineLoad'},
+        {'cmd': '0111', 'key': 'throttlePosition'},
+      ];
+      
+      for (final cmdData in commands) {
+        try {
+          final response = await sendCommand(cmdData['cmd']!);
+          if (!response.isError && response.parsedData != null) {
+            liveData[cmdData['key']!] = response.parsedData!['value'];
+          }
+        } catch (e) {
+          debugPrint('Error getting ${cmdData['key']}: $e');
+        }
+      }
+      
+      return liveData;
+    } catch (e) {
+      throw Exception('Failed to get live data: $e');
+    }
+  }
   
   void _updateStatus(ConnectionStatus status) {
     _currentStatus = status;
@@ -221,6 +258,27 @@ class DesktopOBDService implements OBDService {
   Future<List<String>> scanForDevices() async {
     // Desktop implementation would scan serial ports
     return ['COM1', 'COM3', '/dev/ttyUSB0', '/dev/ttyACM0'];
+  }
+
+  @override
+  Future<Map<String, dynamic>> getLiveData() async {
+    if (!isConnected) {
+      throw Exception('Not connected to OBD device');
+    }
+
+    try {
+      // Simulate live data for desktop demo purposes
+      return {
+        'engineRpm': 1500.0 + (DateTime.now().millisecond % 1000),
+        'vehicleSpeed': 60.0 + (DateTime.now().millisecond % 40),
+        'coolantTemp': 85.0 + (DateTime.now().millisecond % 10),
+        'intakeTemp': 25.0 + (DateTime.now().millisecond % 15),
+        'engineLoad': 45.0 + (DateTime.now().millisecond % 30),
+        'throttlePosition': 15.0 + (DateTime.now().millisecond % 25),
+      };
+    } catch (e) {
+      throw Exception('Failed to get live data: $e');
+    }
   }
   
   void _updateStatus(ConnectionStatus status) {
