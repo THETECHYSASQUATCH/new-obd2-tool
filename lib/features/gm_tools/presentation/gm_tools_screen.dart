@@ -164,7 +164,7 @@ class _GMToolsScreenState extends ConsumerState<GMToolsScreen> {
         return [
           ActionButton(
             title: 'AFM Disable',
-            icon: Icons.engine,
+            icon: Icons.build,
             onPressed: _isLoading ? null : () => _runGMServiceTool('afm_disable'),
           ),
           ActionButton(
