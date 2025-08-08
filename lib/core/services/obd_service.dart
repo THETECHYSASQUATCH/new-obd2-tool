@@ -183,8 +183,8 @@ class MobileOBDService implements OBDService {
       for (final cmdData in commands) {
         try {
           final response = await sendCommand(cmdData['cmd']!);
-          if (!response.isError && response.parsedData != null) {
-            liveData[cmdData['key']!] = response.parsedData!['value'];
+          if (!response.isError && response.parsedData.isNotEmpty) {
+            liveData[cmdData['key']!] = response.parsedData['value'];
           }
         } catch (e) {
           debugPrint('Error getting ${cmdData['key']}: $e');
