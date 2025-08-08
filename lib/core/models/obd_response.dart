@@ -7,7 +7,7 @@ class OBDResponse {
   final String rawResponse;
   final DateTime timestamp;
   final ResponseStatus status;
-  final Map<String, dynamic> parsedData;
+  final Map<String, dynamic>? parsedData;
   final String? errorMessage;
   final double? responseTime;
   final String? protocol;
@@ -17,7 +17,7 @@ class OBDResponse {
     required this.rawResponse,
     required this.timestamp,
     required this.status,
-    this.parsedData = const {},
+    this.parsedData,
     this.errorMessage,
     this.responseTime,
     this.protocol,
@@ -29,7 +29,7 @@ class OBDResponse {
       rawResponse: json['rawResponse'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
       status: ResponseStatus.values.byName(json['status']),
-      parsedData: json['parsedData'] as Map<String, dynamic>? ?? {},
+      parsedData: json['parsedData'] as Map<String, dynamic>?,
       errorMessage: json['errorMessage'] as String?,
       responseTime: (json['responseTime'] as num?)?.toDouble(),
       protocol: json['protocol'] as String?,
@@ -57,6 +57,7 @@ class OBDResponse {
         timestamp: timestamp,
         status: ResponseStatus.error,
         errorMessage: cleanedData,
+        parsedData: null,
       );
     }
 
@@ -114,17 +115,17 @@ class OBDResponse {
   bool get isValid => status == ResponseStatus.success;
   bool get isError => status == ResponseStatus.error;
   String get rawData => rawResponse;
-  Map<String, dynamic> get data => parsedData;
+  Map<String, dynamic> get data => parsedData ?? {};
 
   // Typed getters
   T? getValue<T>(String key) {
-    final value = parsedData[key];
+    final value = parsedData?[key];
     if (value is T) return value;
     return null;
   }
 
   double? getNumericValue(String key) {
-    final value = parsedData[key];
+    final value = parsedData?[key];
     if (value is num) return value.toDouble();
     if (value is String) return double.tryParse(value);
     return null;
@@ -134,7 +135,7 @@ class OBDResponse {
   String toString() {
     final base = 'OBDResponse(command: $command, status: ${status.name}, raw: $rawResponse)';
     if (hasError) return '$base, error: $errorMessage';
-    if (parsedData.isNotEmpty) return '$base, parsed: ${jsonEncode(parsedData)}';
+    if (parsedData != null && parsedData!.isNotEmpty) return '$base, parsed: ${jsonEncode(parsedData)}';
     return base;
   }
 
