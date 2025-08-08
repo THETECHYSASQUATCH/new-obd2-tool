@@ -521,18 +521,21 @@ class DashboardPage extends ConsumerWidget {
                     icon: Icons.search,
                     title: 'Scan for DTCs',
                     subtitle: 'Check diagnostic trouble codes',
+                    actionKind: QuickActionKind.scanDtcs,
                   ),
                   SizedBox(height: 12),
                   _QuickActionButton(
                     icon: Icons.clear,
                     title: 'Clear DTCs',
                     subtitle: 'Clear stored error codes',
+                    actionKind: QuickActionKind.clearDtcs,
                   ),
                   SizedBox(height: 12),
                   _QuickActionButton(
                     icon: Icons.refresh,
                     title: 'Reset ECU',
                     subtitle: 'Reset engine control unit',
+                    actionKind: QuickActionKind.resetEcu,
                   ),
                 ],
               )
@@ -546,6 +549,7 @@ class DashboardPage extends ConsumerWidget {
                       icon: Icons.search,
                       title: 'Scan for DTCs',
                       subtitle: 'Check diagnostic trouble codes',
+                      actionKind: QuickActionKind.scanDtcs,
                     ),
                   ),
                   SizedBox(
@@ -554,6 +558,7 @@ class DashboardPage extends ConsumerWidget {
                       icon: Icons.clear,
                       title: 'Clear DTCs',
                       subtitle: 'Clear stored error codes',
+                      actionKind: QuickActionKind.clearDtcs,
                     ),
                   ),
                   SizedBox(
@@ -562,6 +567,7 @@ class DashboardPage extends ConsumerWidget {
                       icon: Icons.refresh,
                       title: 'Reset ECU',
                       subtitle: 'Reset engine control unit',
+                      actionKind: QuickActionKind.resetEcu,
                     ),
                   ),
                 ],
@@ -571,27 +577,30 @@ class DashboardPage extends ConsumerWidget {
   }
 }
 
-class _QuickActionButton extends StatelessWidget {
+enum QuickActionKind {
+  scanDtcs,
+  clearDtcs,
+  resetEcu,
+}
+
+class _QuickActionButton extends ConsumerWidget {
   final IconData icon;
   final String title;
   final String subtitle;
+  final QuickActionKind actionKind;
 
   const _QuickActionButton({
     required this.icon,
     required this.title,
     required this.subtitle,
+    required this.actionKind,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       child: InkWell(
-        onTap: () {
-          // TODO: Implement action
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('$title feature coming soon!')),
-          );
-        },
+        onTap: () => _executeAction(context, ref),
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -629,6 +638,238 @@ class _QuickActionButton extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> _executeAction(BuildContext context, WidgetRef ref) async {
+    final obdService = ref.read(obdServiceProvider);
+    final connectionStatus = ref.read(connectionStatusProvider);
+    
+    // Check connection status
+    final isConnected = connectionStatus.value == ConnectionStatus.connected;
+    if (!isConnected) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please connect to an OBD device first'),
+            backgroundColor: Colors.orange,
+          ),
+        );
+      }
+      return;
+    }
+
+    try {
+      switch (actionKind) {
+        case QuickActionKind.scanDtcs:
+          await _scanDtcs(context, obdService);
+          break;
+        case QuickActionKind.clearDtcs:
+          await _clearDtcs(context, obdService);
+          break;
+        case QuickActionKind.resetEcu:
+          await _resetEcu(context, obdService);
+          break;
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _scanDtcs(BuildContext context, OBDService obdService) async {
+    if (!context.mounted) return;
+    
+    // Show loading
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Scanning for DTCs...')),
+    );
+
+    try {
+      final response = await obdService.sendCommand('03');
+      
+      if (context.mounted) {
+        if (response.isSuccess) {
+          final dtcs = response.parsedData['dtcs'] as List<String>?;
+          if (dtcs != null && dtcs.isNotEmpty) {
+            _showDtcResults(context, dtcs);
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('No DTCs found'),
+                backgroundColor: Colors.green,
+              ),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Failed to scan DTCs: ${response.errorMessage ?? 'Unknown error'}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('DTC scan failed: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _clearDtcs(BuildContext context, OBDService obdService) async {
+    if (!context.mounted) return;
+
+    // Show confirmation dialog
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Clear DTCs'),
+        content: const Text('Are you sure you want to clear all diagnostic trouble codes? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Clear DTCs'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !context.mounted) return;
+
+    // Show loading
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Clearing DTCs...')),
+    );
+
+    try {
+      final response = await obdService.sendCommand('04');
+      
+      if (context.mounted) {
+        if (response.isSuccess) {
+          final cleared = response.parsedData['cleared'] as bool? ?? false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(cleared ? 'DTCs cleared successfully' : 'Failed to clear DTCs'),
+              backgroundColor: cleared ? Colors.green : Colors.red,
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Failed to clear DTCs: ${response.errorMessage ?? 'Unknown error'}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('DTC clear failed: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _resetEcu(BuildContext context, OBDService obdService) async {
+    if (!context.mounted) return;
+
+    // Show confirmation dialog
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reset ECU'),
+        content: const Text('Are you sure you want to reset the adapter and reinitialize? This will reset the connection.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+            child: const Text('Reset'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !context.mounted) return;
+
+    // Show loading
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Resetting adapter...')),
+    );
+
+    try {
+      await obdService.resetAdapterAndReinit();
+      
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Adapter reset successfully'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Reset failed: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  void _showDtcResults(BuildContext context, List<String> dtcs) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Found ${dtcs.length} DTC${dtcs.length == 1 ? '' : 's'}'),
+        content: SizedBox(
+          width: 300,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: dtcs.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: const Icon(Icons.warning, color: Colors.orange),
+                title: Text(dtcs[index]),
+                dense: true,
+              );
+            },
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Close'),
+          ),
+        ],
       ),
     );
   }
