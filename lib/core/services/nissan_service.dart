@@ -132,37 +132,37 @@ class NissanService {
   dynamic _parseNissanPidResponse(String pid, OBDResponse response) {
     switch (pid) {
       case 'NS01': // CVT Transmission Temperature
-        return _parseCvtTemperature(response.data);
+        return _parseCvtTemperature(response.rawResponse);
       case 'NS02': // CVT Fluid Pressure
-        return _parseCvtPressure(response.data);
+        return _parseCvtPressure(response.rawResponse);
       case 'NS03': // CVT Pulley Ratio
-        return _parseCvtRatio(response.data);
+        return _parseCvtRatio(response.rawResponse);
       case 'NS04': // ProPILOT Assist Status
-        return _parseProPilotStatus(response.data);
+        return _parseProPilotStatus(response.rawResponse);
       case 'NS05': // e-POWER System Status
-        return _parseEPowerStatus(response.data);
+        return _parseEPowerStatus(response.rawResponse);
       case 'NS06': // Intelligent AWD Status
-        return _parseIntelligentAwdStatus(response.data);
+        return _parseIntelligentAwdStatus(response.rawResponse);
       case 'NS07': // Variable Compression Ratio
-        return _parseVcrStatus(response.data);
+        return _parseVcrStatus(response.rawResponse);
       case 'NS08': // Zone Body Construction Data
-        return _parseZoneBodyData(response.data);
+        return _parseZoneBodyData(response.rawResponse);
       case 'NS09': // Intelligent Cruise Control
-        return _parseIntelligentCruiseControl(response.data);
+        return _parseIntelligentCruiseControl(response.rawResponse);
       case 'NS10': // Around View Monitor Status
-        return _parseAroundViewMonitor(response.data);
+        return _parseAroundViewMonitor(response.rawResponse);
       case 'NS11': // Intelligent Emergency Braking
-        return _parseIntelligentEmergencyBraking(response.data);
+        return _parseIntelligentEmergencyBraking(response.rawResponse);
       case 'NS12': // Blind Spot Warning Status
-        return _parseBlindSpotWarning(response.data);
+        return _parseBlindSpotWarning(response.rawResponse);
       case 'NS13': // Lane Departure Warning
-        return _parseLaneDepartureWarning(response.data);
+        return _parseLaneDepartureWarning(response.rawResponse);
       case 'NS14': // Intelligent Forward Collision
-        return _parseIntelligentForwardCollision(response.data);
+        return _parseIntelligentForwardCollision(response.rawResponse);
       case 'NS15': // Rear Cross Traffic Alert
-        return _parseRearCrossTrafficAlert(response.data);
+        return _parseRearCrossTrafficAlert(response.rawResponse);
       default:
-        return response.data;
+        return response.rawResponse;
     }
   }
 

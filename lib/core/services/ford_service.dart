@@ -90,27 +90,27 @@ class FordService {
   dynamic _parseFordPidResponse(String pid, OBDResponse response) {
     switch (pid) {
       case 'F001': // Turbo Boost Pressure
-        return _parseBoostPressure(response.data);
+        return _parseBoostPressure(response.rawResponse);
       case 'F002': // EGR Valve Position
-        return _parseEgrPosition(response.data);
+        return _parseEgrPosition(response.rawResponse);
       case 'F003': // DEF Level
-        return _parseDefLevel(response.data);
+        return _parseDefLevel(response.rawResponse);
       case 'F004': // Transmission Temperature
-        return _parseTransmissionTemp(response.data);
+        return _parseTransmissionTemp(response.rawResponse);
       case 'F005': // SYNC System Status
-        return _parseSyncStatus(response.data);
+        return _parseSyncStatus(response.rawResponse);
       case 'F006': // Adaptive Cruise Control
-        return _parseAccStatus(response.data);
+        return _parseAccStatus(response.rawResponse);
       case 'F007': // Lane Keeping Assist
-        return _parseLkaStatus(response.data);
+        return _parseLkaStatus(response.rawResponse);
       case 'F008': // EcoBoost Performance Data
-        return _parseEcoBoostData(response.data);
+        return _parseEcoBoostData(response.rawResponse);
       case 'F009': // 4WD Status
-        return _parse4WdStatus(response.data);
+        return _parse4WdStatus(response.rawResponse);
       case 'F010': // Trailer Brake Controller
-        return _parseTrailerBrakeStatus(response.data);
+        return _parseTrailerBrakeStatus(response.rawResponse);
       default:
-        return response.data;
+        return response.rawResponse;
     }
   }
 

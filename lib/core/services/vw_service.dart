@@ -135,37 +135,37 @@ class VWService {
   dynamic _parseVWPidResponse(String pid, OBDResponse response) {
     switch (pid) {
       case 'VW01': // DSG Transmission Temperature
-        return _parseDsgTemperature(response.data);
+        return _parseDsgTemperature(response.rawResponse);
       case 'VW02': // DSG Clutch Status
-        return _parseDsgClutchStatus(response.data);
+        return _parseDsgClutchStatus(response.rawResponse);
       case 'VW03': // Quattro AWD Status
-        return _parseQuattroStatus(response.data);
+        return _parseQuattroStatus(response.rawResponse);
       case 'VW04': // AdBlue/DEF Level
-        return _parseAdBlueLevel(response.data);
+        return _parseAdBlueLevel(response.rawResponse);
       case 'VW05': // DPF Regeneration Status
-        return _parseDpfStatus(response.data);
+        return _parseDpfStatus(response.rawResponse);
       case 'VW06': // Turbo Wastegate Position
-        return _parseWastegatePosition(response.data);
+        return _parseWastegatePosition(response.rawResponse);
       case 'VW07': // EGR Valve Position
-        return _parseEgrPosition(response.data);
+        return _parseEgrPosition(response.rawResponse);
       case 'VW08': // Air Suspension Height
-        return _parseAirSuspensionHeight(response.data);
+        return _parseAirSuspensionHeight(response.rawResponse);
       case 'VW09': // Adaptive Damping Control
-        return _parseAdaptiveDamping(response.data);
+        return _parseAdaptiveDamping(response.rawResponse);
       case 'VW10': // Traffic Sign Recognition
-        return _parseTrafficSignRecognition(response.data);
+        return _parseTrafficSignRecognition(response.rawResponse);
       case 'VW11': // Lane Assist Status
-        return _parseLaneAssistStatus(response.data);
+        return _parseLaneAssistStatus(response.rawResponse);
       case 'VW12': // Parking Assist Status
-        return _parseParkingAssistStatus(response.data);
+        return _parseParkingAssistStatus(response.rawResponse);
       case 'VW13': // Start/Stop System Status
-        return _parseStartStopStatus(response.data);
+        return _parseStartStopStatus(response.rawResponse);
       case 'VW14': // Battery Management System
-        return _parseBatteryManagement(response.data);
+        return _parseBatteryManagement(response.rawResponse);
       case 'VW15': // Infotainment System Status
-        return _parseInfotainmentStatus(response.data);
+        return _parseInfotainmentStatus(response.rawResponse);
       default:
-        return response.data;
+        return response.rawResponse;
     }
   }
 
