@@ -35,6 +35,36 @@ class OBDResponse {
     );
   }
 
+  /// Factory constructor to create OBDResponse from raw response string
+  /// This provides compatibility with the shared model usage pattern
+  factory OBDResponse.fromRaw(String rawResponse, [String command = '']) {
+    final timestamp = DateTime.now();
+    final cleanedData = rawResponse.trim().replaceAll('\r', '').replaceAll('\n', '');
+    
+    // Check for error responses
+    if (cleanedData.contains('ERROR') || 
+        cleanedData.contains('NO DATA') ||
+        cleanedData.contains('?')) {
+      return OBDResponse(
+        command: command,
+        rawResponse: cleanedData,
+        timestamp: timestamp,
+        status: ResponseStatus.error,
+        errorMessage: cleanedData,
+      );
+    }
+    
+    // For now, return success status with raw data
+    // The parsing logic from shared model could be integrated here if needed
+    return OBDResponse(
+      command: command,
+      rawResponse: cleanedData,
+      timestamp: timestamp,
+      status: ResponseStatus.success,
+      parsedData: {'rawData': cleanedData},
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'command': command,
@@ -72,6 +102,18 @@ class OBDResponse {
 
   bool get isSuccess => status == ResponseStatus.success;
   bool get hasError => status == ResponseStatus.error;
+  
+  /// Compatibility getter for isValid (equivalent to isSuccess)
+  bool get isValid => status == ResponseStatus.success;
+  
+  /// Compatibility getter for isError (equivalent to hasError)
+  bool get isError => status == ResponseStatus.error;
+  
+  /// Compatibility getter for rawData (equivalent to rawResponse)
+  String get rawData => rawResponse;
+  
+  /// Compatibility getter for data (returns parsedData)
+  Map<String, dynamic> get data => parsedData;
   
   /// Get value from parsed data with type casting
   T? getValue<T>(String key) {

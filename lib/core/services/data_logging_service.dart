@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:csv/csv.dart';
 import 'package:archive/archive.dart';
 import 'package:intl/intl.dart';
-import '../../shared/models/obd_response.dart';
+import '../models/obd_response.dart';
 
 /// Enhanced data logging service for OBD-II diagnostic data
 /// Supports real-time logging, export to multiple formats, and data management

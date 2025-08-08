@@ -9,7 +9,7 @@ import '../../core/services/ecu_programming_service.dart';
 import '../../core/services/cloud_sync_service.dart';
 import '../../core/constants/app_constants.dart';
 import '../models/connection_config.dart';
-import '../models/obd_response.dart';
+import '../../core/models/obd_response.dart';
 import '../models/language_config.dart';
 import '../models/vehicle_info.dart';
 import '../models/ecu_programming.dart';
