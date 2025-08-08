@@ -87,6 +87,10 @@ class OBDResponse {
           return _parseSecondaryAirStatus(cleanData);
         case '011E': // Auxiliary input status
           return _parseAuxiliaryStatus(cleanData);
+        case '03': // Read stored DTCs
+          return _parseDtcList(cleanData);
+        case '04': // Clear DTCs
+          return _parseClearDtcs(cleanData);
         default:
           return {'raw_hex': cleanData};
       }
@@ -320,6 +324,93 @@ class OBDResponse {
       };
     }
     return {'error': 'Invalid auxiliary status response'};
+  }
+  
+  static Map<String, dynamic> _parseDtcList(String data) {
+    try {
+      // Sanitize response - remove common ELM327 artifacts
+      String cleanData = data.replaceAll('>', '').replaceAll('SEARCHING...', '').replaceAll(' ', '').toUpperCase();
+      
+      // Find Mode 03 positive response (43)
+      int responseStart = cleanData.indexOf('43');
+      if (responseStart == -1) {
+        // No DTCs found or invalid response
+        return {'dtcs': <String>[]};
+      }
+      
+      // Extract the payload after '43' and the number of DTCs byte
+      String payload = cleanData.substring(responseStart + 4); // Skip '43' + count byte
+      
+      List<String> dtcs = [];
+      
+      // Process DTCs in pairs of 4 hex characters (2 bytes each)
+      for (int i = 0; i < payload.length - 3; i += 4) {
+        String dtcHex = payload.substring(i, i + 4);
+        
+        // Stop if we hit 0000 (end marker)
+        if (dtcHex == '0000') break;
+        
+        if (dtcHex.length == 4) {
+          String? dtcCode = _decodeDtcFromBytes(dtcHex.substring(0, 2), dtcHex.substring(2, 4));
+          if (dtcCode != null) {
+            dtcs.add(dtcCode);
+          }
+        }
+      }
+      
+      return {'dtcs': dtcs};
+    } catch (e) {
+      return {'dtcs': <String>[], 'parse_error': e.toString()};
+    }
+  }
+  
+  static String? _decodeDtcFromBytes(String aHex, String bHex) {
+    try {
+      int a = int.parse(aHex, radix: 16);
+      int b = int.parse(bHex, radix: 16);
+      
+      // Extract system letter from high 2 bits of A
+      String system;
+      switch ((a >> 6) & 0x03) {
+        case 0:
+          system = 'P'; // Powertrain
+          break;
+        case 1:
+          system = 'C'; // Chassis
+          break;
+        case 2:
+          system = 'B'; // Body
+          break;
+        case 3:
+          system = 'U'; // Network
+          break;
+        default:
+          return null;
+      }
+      
+      // Extract 4 hex digits from remaining bits per SAE J2012
+      int digit1 = (a >> 4) & 0x03;
+      int digit2 = a & 0x0F;
+      int digit3 = (b >> 4) & 0x0F;
+      int digit4 = b & 0x0F;
+      
+      return '$system$digit1${digit2.toRadixString(16).toUpperCase()}${digit3.toRadixString(16).toUpperCase()}${digit4.toRadixString(16).toUpperCase()}';
+    } catch (e) {
+      return null;
+    }
+  }
+  
+  static Map<String, dynamic> _parseClearDtcs(String data) {
+    try {
+      String cleanData = data.replaceAll('>', '').replaceAll(' ', '').toUpperCase();
+      
+      // Check for success indicators
+      bool cleared = cleanData.contains('OK') || cleanData.startsWith('44');
+      
+      return {'cleared': cleared};
+    } catch (e) {
+      return {'cleared': false, 'parse_error': e.toString()};
+    }
   }
   
   Map<String, dynamic> toJson() {

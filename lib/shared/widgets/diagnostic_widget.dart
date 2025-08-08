@@ -298,12 +298,35 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
       final connectionActions = ref.read(connectionActionsProvider);
       
       // Send command to read DTCs
-      await connectionActions.sendCommand('03'); // Read stored DTCs
+      final response = await connectionActions.sendCommand('03'); // Read stored DTCs
       
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('DTC scan completed')),
-        );
+        if (!response.isError && response.parsedData != null) {
+          final dtcs = response.parsedData!['dtcs'] as List<String>? ?? [];
+          
+          if (dtcs.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('No diagnostic trouble codes found'),
+                backgroundColor: Colors.green,
+              ),
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Found ${dtcs.length} DTC(s): ${dtcs.join(', ')}'),
+                duration: const Duration(seconds: 5),
+              ),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('DTC scan error: ${response.errorMessage ?? 'Unknown error'}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     } catch (e) {
       if (mounted) {
@@ -346,12 +369,35 @@ class _DiagnosticWidgetState extends ConsumerState<DiagnosticWidget> {
     if (confirmed == true) {
       try {
         final connectionActions = ref.read(connectionActionsProvider);
-        await connectionActions.sendCommand('04'); // Clear DTCs
+        final response = await connectionActions.sendCommand('04'); // Clear DTCs
         
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('DTCs cleared successfully')),
-          );
+          if (!response.isError && response.parsedData != null) {
+            final cleared = response.parsedData!['cleared'] as bool? ?? false;
+            
+            if (cleared) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('DTCs cleared successfully'),
+                  backgroundColor: Colors.green,
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Failed to clear DTCs - device may not support this operation'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
+            }
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Clear DTCs error: ${response.errorMessage ?? 'Unknown error'}'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         }
       } catch (e) {
         if (mounted) {

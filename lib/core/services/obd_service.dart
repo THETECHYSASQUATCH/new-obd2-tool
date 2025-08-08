@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import '../constants/app_constants.dart';
-import '../models/obd_response.dart';
+import '../../shared/models/obd_response.dart';
 import '../../shared/models/connection_config.dart';
 
 enum ConnectionType { bluetooth, wifi, usb, serial }
@@ -38,6 +38,7 @@ class MobileOBDService implements OBDService {
   
   BluetoothConnection? _bluetoothConnection;
   ConnectionStatus _currentStatus = ConnectionStatus.disconnected;
+  bool _sending = false; // Serialization lock
   
   @override
   Stream<ConnectionStatus> get connectionStatus => _statusController.stream;
@@ -117,23 +118,37 @@ class MobileOBDService implements OBDService {
       throw Exception('Not connected to OBD device');
     }
     
+    // Serialize commands to avoid interleaved responses
+    while (_sending) {
+      await Future.delayed(const Duration(milliseconds: 50));
+    }
+    _sending = true;
+    
     try {
+      // Send command with carriage return
       _bluetoothConnection!.output.add(Uint8List.fromList(command.codeUnits));
-      _bluetoothConnection!.output.add(Uint8List.fromList('\r\n'.codeUnits));
+      _bluetoothConnection!.output.add(Uint8List.fromList('\r'.codeUnits));
       await _bluetoothConnection!.output.allSent;
       
-      // Wait for response with timeout
-      final completer = Completer<OBDResponse>();
+      // Buffer response until ELM327 prompt '>' appears
+      final completer = Completer<String>();
+      final buffer = StringBuffer();
       late StreamSubscription subscription;
       
-      subscription = dataStream.listen((response) {
-        if (!completer.isCompleted) {
-          completer.complete(response);
-          subscription.cancel();
+      subscription = _bluetoothConnection!.input!.listen((data) {
+        final chunk = String.fromCharCodes(data);
+        buffer.write(chunk);
+        
+        // Check if we received the ELM327 prompt
+        if (buffer.toString().contains('>')) {
+          if (!completer.isCompleted) {
+            completer.complete(buffer.toString());
+            subscription.cancel();
+          }
         }
       });
       
-      // Timeout after 5 seconds
+      // Timeout handling
       Timer(const Duration(milliseconds: AppConstants.obdTimeoutMs), () {
         if (!completer.isCompleted) {
           subscription.cancel();
@@ -144,9 +159,17 @@ class MobileOBDService implements OBDService {
         }
       });
       
-      return await completer.future;
+      final rawResponse = await completer.future;
+      
+      // Create OBD response and add to data stream
+      final response = OBDResponse.fromRaw(rawResponse, command);
+      _dataController.add(response);
+      
+      return response;
     } catch (e) {
       throw Exception('Failed to send command: $e');
+    } finally {
+      _sending = false;
     }
   }
   
@@ -183,8 +206,8 @@ class MobileOBDService implements OBDService {
       for (final cmdData in commands) {
         try {
           final response = await sendCommand(cmdData['cmd']!);
-          if (!response.isError && response.parsedData.isNotEmpty) {
-            liveData[cmdData['key']!] = response.parsedData['value'];
+          if (!response.isError && response.parsedData != null && response.parsedData!.isNotEmpty) {
+            liveData[cmdData['key']!] = response.parsedData!['value'];
           }
         } catch (e) {
           debugPrint('Error getting ${cmdData['key']}: $e');
