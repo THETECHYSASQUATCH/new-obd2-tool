@@ -150,7 +150,7 @@ class OBDResponse {
       return {'dtcs': dtcs};
     }
 
-    if (upperCmd == '04' || cleanData == 'OK' || cleanData == '44') {
+    if (upperCmd == '04') {
       final cleared = cleanData == 'OK' || cleanData == '44';
       return {'cleared': cleared};
     }
