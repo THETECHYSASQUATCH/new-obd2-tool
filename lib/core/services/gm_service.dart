@@ -135,39 +135,39 @@ class GMService {
   dynamic _parseGMPidResponse(String pid, OBDResponse response) {
     switch (pid) {
       case 'GM01': // AFM Cylinder Deactivation Status
-        return _parseAfmStatus(response.data);
+        return _parseAfmStatus(response.rawResponse);
       case 'GM02': // Transmission Adaptive Pressure
-        return _parseTransmissionPressure(response.data);
+        return _parseTransmissionPressure(response.rawResponse);
       case 'GM03': // DFM Dynamic Fuel Management
-        return _parseDfmStatus(response.data);
+        return _parseDfmStatus(response.rawResponse);
       case 'GM04': // Magnetic Ride Control Status
-        return _parseMagneticRideStatus(response.data);
+        return _parseMagneticRideStatus(response.rawResponse);
       case 'GM05': // Z51 Performance Package Data
-        return _parseZ51Data(response.data);
+        return _parseZ51Data(response.rawResponse);
       case 'GM06': // 4WD Transfer Case Status
-        return _parse4WdStatus(response.data);
+        return _parse4WdStatus(response.rawResponse);
       case 'GM07': // Trailer Brake Controller
-        return _parseTrailerBrakeController(response.data);
+        return _parseTrailerBrakeController(response.rawResponse);
       case 'GM08': // Super Cruise Status
-        return _parseSuperCruiseStatus(response.data);
+        return _parseSuperCruiseStatus(response.rawResponse);
       case 'GM09': // Magnetic Ride Control
-        return _parseMagneticRideControl(response.data);
+        return _parseMagneticRideControl(response.rawResponse);
       case 'GM10': // Air Suspension Height
-        return _parseAirSuspensionHeight(response.data);
+        return _parseAirSuspensionHeight(response.rawResponse);
       case 'GM11': // Supercharger Boost Pressure
-        return _parseSuperchargerBoost(response.data);
+        return _parseSuperchargerBoost(response.rawResponse);
       case 'GM12': // Launch Control Status
-        return _parseLaunchControlStatus(response.data);
+        return _parseLaunchControlStatus(response.rawResponse);
       case 'GM13': // Track Mode Data
-        return _parseTrackModeData(response.data);
+        return _parseTrackModeData(response.rawResponse);
       case 'GM14': // Carbon Fiber Bed Data
-        return _parseCarbonFiberBedData(response.data);
+        return _parseCarbonFiberBedData(response.rawResponse);
       case 'GM15': // MultiPro Tailgate Status
-        return _parseMultiProTailgateStatus(response.data);
+        return _parseMultiProTailgateStatus(response.rawResponse);
       case 'GM16': // AT4 Off-Road Mode Data
-        return _parseAT4OffRoadData(response.data);
+        return _parseAT4OffRoadData(response.rawResponse);
       default:
-        return response.data;
+        return response.rawResponse;
     }
   }
 

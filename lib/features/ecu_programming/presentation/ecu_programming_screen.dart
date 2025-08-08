@@ -94,7 +94,7 @@ class _EcuDiscoveryTab extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Engine: ${selectedVehicle.engine ?? 'Unknown'}',
+                      'Engine: ${selectedVehicle.engine ?? selectedVehicle.engineType ?? 'Unknown'}',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Text(

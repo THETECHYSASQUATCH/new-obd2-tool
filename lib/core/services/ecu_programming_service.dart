@@ -75,7 +75,8 @@ class EcuProgrammingService {
     ]);
 
     // Add hybrid ECU for hybrid vehicles
-    if (vehicle.engine?.toLowerCase().contains('hybrid') == true) {
+    if ((vehicle.engine?.toLowerCase().contains('hybrid') == true) || 
+        (vehicle.engineType?.toLowerCase().contains('hybrid') == true)) {
       _discoveredEcus.add(const EcuInfo(
         id: 'hybrid_ecu',
         name: 'Hybrid Control Module',
