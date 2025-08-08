@@ -446,7 +446,7 @@ class NissanService {
       if (!seedResponse.isValid) return false;
 
       // Calculate key (simplified - real implementation would use Nissan algorithm)
-      final key = _calculateSecurityKey(seedResponse.data);
+      final key = _calculateSecurityKey(seedResponse.rawResponse);
       
       // Send key
       final keyResponse = await _obdService.sendCommand('${_nissanProgrammingCommands['KEY_RESPONSE']} $key');

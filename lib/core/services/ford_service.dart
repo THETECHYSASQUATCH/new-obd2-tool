@@ -309,7 +309,7 @@ class FordService {
       if (!seedResponse.isValid) return false;
 
       // Calculate key (simplified - real implementation would use Ford algorithm)
-      final key = _calculateSecurityKey(seedResponse.data);
+      final key = _calculateSecurityKey(seedResponse.rawResponse);
       
       // Send key
       final keyResponse = await _obdService.sendCommand('${_fordProgrammingCommands['KEY_RESPONSE']} $key');
