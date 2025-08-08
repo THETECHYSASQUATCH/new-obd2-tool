@@ -380,28 +380,141 @@ class CustomDashboardWidget extends ConsumerWidget {
     ];
   }
 
-  void _executeQuickAction(BuildContext context, WidgetRef ref, QuickAction action) {
-    switch (action.action) {
-      case QuickActionType.scanDtcs:
-        _showSnackBar(context, 'Scanning for DTCs...');
-        // TODO: Implement DTC scanning
-        break;
-      case QuickActionType.clearDtcs:
-        _showSnackBar(context, 'Clearing DTCs...');
-        // TODO: Implement DTC clearing
-        break;
-      case QuickActionType.refreshData:
-        _showSnackBar(context, 'Refreshing data...');
-        // TODO: Implement data refresh
-        break;
-      case QuickActionType.exportData:
-        _showSnackBar(context, 'Exporting data...');
-        // TODO: Implement data export
-        break;
-      case QuickActionType.customCommand:
-        _showSnackBar(context, 'Executing custom command...');
-        // TODO: Implement custom command execution
-        break;
+  void _executeQuickAction(BuildContext context, WidgetRef ref, QuickAction action) async {
+    final obdService = ref.read(obdServiceProvider);
+    final connectionStatus = ref.read(connectionStatusProvider);
+    
+    // Check connection status
+    final isConnected = connectionStatus.value == ConnectionStatus.connected;
+    
+    try {
+      switch (action.action) {
+        case QuickActionType.scanDtcs:
+          await _scanDtcs(context, obdService, isConnected);
+          break;
+        case QuickActionType.clearDtcs:
+          await _clearDtcs(context, obdService, isConnected);
+          break;
+        case QuickActionType.refreshData:
+          await _refreshData(context, ref, isConnected);
+          break;
+        case QuickActionType.exportData:
+          _showSnackBar(context, 'Export feature available in Data Export screen');
+          break;
+        case QuickActionType.customCommand:
+          _showSnackBar(context, 'Custom command feature coming soon');
+          break;
+      }
+    } catch (e) {
+      _showSnackBar(context, 'Error: $e');
+    }
+  }
+
+  Future<void> _scanDtcs(BuildContext context, OBDService obdService, bool isConnected) async {
+    if (!isConnected) {
+      _showSnackBar(context, 'Please connect to an OBD device first');
+      return;
+    }
+
+    _showSnackBar(context, 'Scanning for DTCs...');
+
+    try {
+      final response = await obdService.sendCommand('03');
+      
+      if (response.isSuccess) {
+        final dtcs = response.parsedData['dtcs'] as List<String>?;
+        if (dtcs != null && dtcs.isNotEmpty) {
+          _showSnackBar(context, 'Found ${dtcs.length} DTC${dtcs.length == 1 ? '' : 's'}');
+        } else {
+          _showSnackBar(context, 'No DTCs found');
+        }
+      } else {
+        _showSnackBar(context, 'DTC scan failed: ${response.errorMessage ?? 'Unknown error'}');
+      }
+    } catch (e) {
+      _showSnackBar(context, 'DTC scan failed: $e');
+    }
+  }
+
+  Future<void> _clearDtcs(BuildContext context, OBDService obdService, bool isConnected) async {
+    if (!isConnected) {
+      _showSnackBar(context, 'Please connect to an OBD device first');
+      return;
+    }
+
+    // Show confirmation dialog
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Clear DTCs'),
+        content: const Text('Clear all diagnostic trouble codes?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Clear'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) return;
+
+    _showSnackBar(context, 'Clearing DTCs...');
+
+    try {
+      final response = await obdService.sendCommand('04');
+      
+      if (response.isSuccess) {
+        final cleared = response.parsedData['cleared'] as bool? ?? false;
+        _showSnackBar(context, cleared ? 'DTCs cleared successfully' : 'Failed to clear DTCs');
+      } else {
+        _showSnackBar(context, 'Clear DTCs failed: ${response.errorMessage ?? 'Unknown error'}');
+      }
+    } catch (e) {
+      _showSnackBar(context, 'Clear DTCs failed: $e');
+    }
+  }
+
+  Future<void> _refreshData(BuildContext context, WidgetRef ref, bool isConnected) async {
+    if (!isConnected) {
+      _showSnackBar(context, 'Please connect to an OBD device first');
+      return;
+    }
+
+    _showSnackBar(context, 'Refreshing data...');
+
+    try {
+      // Request updates from each configured PID
+      for (final pidConfig in config.pidConfigs) {
+        final provider = _getNotifierForPid(ref, pidConfig.pid);
+        if (provider != null) {
+          await provider.requestUpdate();
+        }
+      }
+      
+      _showSnackBar(context, 'Data refreshed');
+    } catch (e) {
+      _showSnackBar(context, 'Refresh failed: $e');
+    }
+  }
+
+  LiveDataNotifier<double>? _getNotifierForPid(WidgetRef ref, String pid) {
+    // Map PID to corresponding notifier
+    switch (pid) {
+      case '010C':
+        return ref.read(engineRpmProvider.notifier);
+      case '010D':
+        return ref.read(vehicleSpeedProvider.notifier);
+      case '0105':
+        return ref.read(coolantTempProvider.notifier);
+      case '0104':
+        return ref.read(engineLoadProvider.notifier);
+      default:
+        return null;
     }
   }
 

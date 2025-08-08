@@ -27,6 +27,7 @@ abstract class OBDService {
   Future<OBDResponse> sendCommand(String command);
   Future<List<String>> scanForDevices();
   Future<Map<String, dynamic>> getLiveData();
+  Future<void> resetAdapterAndReinit();
   bool get isConnected;
 }
 
@@ -219,6 +220,30 @@ class MobileOBDService implements OBDService {
       throw Exception('Failed to get live data: $e');
     }
   }
+
+  @override
+  Future<void> resetAdapterAndReinit() async {
+    if (!isConnected || _bluetoothConnection == null) {
+      throw Exception('Not connected to OBD device');
+    }
+
+    try {
+      // Reset the adapter
+      await sendCommand('ATZ');
+      await Future.delayed(const Duration(milliseconds: 1500));
+      
+      // Turn off echo
+      await sendCommand('ATE0');
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+      // Set protocol to auto
+      await sendCommand('ATSP0');
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+    } catch (e) {
+      throw Exception('Failed to reset adapter: $e');
+    }
+  }
   
   void _updateStatus(ConnectionStatus status) {
     _currentStatus = status;
@@ -301,6 +326,21 @@ class DesktopOBDService implements OBDService {
       };
     } catch (e) {
       throw Exception('Failed to get live data: $e');
+    }
+  }
+
+  @override
+  Future<void> resetAdapterAndReinit() async {
+    if (!isConnected) {
+      throw Exception('Not connected to OBD device');
+    }
+
+    try {
+      // Simulate adapter reset for desktop demo
+      await Future.delayed(const Duration(milliseconds: 1000));
+      
+    } catch (e) {
+      throw Exception('Failed to reset adapter: $e');
     }
   }
   
