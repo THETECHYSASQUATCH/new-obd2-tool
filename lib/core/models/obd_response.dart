@@ -458,10 +458,3 @@ class OBDResponse {
     return dtcs;
   }
 }
-
-enum ResponseStatus {
-  success,
-  error,
-  timeout,
-  invalid,
-}
