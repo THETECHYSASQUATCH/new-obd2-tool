@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import '../constants/app_constants.dart';
-import '../models/obd_response.dart';
+import '../../shared/models/obd_response.dart';
 import '../../shared/models/connection_config.dart';
 
 enum ConnectionType { bluetooth, wifi, usb, serial }
