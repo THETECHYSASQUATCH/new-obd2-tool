@@ -15,7 +15,7 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   flutter_bluetooth_serial: ^0.4.0           # Mobile Bluetooth
   serial_port_win32: ^2.2.0                  # Windows Serial port
-  http: ^1.2.1
+  http: ^1.5.0
   dio: ^5.4.3
   provider: ^6.1.2
   flutter_riverpod: ^2.4.9                   # Advanced state management
